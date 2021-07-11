@@ -1,0 +1,17 @@
+.grid {
+    .row {
+        display: flex;
+        .column {
+            display: flex;
+            flex-direction: column;
+            .square {
+                height: 250px;
+                width: 250px;
+                background-color: tomato;
+                &.active {
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
