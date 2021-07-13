@@ -1,16 +1,14 @@
 .grid {
     .row {
         display: flex;
-        .column {
-            display: flex;
-            flex-direction: column;
-            .square {
-                height: 250px;
-                width: 250px;
-                background-color: tomato;
-                &.active {
-                    background-color: white;
-                }
+        .square {
+            min-height: 50px;
+            min-width: 50px;
+            flex: 1;
+            background-color: tomato;
+            .activeImg {
+                width: 50px;
+                height: auto;
             }
         }
     }

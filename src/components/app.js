@@ -12,7 +12,7 @@ const App = () => (
 	<div id="app">
 		{/* <Header /> */}
 		<Router>
-			<Grid columns={5} rows={3} path="/" />
+			<Grid columns={20} rows={20} path="/" />
 			<Profile path="/profile/" user="me" />
 			<Profile path="/profile/:user" />
 		</Router>

@@ -39,9 +39,6 @@ class Grid extends Component {
     }
 
     componentDidMount() {
-        document.addev
-        console.log('this is running..')
-        
 		document.addEventListener("keyup", this.onKeyPressed.bind(this));
 	}    
   
@@ -89,11 +86,7 @@ class Grid extends Component {
                 {this.gridLayout.map((row, rowI) => (
                     <div key={rowI} class={style.row}>
                         {row.map((item, itemI) => (
-                            <div key={itemI} class={style.column}>
-                                {console.log(`active is supposed to be Column: ${this.state.columnPosition}, Row: ${this.state.rowPosition}`)}
-                                <Square key={`${itemI}${rowI}`} active={(this.state.columnPosition === itemI && this.state.rowPosition === rowI)} />
-                                {itemI} - {rowI}
-                            </div>
+                            <Square key={`${itemI}${rowI}`} active={(this.state.columnPosition === itemI && this.state.rowPosition === rowI)} />
                         ))}
                     </div>
                 ))}

@@ -27,7 +27,10 @@ class Square extends Component {
     render() {
         return (
             <div class={`${style.square} ${this.state.active ? style.active : ''}`}>
-                <h1>square</h1>
+                {this.state.active
+                    ? <img class={style.activeImg} src="../assets/chicken1.png" />
+                    : null
+                }
             </div>
         )}
 }
