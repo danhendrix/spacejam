@@ -3,112 +3,137 @@ import Fred from '../NPC/fred';
 const Home = [
     [
         {
-            imgClass: 'brown',
+            type: 'path',
             npc: null,
+            isAccessible: true,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
-        },
-    ],
-    [
-        {
-            imgClass: 'brown',
-            npc: null,
-        },
-        {
-            imgClass: 'brown',
-            npc: null,
-        },
-        {
-            imgClass: 'tomato',
-            npc: null,
-        },
-        {
-            imgClass: 'tomato',
-            npc: null,
-        },
-        {
-            imgClass: 'tomato',
-            npc: null,
+            isAccessible: false,
         },
     ],
     [
         {
-            imgClass: 'tomato',
+            type: 'path',
             npc: null,
+            isAccessible: true,
         },
         {
-            imgClass: 'brown',
+            type: 'path',
             npc: null,
+            isAccessible: true,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
     ],
     [
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'brown',
+            type: 'path',
             npc: null,
+            isAccessible: true,
         },
         {
-            imgClass: 'brown',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'brown',
+            type: 'mountain',
+            npc: null,
+            isAccessible: false,
+        },
+        {
+            type: 'mountain',
+            npc: null,
+            isAccessible: false,
+        },
+    ],
+    [
+        {
+            type: 'mountain',
+            npc: null,
+            isAccessible: false,
+        },
+        {
+            type: 'path',
+            npc: null,
+            isAccessible: true,
+        },
+        {
+            type: 'path',
+            npc: null,
+            isAccessible: true,
+        },
+        {
+            type: 'path',
             npc: Fred,
+            isAccessible: true,
         },
         {
-            imgClass: 'brown',
+            type: 'path',
             npc: null,
+            isAccessible: true,
         },
     ],
     [
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'tomato',
+            type: 'mountain',
             npc: null,
+            isAccessible: false,
         },
         {
-            imgClass: 'brown',
+            type: 'path',
             npc: null,
+            isAccessible: true,
         },
     ],
 ];
