@@ -14,6 +14,12 @@
       align-items: center;
       background-color: tomato;
       margin: 1px;
+      &.brown {
+        background-color: brown;
+      }
+      &.tomato {
+        background-color: tomato;
+      }
       .activeImg {
         width: 50%;
         max-width: 50px;

@@ -1,6 +1,7 @@
 import { Component } from 'preact';
 import Grid from './grid';
 import style from './style.scss';
+import Home from '../Grids/home';
 
 class Game extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Game extends Component {
       <div class={style.gameContainer}>
         <div class={style.themeToggle}>Theme toggle</div>
         <div class={style.mainDisplay}>
-          {gameStart ? <Grid columns={5} rows={5} /> : null}
+          {gameStart ? <Grid gridSetup={Home} /> : null}
         </div>
         <div class={style.lowerDisplay}>
           {gameStart ? (

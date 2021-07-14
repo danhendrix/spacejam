@@ -12,25 +12,29 @@ import style from './style.scss';
 class Grid extends Component {
     constructor(props) {
         super(props);
-        this.columns = props.columns;
-        this.rows = props.rows;
         this.state = {
             columnPosition: 0,
             rowPosition: 0,
         };
-        this.buildGrid();
+        this.columns = 0;
+        this.rows = 0;
+        this.buildGrid(this.props.gridSetup);
     }
 
-    buildGrid() {
+    buildGrid(gridSetup) {
         const gridLayout = [];
-        for (let rowNum = 0; rowNum < this.rows; rowNum++) {
+        for (let rowNum = 0; rowNum < gridSetup.length; rowNum++) {
             gridLayout.push([]);
 
-            for (let columnNum = 0; columnNum < this.columns; columnNum++) {
-                gridLayout[rowNum].push(null);
+            for (let columnNum = 0; columnNum < gridSetup[rowNum].length; columnNum++) {
+                const squareItem = gridSetup[columnNum][rowNum];
+
+                gridLayout[rowNum].push(squareItem);
             }
         }
         this.gridLayout = gridLayout;
+        this.rows = gridLayout.length;
+        this.columns = gridLayout[0].length;
         console.log(gridLayout)
     }
 
@@ -86,7 +90,12 @@ class Grid extends Component {
                 {this.gridLayout.map((row, rowI) => (
                     <div key={rowI} class={style.row}>
                         {row.map((item, itemI) => (
-                            <Square key={`${itemI}${rowI}`} active={(this.state.columnPosition === itemI && this.state.rowPosition === rowI)} />
+                            <Square
+                                key={`${itemI}${rowI}`}
+                                active={(this.state.columnPosition === itemI && this.state.rowPosition === rowI)}
+                                imgClass={item.imgClass}
+                                npc={item.npc}
+                            />
                         ))}
                     </div>
                 ))}
