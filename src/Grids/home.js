@@ -1,8 +1,9 @@
+import Fred from '../NPC/fred';
 
 const Home = [
     [
         {
-            imgClass: 'tomato',
+            imgClass: 'brown',
             npc: null,
         },
         {
@@ -81,7 +82,7 @@ const Home = [
         },
         {
             imgClass: 'brown',
-            npc: null,
+            npc: Fred,
         },
         {
             imgClass: 'brown',

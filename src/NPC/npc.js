@@ -3,13 +3,15 @@ class NPC {
     constructor(
         name,
         imgClass,
+        imgSrc,
         actions = [],
         afterActionsDict = {},
     ) {
         this.name = name;
         this.actions = actions;
         this.afterActionsDict = afterActionsDict;
-        this.imgClass;
+        this.imgClass = imgClass;
+        this.imgSrc = imgSrc;
     }
 
     interact(player) {

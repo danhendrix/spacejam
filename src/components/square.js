@@ -6,11 +6,12 @@ const Square = (({
     imgClass,
     npc,
 }) => (
-    <div class={`${style[imgClass]} ${npc ? style[npc] : ''} ${style.square} ${active ? style.active : ''}`}>
+    <div class={`${style[imgClass]} ${npc ? style[npc.imgClass] : ''} ${style.square} ${active ? style.active : ''}`}>
         {active
             ? <img class={style.activeImg} src="../assets/chicken1.png" />
             : null
         }
+        {npc ? <img class={`${style.npc} ${style[npc.imgClass]}`} src={npc.imgSrc} /> : null}
     </div>
 ));
 
