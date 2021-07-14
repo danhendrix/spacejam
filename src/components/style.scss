@@ -22,11 +22,18 @@
             &.mountain {
                 background-color: tomato;
             }
-            .activeImg,
-            .npc {
+            .activeImg {
                 height: auto;
-                width: 50%;
+                width: 45%;
                 max-width: 50px;
+
+                @media only screen and (min-width: 700px) {
+                    width: 50%;
+                    max-width: 60px;
+                }
+            }
+            .npc {
+                @extend .activeImg;
             }
             // &.fred {
             //     background-color: white;
