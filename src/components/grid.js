@@ -94,6 +94,14 @@ class Grid extends Component {
         }
     }
 
+    setSquareAccesible(column, row) {
+        const gridLayout = this.state.gridLayout;
+        const square = gridLayout[this.state.rowPosition + row][this.state.columnPosition + column];
+        square.isAccessible = true;
+        
+        this.setState({ gridLayout });
+    }
+
     handleKeyPress(e) {
         e.stopPropagation();
         const { columns, rows, columnPosition, rowPosition } = this.state;

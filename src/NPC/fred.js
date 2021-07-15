@@ -24,9 +24,9 @@ const fredActions = [
         requirements: [],
         afterAction: {
             fn() {
-
+                this.setSquareAccesible(1, 0);
             },
-            message: "FRED",
+            message: "Fine, I will let you through.",
         },
     },
 ];

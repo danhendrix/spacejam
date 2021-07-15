@@ -106,7 +106,7 @@ const Home = [
         {
             type: 'path',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
         },
     ],
     [
