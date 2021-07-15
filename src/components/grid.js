@@ -46,24 +46,28 @@ class Grid extends Component {
 
     componentWillMount() {
         document.removeEventListener('keyup', this.handleKeyPress.bind(this));
-        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
-        //     virtualKey.removeEventListener(
-        //         'click',
-        //         this.handleKeyPress.bind(this)
-        //     );
-        // });
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.removeEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
 
         this.buildGrid(this.props.gridSetup);
     }
 
     componentDidMount() {
         document.addEventListener('keyup', this.handleKeyPress.bind(this));
-        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
-        //     virtualKey.addEventListener(
-        //         'click',
-        //         this.handleKeyPress.bind(this)
-        //     );
-        // });
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.addEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
     }
 
     checkSquareType(newRow, newColumn) {
@@ -89,7 +93,7 @@ class Grid extends Component {
                 action.fn.call(this);
                 console.log(action.message);
             } else {
-                console.log(action.message)
+                console.log(action.message);
             }
         }
     }
@@ -97,13 +101,13 @@ class Grid extends Component {
     handleKeyPress(e) {
         e.stopPropagation();
         const { columns, rows, columnPosition, rowPosition } = this.state;
-        // Just testing whether handleKeyPress function can be added to on screen keys from here
-        // const eventValue = e.type === 'keyup' ? e.keyCode : 'down';
+        const eventValue = e.type === 'keyup' ? e.keyCode : e.target.id;
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
 
-        switch (e.keyCode) {
+        switch (eventValue) {
             case 38:
+            case 'upArrow':
                 {
                     // up
                     if (rowPosition > 0) {
@@ -112,6 +116,7 @@ class Grid extends Component {
                 }
                 break;
             case 39:
+            case 'rightArrow':
                 {
                     // right
                     if (columnPosition + 1 < columns) {
@@ -120,6 +125,7 @@ class Grid extends Component {
                 }
                 break;
             case 40:
+            case 'downArrow':
                 {
                     // down
                     if (rowPosition + 1 < rows) {
@@ -128,6 +134,7 @@ class Grid extends Component {
                 }
                 break;
             case 37:
+            case 'leftArrow':
                 {
                     // left
                     if (columnPosition > 0) {
@@ -135,7 +142,8 @@ class Grid extends Component {
                     }
                 }
                 break;
-            case 32: {
+            case 32:
+            case 'spaceKey': {
                 // space
                 this.checkForNPC(rowPosition, columnPosition);
             }
