@@ -46,11 +46,24 @@ class Grid extends Component {
 
     componentWillMount() {
         document.removeEventListener('keyup', this.handleKeyPress.bind(this));
+        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
+        //     virtualKey.removeEventListener(
+        //         'click',
+        //         this.handleKeyPress.bind(this)
+        //     );
+        // });
+
         this.buildGrid(this.props.gridSetup);
     }
 
     componentDidMount() {
         document.addEventListener('keyup', this.handleKeyPress.bind(this));
+        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
+        //     virtualKey.addEventListener(
+        //         'click',
+        //         this.handleKeyPress.bind(this)
+        //     );
+        // });
     }
 
     checkSquareType(newRow, newColumn) {
@@ -79,6 +92,8 @@ class Grid extends Component {
     handleKeyPress(e) {
         e.stopPropagation();
         const { columns, rows, columnPosition, rowPosition } = this.state;
+        // Just testing whether handleKeyPress function can be added to on screen keys from here
+        // const eventValue = e.type === 'keyup' ? e.keyCode : 'down';
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
 
