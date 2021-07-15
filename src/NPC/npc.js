@@ -5,36 +5,39 @@ class NPC {
         imgClass,
         imgSrc,
         actions = [],
-        afterActionsDict = {},
     ) {
         this.name = name;
         this.actions = actions;
-        this.afterActionsDict = afterActionsDict;
         this.imgClass = imgClass;
         this.imgSrc = imgSrc;
     }
 
     interact(player) {
-        const currentAction = this.actions.shift();
+        const currentAction = this.actions[0];
         if (currentAction.requirements.length) {
             for (let require of currentAction.requirements) {
-                const { type, amount, failureMessage } = require;
+                const { type, amount, message } = require;
 
                 if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
                     return {
                         success: false,
-                        failureMessage,
+                        message,
                     };
                 }
             }
         }
 
-        const { fn, successMessage } = this.afterActionsDict[currentAction.name];
-        fn();
+        const { fn, message } = currentAction.afterAction;
+
+        // remove this action from the NPC actions list if it's not the last thing the NPC can say.
+        if (this.actions.length > 1) {
+            this.actions.shift();
+        }
 
         return {
+            fn,
             success: true,
-            successMessage,
+            message,
         };
     }
 }

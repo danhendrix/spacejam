@@ -83,9 +83,14 @@ class Grid extends Component {
         const gridSpace = this.state.gridLayout[row][column];
 
         if (gridSpace.npc) {
-            console.log(
-                `Greetings, adventurer! My name is ${gridSpace.npc.name}.`
-            );
+            const action = gridSpace.npc.interact();
+
+            if (action.success) {
+                action.fn.call(this);
+                console.log(action.message);
+            } else {
+                console.log(action.message)
+            }
         }
     }
 
