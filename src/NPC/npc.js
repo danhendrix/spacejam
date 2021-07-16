@@ -1,4 +1,9 @@
 
+export const RequirementTypes = {
+    inventory: 'inventory',
+    question: 'question',
+};
+
 class NPC {
     constructor(
         name,
@@ -10,35 +15,23 @@ class NPC {
         this.actions = actions;
         this.imgClass = imgClass;
         this.imgSrc = imgSrc;
+        this.isInTheMiddleOfAction = false;
     }
 
-    interact(player) {
-        const currentAction = this.actions[0];
-        if (currentAction.requirements.length) {
-            for (let require of currentAction.requirements) {
-                const { type, amount, message } = require;
+    interact() {
+        this.isInTheMiddleOfAction = true;
+        return this.actions.length ? this.actions[0] : null;
+    }
 
-                if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
-                    return {
-                        success: false,
-                        message,
-                    };
-                }
-            }
-        }
-
-        const { fn, message } = currentAction.afterAction;
-
-        // remove this action from the NPC actions list if it's not the last thing the NPC can say.
+    successfulAction() {
         if (this.actions.length > 1) {
             this.actions.shift();
         }
+        this.cancel();
+    }
 
-        return {
-            fn,
-            success: true,
-            message,
-        };
+    cancel() {
+        this.isInTheMiddleOfAction = false;
     }
 }
 
