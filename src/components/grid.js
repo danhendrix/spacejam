@@ -1,13 +1,7 @@
 import { Component } from 'preact';
 import Square from './square';
 import style from './style.scss';
-
-// const Neighbor = {
-//     topNeighbor: 'TopNeighbor',
-//     rightNeighbor: 'RightNeighbor',
-//     bottomNeighbor: 'BottomNeighbor',
-//     leftNeighbor: 'LeftNeighbor',
-// };
+import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
     constructor(props) {
@@ -79,18 +73,46 @@ class Grid extends Component {
         });
     }
 
-    checkForNPC(row, column) {
+    interactWithNpc(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
 
-        if (gridSpace.npc) {
-            const action = gridSpace.npc.interact();
+        if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
+            const currentAction = gridSpace.npc.interact();
 
-            if (action.success) {
-                action.fn.call(this);
-                console.log(action.message);
-            } else {
-                console.log(action.message)
+            if (currentAction.requirements.length) {
+                for (let require of currentAction.requirements) {
+                    const { type, question, answer } = require;
+    
+                    if (type === RequirementTypes.inventory) {
+                        console.log('looking up the player')
+                        // if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
+                        //     return {
+                        //         success: false,
+                        //         message,
+                        //     };
+                        // }
+                    } else if (type === RequirementTypes.question) {
+                        console.log('Here is a question for you: ', question)
+                        const playerAnswer = this.props.playerInput;
+                        console.log('answer? ', answer)
+
+                        if (playerAnswer != answer) {
+                            this.props.updatePlayerInput("");
+                            console.log('try again')
+                            gridSpace.npc.cancel();
+                            return false;
+                        }
+                    }
+                }
             }
+    
+            const { fn, message } = currentAction.afterAction;
+            fn.call(this);
+            console.log('after action message', message)
+    
+            gridSpace.npc.successfulAction();
+
+            return true;
         }
     }
 
@@ -145,7 +167,7 @@ class Grid extends Component {
                 break;
             case 32: {
                 // space
-                this.checkForNPC(rowPosition, columnPosition);
+                this.interactWithNpc(rowPosition, columnPosition);
             }
         }
 
