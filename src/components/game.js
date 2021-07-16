@@ -12,9 +12,11 @@ class Game extends Component {
             playerAvatar: null,
             theme: 'dark',
             playerInput: '',
+            npcMessage: '',
         };
 
         this.enteredText = '';
+        this.updateNpcMessage = this.updateNpcMessage.bind(this);
     }
 
     componentDidMount() {
@@ -34,13 +36,19 @@ class Game extends Component {
         this.setState({ playerInput });
     };
 
+    updateNpcMessage = (newMessage) => {
+        this.setState({
+            npcMessage: newMessage,
+        });
+    };
+
     playerInputChanged = (e) => {
         e.stopPropagation();
         this.enteredText = e.target.value;
     };
 
     render() {
-        const { gameStart, playerInput } = this.state;
+        const { gameStart, playerInput, npcMessage } = this.state;
 
         return (
             <div class={style.gameContainer}>
@@ -51,6 +59,7 @@ class Game extends Component {
                             gridSetup={Home}
                             playerInput={playerInput}
                             updatePlayerInput={this.updatePlayerInput}
+                            updateNpcMessage={this.updateNpcMessage}
                         />
                     ) : null}
                 </div>
@@ -87,7 +96,7 @@ class Game extends Component {
                             </div>
                             <div class={style.messageContainer}>
                                 <p class={style.npcChatContainer}>
-                                    {playerInput}
+                                    {npcMessage}
                                 </p>
                                 <input
                                     id='playerInput'
