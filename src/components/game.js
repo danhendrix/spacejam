@@ -86,10 +86,15 @@ class Game extends Component {
                                 </button>
                             </div>
                             <div class={style.messageContainer}>
-                                <p class='npc-chat-container'>{playerInput}</p>
+                                <p class={style.npcChatContainer}>
+                                    {playerInput}
+                                </p>
                                 <input
+                                    id='playerInput'
+                                    class={style.playerInput}
                                     onChange={this.playerInputChanged}
                                     value={this.enteredText}
+                                    placeholder='Enter answer here'
                                 />
                             </div>
                             <div

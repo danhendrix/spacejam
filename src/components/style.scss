@@ -66,10 +66,8 @@
         width: 100%;
 
         .keysContainer {
-            // display: flex;
-            // justify-content: center;
             padding: 5px;
-            width: 20%;
+            flex-basis: 20%;
 
             @media only screen and (min-width: 1000px) {
                 padding: 15px;
@@ -142,6 +140,33 @@
         .messageContainer {
             background-color: white;
             flex-basis: 60%;
+
+            .npcChatContainer {
+                // background: red;
+                height: 70%;
+                margin: 0;
+                padding: 10px;
+            }
+
+            .playerInput {
+                border: none;
+                border-top: 1px solid rgba(0, 0, 0, 0.6);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+                font-size: 16px;
+                height: 25%;
+                text-align: center;
+                width: 100%;
+
+                &:focus {
+                    border-top: 2px solid rgb(0, 0, 0);
+                    border-bottom: 2px solid rgb(0, 0, 0);
+                    outline: none;
+                }
+
+                @media only screen and (min-width: 500px) {
+                    font-size: 24px;
+                }
+            }
         }
     }
 }
