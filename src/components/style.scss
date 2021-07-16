@@ -66,14 +66,107 @@
         width: 100%;
 
         .keysContainer {
-            display: flex;
-            justify-content: center;
+            padding: 5px;
             flex-basis: 20%;
+
+            @media only screen and (min-width: 1000px) {
+                padding: 15px;
+            }
+        }
+
+        .arrowKeysContainer {
+            display: grid;
+            justify-items: center;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-areas:
+                'up'
+                'down'
+                'left'
+                'right';
+
+            @media only screen and (min-width: 500px) {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas:
+                    'up left'
+                    'down right';
+            }
+
+            @media only screen and (min-width: 1000px) {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas:
+                    '. up .'
+                    'left down right';
+            }
+
+            .directionKey {
+                width: 100%;
+            }
+
+            .upArrow {
+                grid-area: up;
+            }
+
+            .leftArrow {
+                grid-area: left;
+            }
+
+            .downArrow {
+                grid-area: down;
+            }
+
+            .rightArrow {
+                grid-area: right;
+            }
+        }
+
+        .spaceKeyContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .spaceKey {
+                height: 100%;
+                width: 100%;
+
+                @media only screen and (min-width: 768px) {
+                    height: 45%;
+                }
+            }
         }
 
         .messageContainer {
             background-color: white;
             flex-basis: 60%;
+
+            .npcChatContainer {
+                // background: red;
+                height: 70%;
+                margin: 0;
+                padding: 10px;
+            }
+
+            .playerInput {
+                border: none;
+                border-top: 1px solid rgba(0, 0, 0, 0.6);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+                font-size: 16px;
+                height: 25%;
+                text-align: center;
+                width: 100%;
+
+                &:focus {
+                    border-top: 2px solid rgb(0, 0, 0);
+                    border-bottom: 2px solid rgb(0, 0, 0);
+                    outline: none;
+                }
+
+                @media only screen and (min-width: 500px) {
+                    font-size: 24px;
+                }
+            }
         }
     }
 }

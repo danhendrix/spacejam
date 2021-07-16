@@ -40,24 +40,28 @@ class Grid extends Component {
 
     componentWillMount() {
         document.removeEventListener('keyup', this.handleKeyPress.bind(this));
-        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
-        //     virtualKey.removeEventListener(
-        //         'click',
-        //         this.handleKeyPress.bind(this)
-        //     );
-        // });
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.removeEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
 
         this.buildGrid(this.props.gridSetup);
     }
 
     componentDidMount() {
         document.addEventListener('keyup', this.handleKeyPress.bind(this));
-        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
-        //     virtualKey.addEventListener(
-        //         'click',
-        //         this.handleKeyPress.bind(this)
-        //     );
-        // });
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.addEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
     }
 
     checkSquareType(newRow, newColumn) {
@@ -82,9 +86,9 @@ class Grid extends Component {
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
                     const { type, question, answer } = require;
-    
+
                     if (type === RequirementTypes.inventory) {
-                        console.log('looking up the player')
+                        console.log('looking up the player');
                         // if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
                         //     return {
                         //         success: false,
@@ -92,24 +96,24 @@ class Grid extends Component {
                         //     };
                         // }
                     } else if (type === RequirementTypes.question) {
-                        console.log('Here is a question for you: ', question)
+                        console.log('Here is a question for you: ', question);
                         const playerAnswer = this.props.playerInput;
-                        console.log('answer? ', answer)
+                        console.log('answer? ', answer);
 
                         if (playerAnswer != answer) {
-                            this.props.updatePlayerInput("");
-                            console.log('try again')
+                            this.props.updatePlayerInput('');
+                            console.log('try again');
                             gridSpace.npc.cancel();
                             return false;
                         }
                     }
                 }
             }
-    
+
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            console.log('after action message', message)
-    
+            console.log('after action message', message);
+
             gridSpace.npc.successfulAction();
 
             return true;
@@ -118,22 +122,25 @@ class Grid extends Component {
 
     setSquareAccesible(column, row) {
         const gridLayout = this.state.gridLayout;
-        const square = gridLayout[this.state.rowPosition + row][this.state.columnPosition + column];
+        const square =
+            gridLayout[this.state.rowPosition + row][
+                this.state.columnPosition + column
+            ];
         square.isAccessible = true;
-        
+
         this.setState({ gridLayout });
     }
 
     handleKeyPress(e) {
         e.stopPropagation();
         const { columns, rows, columnPosition, rowPosition } = this.state;
-        // Just testing whether handleKeyPress function can be added to on screen keys from here
-        // const eventValue = e.type === 'keyup' ? e.keyCode : 'down';
+        const eventValue = e.type === 'keyup' ? e.keyCode : e.target.id;
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
 
-        switch (e.keyCode) {
+        switch (eventValue) {
             case 38:
+            case 'upArrow':
                 {
                     // up
                     if (rowPosition > 0) {
@@ -142,6 +149,7 @@ class Grid extends Component {
                 }
                 break;
             case 39:
+            case 'rightArrow':
                 {
                     // right
                     if (columnPosition + 1 < columns) {
@@ -150,6 +158,7 @@ class Grid extends Component {
                 }
                 break;
             case 40:
+            case 'downArrow':
                 {
                     // down
                     if (rowPosition + 1 < rows) {
@@ -158,6 +167,7 @@ class Grid extends Component {
                 }
                 break;
             case 37:
+            case 'leftArrow':
                 {
                     // left
                     if (columnPosition > 0) {
@@ -165,7 +175,8 @@ class Grid extends Component {
                     }
                 }
                 break;
-            case 32: {
+            case 32:
+            case 'spaceKey': {
                 // space
                 this.interactWithNpc(rowPosition, columnPosition);
             }
