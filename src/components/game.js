@@ -8,22 +8,51 @@ class Game extends Component {
         super(props);
         this.state = {
             gameStart: true,
-            player: {
-                name: '',
-                avatar: null,
-            },
+            playerName: '',
+            playerAvatar: null,
             theme: 'dark',
+            playerInput: '',
         };
+
+        this.enteredText = '';
     }
 
+    componentDidMount() {
+        document.addEventListener('keyup', this.handleKeyPress.bind(this));
+    }
+
+    handleKeyPress(e) {
+        e.stopPropagation();
+        if (e.keyCode === 13) {
+            // enter
+            this.updatePlayerInput(this.enteredText);
+            this.enteredText = '';
+        }
+    }
+
+    updatePlayerInput = (playerInput) => {
+        this.setState({ playerInput });
+    };
+
+    playerInputChanged = (e) => {
+        e.stopPropagation();
+        this.enteredText = e.target.value;
+    };
+
     render() {
-        const { gameStart } = this.state;
+        const { gameStart, playerInput } = this.state;
 
         return (
             <div class={style.gameContainer}>
                 <div class={style.themeToggle}>Theme toggle</div>
                 <div class={style.mainDisplay}>
-                    {gameStart ? <Grid gridSetup={Home} /> : null}
+                    {gameStart ? (
+                        <Grid
+                            gridSetup={Home}
+                            playerInput={playerInput}
+                            updatePlayerInput={this.updatePlayerInput}
+                        />
+                    ) : null}
                 </div>
                 <div class={style.lowerDisplay}>
                     {gameStart ? (
@@ -57,8 +86,11 @@ class Game extends Component {
                                 </button>
                             </div>
                             <div class={style.messageContainer}>
-                                Messages (NPC text, questions + buttons to click
-                                for answering, etc)
+                                <p class='npc-chat-container'>{playerInput}</p>
+                                <input
+                                    onChange={this.playerInputChanged}
+                                    value={this.enteredText}
+                                />
                             </div>
                             <div
                                 class={`${style.keysContainer} ${style.spaceKeyContainer}`}

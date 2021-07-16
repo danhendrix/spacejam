@@ -140,9 +140,8 @@
         }
 
         .messageContainer {
-            background-color: rgba(0, 0, 0, 0.5);
-            width: 60%;
-            padding: 10px;
+            background-color: white;
+            flex-basis: 60%;
         }
     }
 }

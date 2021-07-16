@@ -1,34 +1,40 @@
-import NPC from './npc';
+import NPC, { RequirementTypes } from './npc';
 
 const fredActions = [
     {
         requirements: [],
         afterAction: {
             fn() {
-                // this will be called in the context of the grid
-                console.log('this: ', this)
+
             },
             message: "Hello, I'm Fred!",
         },
     },
     {
-        requirements: [],
-        afterAction: {
-            fn() {
-
+        requirements: [
+            {
+                type: RequirementTypes.question,
+                question: "What is 2 + 2?",
+                answer: 4,
+                // tries: 1,
             },
-            message: "I'm Fred, I say!",
-        },
-    },
-    {
-        requirements: [],
+        ],
         afterAction: {
             fn() {
                 this.setSquareAccesible(1, 0);
             },
-            message: "Fine, I will let you through.",
+            message: "Great job I will let you through!!",
         },
     },
+    // {
+    //     requirements: [],
+    //     afterAction: {
+    //         fn() {
+    //             this.setSquareAccesible(1, 0);
+    //         },
+    //         message: "Fine, I will let you through.",
+    //     },
+    // },
 ];
 
 const Fred = new NPC(
