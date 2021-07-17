@@ -4,9 +4,7 @@ const fredActions = [
     {
         requirements: [],
         afterAction: {
-            fn() {
-
-            },
+            fn() {},
             message: "Hello, I'm Fred!",
         },
     },
@@ -14,7 +12,7 @@ const fredActions = [
         requirements: [
             {
                 type: RequirementTypes.question,
-                question: "What is 2 + 2?",
+                question: 'What is 2 + 2?',
                 answer: 4,
                 // tries: 1,
             },
@@ -23,7 +21,7 @@ const fredActions = [
             fn() {
                 this.setSquareAccesible(1, 0);
             },
-            message: "Great job I will let you through!!",
+            message: 'Great job I will let you through!!',
         },
     },
     // {
@@ -37,11 +35,6 @@ const fredActions = [
     // },
 ];
 
-const Fred = new NPC(
-    'Fred',
-    'fred',
-    '../assets/wizard.png',
-    fredActions,
-);
+const Fred = new NPC('Fred', 'fred', '../assets/wizard.png', fredActions);
 
 export default Fred;

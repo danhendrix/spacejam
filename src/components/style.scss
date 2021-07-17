@@ -77,14 +77,134 @@
         width: 100%;
 
         .keysContainer {
-            display: flex;
-            justify-content: center;
+            padding: 5px;
             flex-basis: 20%;
+
+            @media only screen and (min-width: 1000px) {
+                padding: 15px;
+            }
+        }
+
+        .arrowKeysContainer {
+            display: grid;
+            justify-items: center;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-areas:
+                'up'
+                'down'
+                'left'
+                'right';
+
+            @media only screen and (min-width: 500px) {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas:
+                    'up left'
+                    'down right';
+            }
+
+            @media only screen and (min-width: 1000px) {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas:
+                    '. up .'
+                    'left down right';
+            }
+
+            .directionKey {
+                width: 100%;
+            }
+
+            .upArrow {
+                grid-area: up;
+            }
+
+            .leftArrow {
+                grid-area: left;
+            }
+
+            .downArrow {
+                grid-area: down;
+            }
+
+            .rightArrow {
+                grid-area: right;
+            }
+        }
+
+        .spaceKeyContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .spaceKey {
+                height: 100%;
+                width: 100%;
+
+                @media only screen and (min-width: 768px) {
+                    height: 45%;
+                }
+            }
         }
 
         .messageContainer {
             background-color: white;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
             flex-basis: 60%;
+            padding: 5px 0;
+
+            @media only screen and (min-width: 700px) {
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 5px;
+            }
+
+            .npcChatContainer {
+                // background: red;
+                height: 70%;
+                margin: 0;
+                padding: 0 5px;
+                width: 100%;
+
+                @media only screen and (min-width: 700px) {
+                    height: 100%;
+                    width: 50%;
+                }
+            }
+
+            .playerInput {
+                // background: yellow;
+                border: 1px solid rgba(0, 0, 0, 0.6);
+                font-size: 24px;
+                height: 30%;
+                text-align: center;
+                width: 100%;
+
+                &:focus {
+                    border-top: 2px solid rgb(0, 0, 0);
+                    border-bottom: 2px solid rgb(0, 0, 0);
+                    outline: none;
+                }
+
+                @media only screen and (min-width: 700px) {
+                    font-size: 48px;
+                    height: 100%;
+                    width: 50%;
+                }
+
+                &::placeholder {
+                    font-size: 16px;
+
+                    @media only screen and (min-width: 700px) {
+                        font-size: 20px;
+                    }
+                }
+            }
         }
     }
 }
