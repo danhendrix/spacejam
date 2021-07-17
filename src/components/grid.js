@@ -96,16 +96,15 @@ class Grid extends Component {
                         //     };
                         // }
                     } else if (type === RequirementTypes.question) {
-                        console.log(
-                            'Here is a question for you: ',
-                            question.question
-                        );
                         const playerAnswer = this.props.playerInput;
-                        console.log('answer? ', question.answer);
+                        this.props.clearPlayerInput();
 
-                        if (playerAnswer != question.answer) {
-                            this.props.updatePlayerInput('');
-                            console.log('try again');
+                        if (playerAnswer === '') {
+                            this.props.updateNpcMessage(question.question);
+                            gridSpace.npc.cancel();
+                            return false;
+                        } else if (playerAnswer != question.answer) {
+                            this.props.updateNpcMessage('Try again!');
                             gridSpace.npc.cancel();
                             return false;
                         }
@@ -115,10 +114,8 @@ class Grid extends Component {
 
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            console.log('after action message', message);
-
+            this.props.updateNpcMessage(message);
             gridSpace.npc.successfulAction();
-
             return true;
         }
     }
@@ -179,6 +176,7 @@ class Grid extends Component {
                 }
                 break;
             case 32:
+            case 13:
             case 'spaceKey': {
                 // space
                 this.interactWithNpc(rowPosition, columnPosition);
