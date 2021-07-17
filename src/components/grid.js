@@ -85,7 +85,7 @@ class Grid extends Component {
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
-                    const { type, question, answer } = require;
+                    const { type, question } = require;
 
                     if (type === RequirementTypes.inventory) {
                         console.log('looking up the player');
@@ -96,11 +96,14 @@ class Grid extends Component {
                         //     };
                         // }
                     } else if (type === RequirementTypes.question) {
-                        console.log('Here is a question for you: ', question);
+                        console.log(
+                            'Here is a question for you: ',
+                            question.question
+                        );
                         const playerAnswer = this.props.playerInput;
-                        console.log('answer? ', answer);
+                        console.log('answer? ', question.answer);
 
-                        if (playerAnswer != answer) {
+                        if (playerAnswer != question.answer) {
                             this.props.updatePlayerInput('');
                             console.log('try again');
                             gridSpace.npc.cancel();

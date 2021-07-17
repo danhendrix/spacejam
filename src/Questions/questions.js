@@ -4,14 +4,14 @@ class Questions {
         this.usedQuestions = usedQuestions;
     }
 
-    changeStatus(questionIndex) {
+    changeStatus = (questionIndex) => {
         const unusedCopy = this.unusedQuestions;
         const pickedQuestion = unusedCopy.splice(unusedCopy[questionIndex], 1);
         this.usedQuestions.push(pickedQuestion);
         this.unusedQuestions = unusedCopy;
-    }
+    };
 
-    pickQuestion() {
+    pickQuestion = () => {
         const randomNumber = Math.floor(
             Math.random() * this.unusedQuestions.length
         );
@@ -21,7 +21,7 @@ class Questions {
 
         // console.log(chosenQuestion);
         return chosenQuestion;
-    }
+    };
 }
 
 export default Questions;

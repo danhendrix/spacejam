@@ -2,9 +2,9 @@ import Questions from './questions';
 
 const mathQuestions = [
     {
-        question: 'What is 2 + 2?',
-        options: [3, 8, 4],
-        answer: 4,
+        question: 'What is 5 + 2?',
+        options: [3, 7, 4],
+        answer: 7,
     },
 ];
 
