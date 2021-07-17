@@ -1,13 +1,7 @@
 import { Component } from 'preact';
 import Square from './square';
 import style from './style.scss';
-
-// const Neighbor = {
-//     topNeighbor: 'TopNeighbor',
-//     rightNeighbor: 'RightNeighbor',
-//     bottomNeighbor: 'BottomNeighbor',
-//     leftNeighbor: 'LeftNeighbor',
-// };
+import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
     constructor(props) {
@@ -46,24 +40,28 @@ class Grid extends Component {
 
     componentWillMount() {
         document.removeEventListener('keyup', this.handleKeyPress.bind(this));
-        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
-        //     virtualKey.removeEventListener(
-        //         'click',
-        //         this.handleKeyPress.bind(this)
-        //     );
-        // });
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.removeEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
 
         this.buildGrid(this.props.gridSetup);
     }
 
     componentDidMount() {
         document.addEventListener('keyup', this.handleKeyPress.bind(this));
-        // document.querySelectorAll('.virtual-key').forEach((virtualKey) => {
-        //     virtualKey.addEventListener(
-        //         'click',
-        //         this.handleKeyPress.bind(this)
-        //     );
-        // });
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.addEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
     }
 
     checkSquareType(newRow, newColumn) {
@@ -79,39 +77,70 @@ class Grid extends Component {
         });
     }
 
-    checkForNPC(row, column) {
+    interactWithNpc(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
 
-        if (gridSpace.npc) {
-            const action = gridSpace.npc.interact();
+        if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
+            const currentAction = gridSpace.npc.interact();
 
-            if (action.success) {
-                action.fn.call(this);
-                console.log(action.message);
-            } else {
-                console.log(action.message)
+            if (currentAction.requirements.length) {
+                for (let require of currentAction.requirements) {
+                    const { type, question, answer } = require;
+
+                    if (type === RequirementTypes.inventory) {
+                        console.log('looking up the player');
+                        // if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
+                        //     return {
+                        //         success: false,
+                        //         message,
+                        //     };
+                        // }
+                    } else if (type === RequirementTypes.question) {
+                        console.log('Here is a question for you: ', question);
+                        const playerAnswer = this.props.playerInput;
+                        console.log('answer? ', answer);
+
+                        if (playerAnswer != answer) {
+                            this.props.updatePlayerInput('');
+                            console.log('try again');
+                            gridSpace.npc.cancel();
+                            return false;
+                        }
+                    }
+                }
             }
+
+            const { fn, message } = currentAction.afterAction;
+            fn.call(this);
+            console.log('after action message', message);
+
+            gridSpace.npc.successfulAction();
+
+            return true;
         }
     }
 
     setSquareAccesible(column, row) {
         const gridLayout = this.state.gridLayout;
-        const square = gridLayout[this.state.rowPosition + row][this.state.columnPosition + column];
+        const square =
+            gridLayout[this.state.rowPosition + row][
+                this.state.columnPosition + column
+            ];
         square.isAccessible = true;
-        
+
         this.setState({ gridLayout });
     }
 
     handleKeyPress(e) {
         e.stopPropagation();
         const { columns, rows, columnPosition, rowPosition } = this.state;
-        // Just testing whether handleKeyPress function can be added to on screen keys from here
-        // const eventValue = e.type === 'keyup' ? e.keyCode : 'down';
+        const eventValue = e.type === 'keyup' ? e.keyCode : e.target.id;
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
 
-        switch (e.keyCode) {
+        switch (eventValue) {
             case 38:
+            case 'upArrow':
                 {
                     // up
                     if (rowPosition > 0) {
@@ -120,6 +149,7 @@ class Grid extends Component {
                 }
                 break;
             case 39:
+            case 'rightArrow':
                 {
                     // right
                     if (columnPosition + 1 < columns) {
@@ -128,6 +158,7 @@ class Grid extends Component {
                 }
                 break;
             case 40:
+            case 'downArrow':
                 {
                     // down
                     if (rowPosition + 1 < rows) {
@@ -136,6 +167,7 @@ class Grid extends Component {
                 }
                 break;
             case 37:
+            case 'leftArrow':
                 {
                     // left
                     if (columnPosition > 0) {
@@ -143,9 +175,10 @@ class Grid extends Component {
                     }
                 }
                 break;
-            case 32: {
+            case 32:
+            case 'spaceKey': {
                 // space
-                this.checkForNPC(rowPosition, columnPosition);
+                this.interactWithNpc(rowPosition, columnPosition);
             }
         }
 
