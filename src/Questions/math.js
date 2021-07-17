@@ -3,8 +3,11 @@ import Questions from './questions';
 const mathQuestions = [
     {
         question: 'What is 5 + 2?',
-        options: [3, 7, 4],
         answer: 7,
+    },
+    {
+        question: 'What is 10 * 2?',
+        answer: 20,
     },
 ];
 

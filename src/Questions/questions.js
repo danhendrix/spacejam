@@ -18,8 +18,6 @@ class Questions {
 
         const chosenQuestion = this.unusedQuestions[randomNumber];
         this.changeStatus(randomNumber);
-
-        // console.log(chosenQuestion);
         return chosenQuestion;
     };
 }
