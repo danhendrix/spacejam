@@ -15,25 +15,29 @@ class Game extends Component {
             npcMessage: '',
         };
 
-        this.enteredText = '';
-        this.updateNpcMessage = this.updateNpcMessage.bind(this);
+        // this.enteredText = '';
+        // this.updateNpcMessage = this.updateNpcMessage.bind(this);
     }
 
-    componentDidMount() {
-        document.addEventListener('keyup', this.handleKeyPress.bind(this));
-    }
+    // componentDidMount() {
+    //     document.addEventListener('keyup', this.handleKeyPress.bind(this));
+    // }
 
-    handleKeyPress(e) {
-        e.stopPropagation();
-        if (e.keyCode === 13) {
-            // enter
-            this.updatePlayerInput(this.enteredText);
-            this.enteredText = '';
-        }
-    }
+    // handleKeyPress(e) {
+    //     e.stopPropagation();
+    //     if (e.keyCode === 13) {
+    //         // enter
+    //         this.updatePlayerInput(this.enteredText);
+    //         this.enteredText = '';
+    //     }
+    // }
 
-    updatePlayerInput = (playerInput) => {
-        this.setState({ playerInput });
+    updatePlayerInput = (e) => {
+        this.setState({ playerInput: e.target.value });
+    };
+
+    clearPlayerInput = () => {
+        this.setState({ playerInput: '' });
     };
 
     updateNpcMessage = (newMessage) => {
@@ -42,10 +46,10 @@ class Game extends Component {
         });
     };
 
-    playerInputChanged = (e) => {
-        e.stopPropagation();
-        this.enteredText = e.target.value;
-    };
+    // playerInputChanged = (e) => {
+    //     e.stopPropagation();
+    //     this.enteredText = e.target.value;
+    // };
 
     render() {
         const { gameStart, playerInput, npcMessage } = this.state;
@@ -58,7 +62,7 @@ class Game extends Component {
                         <Grid
                             gridSetup={Home}
                             playerInput={playerInput}
-                            updatePlayerInput={this.updatePlayerInput}
+                            clearPlayerInput={this.clearPlayerInput}
                             updateNpcMessage={this.updateNpcMessage}
                         />
                     ) : null}
@@ -98,12 +102,16 @@ class Game extends Component {
                                 <p class={style.npcChatContainer}>
                                     {npcMessage}
                                 </p>
+                                <label for='playerInput' hidden>
+                                    {this.state.playerName}'s Answer:
+                                </label>
                                 <input
                                     id='playerInput'
                                     class={style.playerInput}
-                                    onChange={this.playerInputChanged}
-                                    value={this.enteredText}
+                                    onChange={this.updatePlayerInput}
+                                    value={playerInput}
                                     placeholder='Enter answer here'
+                                    disabled={npcMessage === ''}
                                 />
                             </div>
                             <div
