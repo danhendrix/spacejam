@@ -13,6 +13,12 @@ class Game extends Component {
             theme: 'dark',
             playerInput: '',
             npcMessage: '',
+            playerInventory: [
+                {
+                    name: 'report card',
+                    quantity: 1,
+                },
+            ],
         };
 
         // this.enteredText = '';
@@ -64,6 +70,7 @@ class Game extends Component {
                             playerInput={playerInput}
                             clearPlayerInput={this.clearPlayerInput}
                             updateNpcMessage={this.updateNpcMessage}
+                            playerInventory={this.state.playerInventory}
                         />
                     ) : null}
                 </div>

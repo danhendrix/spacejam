@@ -77,6 +77,30 @@ class Grid extends Component {
         });
     }
 
+    checkPlayerInventory(itemToCheck, required) {
+        const inventory = this.props.playerInventory.filter(
+            (item) => item.name === itemToCheck
+        );
+
+        if (!inventory.length) {
+            this.props.updateNpcMessage(
+                'You must first bring me back 3 report cards before you are allowed to pass!'
+            );
+            return false;
+        } else if (inventory[0].quantity < required) {
+            this.props.updateNpcMessage(
+                `It looks like you're almost there! Only ${
+                    required - inventory[0].quantity
+                } more report card${
+                    inventory[0].quantity !== 1 ? '' : 's'
+                } to go!`
+            );
+            return false;
+        }
+
+        return true;
+    }
+
     interactWithNpc(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
 
@@ -85,10 +109,12 @@ class Grid extends Component {
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
-                    const { type, question, answer } = require;
+                    const { type, item, numberNeeded, question, answer } =
+                        require;
 
                     if (type === RequirementTypes.inventory) {
-                        console.log('looking up the player');
+                        if (!this.checkPlayerInventory(item, numberNeeded))
+                            return false;
                         // if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
                         //     return {
                         //         success: false,
