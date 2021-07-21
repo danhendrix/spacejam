@@ -67,7 +67,7 @@ class Game extends Component {
                         />
                     ) : null}
                 </div>
-                <div class={style.lowerDisplay}>
+                <div class={style.controllerDisplay}>
                     {gameStart ? (
                         <>
                             <div
