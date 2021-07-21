@@ -1,6 +1,6 @@
 import style from './style.scss';
 
-function GamePanel({ message, playerInput, updatePlayerInput }) {
+function GamePanel({ message, answerInput, updateAnswerInput }) {
     return (
         <>
             <div class={`${style.keysContainer} ${style.arrowKeysContainer}`}>
@@ -31,13 +31,12 @@ function GamePanel({ message, playerInput, updatePlayerInput }) {
             </div>
             <div class={style.messageContainer}>
                 <p class={style.npcChatContainer}>{message}</p>
-                <label>
+                <label class={style.answerLabel}>
                     Answer:
                     <input
-                        id='playerInput'
-                        class={style.playerInput}
-                        onChange={updatePlayerInput}
-                        value={playerInput}
+                        class={style.answerInput}
+                        onChange={updateAnswerInput}
+                        value={answerInput}
                         disabled={message === ''}
                     />
                 </label>

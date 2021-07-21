@@ -128,8 +128,8 @@ class Grid extends Component {
                         //     };
                         // }
                     } else if (type === RequirementTypes.question) {
-                        const playerAnswer = this.props.playerInput;
-                        this.props.clearPlayerInput();
+                        const playerAnswer = this.props.answerInput;
+                        this.props.clearAnswerInput();
                         if (cleared) {
                             console.log('already answered');
                             return;

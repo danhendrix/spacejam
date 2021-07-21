@@ -13,7 +13,7 @@ class Game extends Component {
             playerName: '',
             playerAvatar: null,
             theme: 'dark',
-            playerInput: '',
+            answerInput: '',
             message: '',
             playerInventory: [
                 {
@@ -31,9 +31,11 @@ class Game extends Component {
     };
 
     updatePlayerAvatar = (e) => {
-        this.setState({
-            playerAvatar: e.target.src,
-        });
+        if (e.type === 'click' || e.key === ' ' || e.key === 'Enter') {
+            this.setState({
+                playerAvatar: e.target.src,
+            });
+        }
     };
 
     updateGameStart = (prevState) => {
@@ -43,12 +45,12 @@ class Game extends Component {
         console.log(this.state.playerName);
     };
 
-    updatePlayerInput = (e) => {
-        this.setState({ playerInput: e.target.value });
+    updateAnswerInput = (e) => {
+        this.setState({ answerInput: e.target.value });
     };
 
-    clearPlayerInput = () => {
-        this.setState({ playerInput: '' });
+    clearAnswerInput = () => {
+        this.setState({ answerInput: '' });
     };
 
     updateMessage = (newMessage) => {
@@ -63,39 +65,39 @@ class Game extends Component {
             message,
             playerAvatar,
             playerName,
-            playerInput,
+            answerInput,
             playerInventory,
         } = this.state;
 
         return (
             <div class={style.gameContainer}>
-                <div class={style.mainDisplay}>
-                    {gameStart ? (
+                {gameStart ? (
+                    <div class={style.mainDisplay}>
                         <Grid
                             gridSetup={Home}
-                            playerInput={playerInput}
-                            clearPlayerInput={this.clearPlayerInput}
+                            answerInput={answerInput}
+                            clearAnswerInput={this.clearAnswerInput}
                             updateMessage={this.updateMessage}
                             playerInventory={playerInventory}
                             avatar={playerAvatar}
                             name={playerName}
                         />
-                    ) : (
-                        <MainMenu
-                            startGame={this.updateGameStart}
-                            changeName={this.updatePlayerName}
-                            name={playerName}
-                            changeAvatar={this.updatePlayerAvatar}
-                            avatar={playerAvatar}
-                        />
-                    )}
-                </div>
+                    </div>
+                ) : (
+                    <MainMenu
+                        updateGameStart={this.updateGameStart}
+                        changeName={this.updatePlayerName}
+                        name={playerName}
+                        changeAvatar={this.updatePlayerAvatar}
+                        avatar={playerAvatar}
+                    />
+                )}
                 {gameStart ? (
                     <div class={style.gamePanel}>
                         <GamePanel
                             message={message}
-                            playerInput={playerInput}
-                            updatePlayerInput={this.updatePlayerInput}
+                            answerInput={answerInput}
+                            updateAnswerInput={this.updateAnswerInput}
                         />
                     </div>
                 ) : null}

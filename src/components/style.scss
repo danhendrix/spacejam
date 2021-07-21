@@ -29,6 +29,104 @@
     }
 }
 
+.menuContainer {
+    display: grid;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas:
+        'title'
+        'info'
+        'start';
+    justify-items: center;
+}
+
+.gameTitle {
+    align-self: center;
+    grid-area: title;
+    text-align: center;
+
+    @media only screen and (orientation: portrait) {
+        margin: 50px 0;
+    }
+}
+
+.playerInfo {
+    display: grid;
+    grid-area: info;
+    justify-items: center;
+    max-width: 500px;
+    width: 100%;
+
+    @media only screen and (orientation: landscape) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+
+        @media only screen and (min-width: 700px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 2fr;
+        }
+    }
+
+    @media only screen and (orientation: portrait) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr;
+    }
+}
+
+.nameLabel {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+}
+
+.nameInput {
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.avatarSelection {
+    padding: 0 5%;
+    width: 100%;
+}
+
+.avatarLabel {
+    text-align: center;
+}
+
+.avatarImageContainer {
+    margin-top: 10px;
+}
+
+.startContainer {
+    height: 25px;
+}
+
+.startButton {
+    border-radius: 25px / 50px;
+    max-width: 150px;
+    grid-area: start;
+
+    @media only screen and (orientation: landscape) {
+        margin: auto;
+        padding: 15px;
+        width: 100%;
+    }
+
+    @media only screen and (orientation: portrait) {
+        margin: auto;
+        padding: 15px;
+        width: 50%;
+    }
+}
+
 .mainDisplay {
     justify-self: center;
 }
@@ -160,8 +258,8 @@
             grid-template-rows: repeat(4, 1fr);
             grid-template-areas:
                 'up'
-                'down'
                 'left'
+                'down'
                 'right';
 
             @media only screen and (min-width: 700px) {
@@ -222,12 +320,20 @@
 
         .npcChatContainer {
             background-color: rgba(0, 0, 0, 0.7);
+            font-size: 14px;
             margin: 0;
+            overflow-x: none;
+            overflow-y: auto;
             padding: 5px;
 
             @media only screen and (orientation: landscape) {
                 height: 60%;
                 width: 100%;
+
+                @media only screen and (min-width: 700px) {
+                    font-size: 16px;
+                    padding: 10px;
+                }
             }
 
             @media only screen and (orientation: portrait) {
@@ -235,12 +341,14 @@
                 width: 50%;
 
                 @media only screen and (min-width: 700px) {
+                    font-size: 16px;
+                    padding: 10px;
                     width: 70%;
                 }
             }
         }
 
-        label {
+        .answerLabel {
             display: flex;
             flex-direction: column;
 
@@ -259,29 +367,12 @@
             }
         }
 
-        .playerInput {
+        .answerInput {
             border: 1px solid rgba(0, 0, 0, 0.6);
             font-size: 24px;
             height: 100%;
             text-align: center;
             width: 100%;
-
-            // @media only screen and (orientation: landscape) {
-            //     border: 1px solid rgba(0, 0, 0, 0.6);
-            //     font-size: 24px;
-            //     height: 30%;
-            //     text-align: center;
-            //     width: 100%;
-            // }
-
-            // @media only screen and (orientation: portrait) {
-            //     width: 50%;
-            //     height: 100%;
-
-            //     @media only screen and (min-width: 700px) {
-            //         width: 25%;
-            //     }
-            // }
 
             &:focus {
                 border-top: 2px solid rgb(0, 0, 0);
