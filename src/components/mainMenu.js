@@ -1,6 +1,10 @@
 import style from './style.scss';
-import chicken from '../assets/chicken1.png';
-import wizard from '../assets/wizard.png';
+import wizard1 from '../assets/avatars/wizard1.png';
+import wizard2 from '../assets/avatars/wizard2.png';
+import fighter1 from '../assets/avatars/fighter1.png';
+import knight1 from '../assets/avatars/knight1.png';
+import fighter2 from '../assets/avatars/fighter2.png';
+import knight2 from '../assets/avatars/knight2.png';
 
 function MainMenu({ changeName, changeAvatar, name, avatar, updateGameStart }) {
     return (
@@ -23,25 +27,69 @@ function MainMenu({ changeName, changeAvatar, name, avatar, updateGameStart }) {
                     </div>
                     <div class={style.avatarImageContainer}>
                         <img
-                            id='avatar-chicken'
-                            class={style.avatarImage}
-                            onClick={changeAvatar}
-                            src={chicken}
-                            alt='chicken'
-                            aria-labelledby='avatar-label'
-                            aria-describedby='avatar-chicken'
-                            tabIndex='0'
-                        />
-                        <img
-                            id='avatar-wizard'
+                            id='avatar-wizard1'
                             class={style.avatarImage}
                             onClick={changeAvatar}
                             onKeyDown={changeAvatar}
-                            src={wizard}
-                            alt='wizard'
-                            style={{ width: '90px' }}
+                            src={wizard1}
+                            alt='purple wizard'
                             aria-labelledby='avatar-label'
-                            aria-describedby='avatar-wizard'
+                            aria-describedby='avatar-wizard1'
+                            tabIndex='0'
+                        />
+                        <img
+                            id='avatar-fighter1'
+                            class={style.avatarImage}
+                            onClick={changeAvatar}
+                            onKeyDown={changeAvatar}
+                            src={fighter1}
+                            alt='green fighter'
+                            aria-labelledby='avatar-label'
+                            aria-describedby='avatar-fighter1'
+                            tabIndex='0'
+                        />
+                        <img
+                            id='avatar-knight1'
+                            class={style.avatarImage}
+                            onClick={changeAvatar}
+                            onKeyDown={changeAvatar}
+                            src={knight1}
+                            alt='teal knight'
+                            aria-labelledby='avatar-label'
+                            aria-describedby='avatar-knight1'
+                            tabIndex='0'
+                        />
+                        <img
+                            id='avatar-wizard2'
+                            class={style.avatarImage}
+                            onClick={changeAvatar}
+                            onKeyDown={changeAvatar}
+                            src={wizard2}
+                            alt='red wizard'
+                            aria-labelledby='avatar-label'
+                            aria-describedby='avatar-wizard2'
+                            tabIndex='0'
+                        />
+                        <img
+                            id='avatar-fighter2'
+                            class={style.avatarImage}
+                            onClick={changeAvatar}
+                            onKeyDown={changeAvatar}
+                            src={fighter2}
+                            alt='orange fighter'
+                            aria-labelledby='avatar-label'
+                            aria-describedby='avatar-fighter2'
+                            tabIndex='0'
+                        />
+                        <img
+                            id='avatar-knight2'
+                            class={style.avatarImage}
+                            onClick={changeAvatar}
+                            onKeyDown={changeAvatar}
+                            src={knight2}
+                            alt='gold knight'
+                            aria-labelledby='avatar-label'
+                            aria-describedby='avatar-knight2'
                             tabIndex='0'
                         />
                     </div>

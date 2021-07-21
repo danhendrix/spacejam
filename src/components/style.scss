@@ -102,7 +102,25 @@
 }
 
 .avatarImageContainer {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(3, 15vw);
+    grid-template-rows: repeat(2, 15vw);
+    justify-content: center;
+    justify-items: center;
     margin-top: 10px;
+
+    @media only screen and (orientation: landscape) {
+        grid-template-columns: repeat(3, 15vh);
+        grid-template-rows: repeat(2, 15vh);
+    }
+}
+
+.avatarImage {
+    border: 1px solid white;
+    height: auto;
+    max-width: 60px;
+    width: 100%;
 }
 
 .startContainer {
