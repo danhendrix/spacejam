@@ -109,8 +109,14 @@ class Grid extends Component {
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
-                    const { type, item, numberNeeded, question, answer } =
-                        require;
+                    const {
+                        type,
+                        item,
+                        numberNeeded,
+                        question,
+                        answer,
+                        cleared,
+                    } = require;
 
                     if (type === RequirementTypes.inventory) {
                         if (!this.checkPlayerInventory(item, numberNeeded))
@@ -124,7 +130,10 @@ class Grid extends Component {
                     } else if (type === RequirementTypes.question) {
                         const playerAnswer = this.props.playerInput;
                         this.props.clearPlayerInput();
-
+                        if (cleared) {
+                            console.log('already answered');
+                            return;
+                        }
                         if (playerAnswer === '') {
                             this.props.updateNpcMessage(question);
                             gridSpace.npc.cancel();
@@ -134,6 +143,8 @@ class Grid extends Component {
                             gridSpace.npc.cancel();
                             return false;
                         }
+
+                        require.updateCleared();
                     }
                 }
             }

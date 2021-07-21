@@ -7,6 +7,15 @@ const enemyActions = [
                 type: RequirementTypes.question,
                 question: 'What is 2 + 2?',
                 answer: 4,
+                cleared: false,
+                updateCleared() {
+                    console.log(enemyActions);
+                    console.log(this);
+
+                    if (!this.cleared) {
+                        this.cleared = true;
+                    }
+                },
                 // tries: 1,
             },
         ],
