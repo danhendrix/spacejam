@@ -98,6 +98,7 @@ class Game extends Component {
                             changeName={this.updatePlayerName}
                             name={this.state.playerName}
                             changeAvatar={this.updatePlayerAvatar}
+                            avatar={this.state.playerAvatar}
                         />
                     )}
                 </div>

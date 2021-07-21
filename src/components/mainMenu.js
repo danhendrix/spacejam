@@ -2,7 +2,7 @@ import style from './style.scss';
 import chicken from '../assets/chicken1.png';
 import wizard from '../assets/wizard.png';
 
-function MainMenu({ startGame, changeName, changeAvatar }) {
+function MainMenu({ startGame, changeName, changeAvatar, name, avatar }) {
     return (
         <div>
             <div class={style.themeToggle}>Theme toggle</div>
@@ -18,7 +18,9 @@ function MainMenu({ startGame, changeName, changeAvatar }) {
                 src={wizard}
                 style={{ width: '90px' }}
             />
-            <button onClick={startGame}>Start</button>
+            {name !== '' && avatar ? (
+                <button onClick={startGame}>Start</button>
+            ) : null}
         </div>
     );
 }
