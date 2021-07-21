@@ -237,6 +237,7 @@ class Grid extends Component {
                                 }
                                 type={item.type}
                                 npc={item.npc}
+                                avatar={this.props.avatar}
                             />
                         ))}
                     </div>

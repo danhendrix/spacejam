@@ -39,10 +39,23 @@ class Game extends Component {
     //     }
     // }
 
+    updatePlayerName = (e) => {
+        this.setState({
+            playerName: e.target.value,
+        });
+    };
+
+    updatePlayerAvatar = (e) => {
+        this.setState({
+            playerAvatar: e.target.src,
+        });
+    };
+
     updateGameStart = (prevState) => {
         this.setState({
             gameStart: !prevState.gameStart,
         });
+        console.log(this.state.playerName);
     };
 
     updatePlayerInput = (e) => {
@@ -69,7 +82,6 @@ class Game extends Component {
 
         return (
             <div class={style.gameContainer}>
-                <div class={style.themeToggle}>Theme toggle</div>
                 <div class={style.mainDisplay}>
                     {gameStart ? (
                         <Grid
@@ -78,9 +90,15 @@ class Game extends Component {
                             clearPlayerInput={this.clearPlayerInput}
                             updateNpcMessage={this.updateNpcMessage}
                             playerInventory={this.state.playerInventory}
+                            avatar={this.state.playerAvatar}
                         />
                     ) : (
-                        <MainMenu clickEvent={this.updateGameStart} />
+                        <MainMenu
+                            startGame={this.updateGameStart}
+                            changeName={this.updatePlayerName}
+                            name={this.state.playerName}
+                            changeAvatar={this.updatePlayerAvatar}
+                        />
                     )}
                 </div>
                 <div class={style.lowerDisplay}>
