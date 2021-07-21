@@ -2,12 +2,13 @@ import { Component } from 'preact';
 import Grid from './grid';
 import Home from '../Grids/home';
 import style from './style.scss';
+import MainMenu from './mainMenu';
 
 class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gameStart: true,
+            gameStart: false,
             playerName: '',
             playerAvatar: null,
             theme: 'dark',
@@ -37,6 +38,12 @@ class Game extends Component {
     //         this.enteredText = '';
     //     }
     // }
+
+    updateGameStart = (prevState) => {
+        this.setState({
+            gameStart: !prevState.gameStart,
+        });
+    };
 
     updatePlayerInput = (e) => {
         this.setState({ playerInput: e.target.value });
@@ -72,7 +79,9 @@ class Game extends Component {
                             updateNpcMessage={this.updateNpcMessage}
                             playerInventory={this.state.playerInventory}
                         />
-                    ) : null}
+                    ) : (
+                        <MainMenu clickEvent={this.updateGameStart} />
+                    )}
                 </div>
                 <div class={style.lowerDisplay}>
                     {gameStart ? (
