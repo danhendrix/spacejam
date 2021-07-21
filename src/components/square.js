@@ -5,8 +5,7 @@ const Square = ({ active, avatar, type, npc }) => (
     // Remove the style[npc.imgClass] and style.active classes?
     <div
         class={`${style.square} ${style[type]} 
-        ${active ? style.active : ''}
-        ${npc ? style[npc.imgClass] : ''}`}
+        ${npc ? style.occupied : ''}`}
     >
         {active ? <img class={style.activeImg} src={avatar} /> : null}
         {npc ? (

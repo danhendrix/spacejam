@@ -158,9 +158,10 @@
         .square {
             background-position: center;
             background-size: contain;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
+            // display: flex;
+            // align-items: center;
+            // justify-content: space-around;
+            position: relative;
             height: 10vw;
             width: 10vw;
 
@@ -214,14 +215,37 @@
                 background-image: url('../assets/backgrounds/mountain.jpg');
             }
 
-            .activeImg {
+            & > .activeImg,
+            & > .npc {
                 height: auto;
-                width: 45%;
+                width: 60%;
                 max-width: 50px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                @media only screen and (min-width: 1000px) {
+                    width: 100%;
+                }
             }
 
             .npc {
-                @extend .activeImg;
+                transition: all linear 100ms;
+            }
+
+            &.occupied {
+                & > .activeImg {
+                    left: 0;
+                    transform: translateY(-50%);
+                }
+            }
+
+            .activeImg {
+                & + .npc {
+                    right: -10px;
+                    transform: translateY(-50%);
+                }
             }
         }
     }

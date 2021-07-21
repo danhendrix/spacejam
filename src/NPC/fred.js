@@ -34,6 +34,11 @@ const fredActions = [
     // },
 ];
 
-const Fred = new NPC('Fred', 'fred', '../assets/wizard.png', fredActions);
+const Fred = new NPC(
+    'Fred',
+    'fred',
+    '../assets/npc/frederick.png',
+    fredActions
+);
 
 export default Fred;
