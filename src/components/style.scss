@@ -1,21 +1,87 @@
-.grid {
+.gameContainer {
+    background-color: purple;
+    display: grid;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    position: relative;
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
 
+    @media only screen and (orientation: landscape) {
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 1fr;
+    }
+
+    @media only screen and (orientation: portrait) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 80% 20%;
+
+        @media only screen and (min-width: 700px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 85% 15%;
+        }
+    }
+
+    .themeToggle {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+}
+
+.mainDisplay {
+    justify-self: center;
+}
+
+.grid {
     .row {
-        flex: 1;
         display: flex;
         justify-content: center;
-        padding: 0 5px;
+        width: max-content;
 
         .square {
+            background-position: center;
+            background-size: contain;
             display: flex;
-            justify-content: space-around;
             align-items: center;
-            width: 20vw;
-            max-width: calc((100vh - 250px) / 5);
+            justify-content: space-around;
+            height: 10vw;
+            width: 10vw;
+
+            @media only screen and (orientation: landscape) {
+                max-height: calc((100vh - 25px) / 10);
+                max-width: calc((100vh - 25px) / 10);
+
+                @media only screen and (min-width: 700px) {
+                    max-height: calc((100vh - 175px) / 10);
+                    max-width: calc((100vh - 175px) / 10);
+                }
+
+                @media only screen and (min-width: 1000px) {
+                    max-height: calc((100vh - 75px) / 10);
+                    max-width: calc((100vh - 75px) / 10);
+                }
+            }
+
+            @media only screen and (orientation: portrait) {
+                max-height: calc((100vw - 25px) / 10);
+                max-width: calc((100vw - 25px) / 10);
+
+                @media only screen and (min-width: 650px) {
+                    max-height: calc((100vw - 150px) / 10);
+                    max-width: calc((100vw - 150px) / 10);
+                }
+
+                @media only screen and (min-width: 800px) {
+                    max-height: calc((100vw - 125px) / 10);
+                    max-width: calc((100vw - 125px) / 10);
+                }
+
+                @media only screen and (min-width: 1000px) {
+                    max-height: calc((100vw - 50px) / 10);
+                    max-width: calc((100vw - 50px) / 10);
+                }
+            }
 
             &.path {
                 background-color: rgb(204, 56, 56);
@@ -41,54 +107,50 @@
             .npc {
                 @extend .activeImg;
             }
-
-            // &.fred {
-            //     background-color: white;
-            // }
         }
     }
 }
 
-.gameContainer {
-    background-color: purple;
-    height: 100vh;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
+.controllerDisplay {
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
 
-    .themeToggle {
-        position: absolute;
-        left: 10px;
-        top: 10px;
+    @media only screen and (orientation: landscape) {
+        flex-direction: column;
+        height: 100%;
     }
 
-    .mainDisplay {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: calc(100vh - 150px);
+    @media only screen and (orientation: portrait) {
+        flex-direction: row;
+        height: 100%;
     }
 
-    .lowerDisplay {
-        background-color: blue;
-        display: flex;
-        justify-content: space-between;
-        height: 150px;
-        width: 100%;
+    .keysContainer {
+        flex-basis: 20%;
+    }
 
-        .keysContainer {
-            padding: 5px;
-            flex-basis: 20%;
+    .arrowKeysContainer {
+        display: grid;
+        align-content: center;
 
-            @media only screen and (min-width: 1000px) {
-                padding: 15px;
+        @media only screen and (orientation: landscape) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                'up left'
+                'down right';
+
+            @media only screen and (min-width: 1200px) {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 30% 30%;
+                grid-template-areas:
+                    '. up .'
+                    'left down right';
             }
         }
 
-        .arrowKeysContainer {
-            display: grid;
-            justify-items: center;
+        @media only screen and (orientation: portrait) {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(4, 1fr);
             grid-template-areas:
@@ -97,7 +159,7 @@
                 'left'
                 'right';
 
-            @media only screen and (min-width: 500px) {
+            @media only screen and (min-width: 700px) {
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 1fr 1fr;
                 grid-template-areas:
@@ -107,104 +169,100 @@
 
             @media only screen and (min-width: 1000px) {
                 grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: 1fr 1fr;
+                grid-template-rows: 30% 30%;
                 grid-template-areas:
                     '. up .'
                     'left down right';
             }
-
-            .directionKey {
-                width: 100%;
-            }
-
-            .upArrow {
-                grid-area: up;
-            }
-
-            .leftArrow {
-                grid-area: left;
-            }
-
-            .downArrow {
-                grid-area: down;
-            }
-
-            .rightArrow {
-                grid-area: right;
-            }
         }
 
-        .spaceKeyContainer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            .spaceKey {
-                height: 100%;
-                width: 100%;
-
-                @media only screen and (min-width: 768px) {
-                    height: 45%;
-                }
-            }
+        .upArrow {
+            grid-area: up;
         }
 
-        .messageContainer {
-            background-color: white;
-            display: flex;
-            align-items: center;
+        .leftArrow {
+            grid-area: left;
+        }
+
+        .downArrow {
+            grid-area: down;
+        }
+
+        .rightArrow {
+            grid-area: right;
+        }
+    }
+
+    .spaceKeyContainer {
+        .spaceKey {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .messageContainer {
+        // background-color: red;
+        display: flex;
+        flex-basis: 55%;
+
+        @media only screen and (orientation: landscape) {
             flex-direction: column;
-            justify-content: center;
-            flex-basis: 60%;
-            padding: 5px 0;
+        }
 
-            @media only screen and (min-width: 700px) {
-                align-items: center;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 5px;
+        .npcChatContainer {
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 0;
+            padding: 5px;
+
+            @media only screen and (orientation: landscape) {
+                height: 70%;
+                width: 100%;
             }
 
-            .npcChatContainer {
-                // background: red;
-                height: 70%;
-                margin: 0;
-                padding: 0 5px;
-                width: 100%;
+            @media only screen and (orientation: portrait) {
+                width: 50%;
+                height: 100%;
 
                 @media only screen and (min-width: 700px) {
-                    height: 100%;
-                    width: 50%;
+                    width: 75%;
                 }
             }
+        }
 
-            .playerInput {
-                // background: yellow;
+        .playerInput {
+            @media only screen and (orientation: landscape) {
                 border: 1px solid rgba(0, 0, 0, 0.6);
                 font-size: 24px;
                 height: 30%;
                 text-align: center;
                 width: 100%;
+            }
 
-                &:focus {
-                    border-top: 2px solid rgb(0, 0, 0);
-                    border-bottom: 2px solid rgb(0, 0, 0);
-                    outline: none;
+            @media only screen and (orientation: portrait) {
+                width: 50%;
+                height: 100%;
+
+                @media only screen and (min-width: 700px) {
+                    width: 25%;
                 }
+            }
 
+            &:focus {
+                border-top: 2px solid rgb(0, 0, 0);
+                border-bottom: 2px solid rgb(0, 0, 0);
+                outline: none;
+            }
+
+            @media only screen and (orientation: portrait) {
                 @media only screen and (min-width: 700px) {
                     font-size: 48px;
                     height: 100%;
                     width: 50%;
                 }
+            }
 
-                &::placeholder {
-                    font-size: 16px;
-
-                    @media only screen and (min-width: 700px) {
-                        font-size: 20px;
-                    }
-                }
+            &::placeholder {
+                font-size: 16px;
             }
         }
     }
