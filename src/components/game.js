@@ -91,7 +91,7 @@ class Game extends Component {
                     )}
                 </div>
                 {gameStart ? (
-                    <div class={style.controllerDisplay}>
+                    <div class={style.gamePanel}>
                         <GamePanel
                             message={message}
                             playerInput={playerInput}

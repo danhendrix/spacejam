@@ -1,5 +1,5 @@
 .gameContainer {
-    background-color: purple;
+    // background-color: purple;
     display: grid;
     align-items: center;
     height: 100vh;
@@ -111,7 +111,7 @@
     }
 }
 
-.controllerDisplay {
+.gamePanel {
     background-color: blue;
     display: flex;
     justify-content: space-between;
@@ -128,6 +128,11 @@
 
     .keysContainer {
         flex-basis: 20%;
+        padding: 5px;
+
+        @media only screen and (min-width: 1000px) {
+            padding: 10px;
+        }
     }
 
     .arrowKeysContainer {
@@ -203,7 +208,13 @@
     .messageContainer {
         // background-color: red;
         display: flex;
-        flex-basis: 55%;
+        flex-basis: 60%;
+        justify-content: space-between;
+        padding: 5px;
+
+        @media only screen and (min-width: 1000px) {
+            padding: 10px;
+        }
 
         @media only screen and (orientation: landscape) {
             flex-direction: column;
@@ -215,37 +226,62 @@
             padding: 5px;
 
             @media only screen and (orientation: landscape) {
-                height: 70%;
+                height: 60%;
                 width: 100%;
             }
 
             @media only screen and (orientation: portrait) {
-                width: 50%;
                 height: 100%;
+                width: 50%;
 
                 @media only screen and (min-width: 700px) {
-                    width: 75%;
+                    width: 70%;
                 }
             }
         }
 
-        .playerInput {
+        label {
+            display: flex;
+            flex-direction: column;
+
             @media only screen and (orientation: landscape) {
-                border: 1px solid rgba(0, 0, 0, 0.6);
-                font-size: 24px;
                 height: 30%;
-                text-align: center;
                 width: 100%;
             }
 
             @media only screen and (orientation: portrait) {
-                width: 50%;
+                width: 45%;
                 height: 100%;
 
                 @media only screen and (min-width: 700px) {
                     width: 25%;
                 }
             }
+        }
+
+        .playerInput {
+            border: 1px solid rgba(0, 0, 0, 0.6);
+            font-size: 24px;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+
+            // @media only screen and (orientation: landscape) {
+            //     border: 1px solid rgba(0, 0, 0, 0.6);
+            //     font-size: 24px;
+            //     height: 30%;
+            //     text-align: center;
+            //     width: 100%;
+            // }
+
+            // @media only screen and (orientation: portrait) {
+            //     width: 50%;
+            //     height: 100%;
+
+            //     @media only screen and (min-width: 700px) {
+            //         width: 25%;
+            //     }
+            // }
 
             &:focus {
                 border-top: 2px solid rgb(0, 0, 0);
@@ -256,14 +292,13 @@
             @media only screen and (orientation: portrait) {
                 @media only screen and (min-width: 700px) {
                     font-size: 48px;
-                    height: 100%;
-                    width: 50%;
                 }
-            }
-
-            &::placeholder {
-                font-size: 16px;
             }
         }
     }
+}
+
+input:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }

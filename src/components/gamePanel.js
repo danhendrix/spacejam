@@ -31,21 +31,16 @@ function GamePanel({ message, playerInput, updatePlayerInput }) {
             </div>
             <div class={style.messageContainer}>
                 <p class={style.npcChatContainer}>{message}</p>
-                <label for='playerInput' hidden>
-                    {this.state.playerName}'s Answer:
+                <label>
+                    Answer:
+                    <input
+                        id='playerInput'
+                        class={style.playerInput}
+                        onChange={updatePlayerInput}
+                        value={playerInput}
+                        disabled={message === ''}
+                    />
                 </label>
-                <input
-                    id='playerInput'
-                    class={style.playerInput}
-                    onChange={updatePlayerInput}
-                    value={playerInput}
-                    placeholder={
-                        message === ''
-                            ? 'Interact with an NPC'
-                            : 'Enter answer here'
-                    }
-                    disabled={message === ''}
-                />
             </div>
             <div class={`${style.keysContainer} ${style.spaceKeyContainer}`}>
                 <button
