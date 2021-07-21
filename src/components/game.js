@@ -3,6 +3,7 @@ import Grid from './grid';
 import Home from '../Grids/home';
 import style from './style.scss';
 import MainMenu from './mainMenu';
+import GamePanel from './gamePanel';
 
 class Game extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Game extends Component {
             playerAvatar: null,
             theme: 'dark',
             playerInput: '',
-            npcMessage: '',
+            message: '',
             playerInventory: [
                 {
                     name: 'report card',
@@ -21,23 +22,7 @@ class Game extends Component {
                 },
             ],
         };
-
-        // this.enteredText = '';
-        // this.updateNpcMessage = this.updateNpcMessage.bind(this);
     }
-
-    // componentDidMount() {
-    //     document.addEventListener('keyup', this.handleKeyPress.bind(this));
-    // }
-
-    // handleKeyPress(e) {
-    //     e.stopPropagation();
-    //     if (e.keyCode === 13) {
-    //         // enter
-    //         this.updatePlayerInput(this.enteredText);
-    //         this.enteredText = '';
-    //     }
-    // }
 
     updatePlayerName = (e) => {
         this.setState({
@@ -66,19 +51,21 @@ class Game extends Component {
         this.setState({ playerInput: '' });
     };
 
-    updateNpcMessage = (newMessage) => {
+    updateMessage = (newMessage) => {
         this.setState({
-            npcMessage: newMessage,
+            message: newMessage,
         });
     };
 
-    // playerInputChanged = (e) => {
-    //     e.stopPropagation();
-    //     this.enteredText = e.target.value;
-    // };
-
     render() {
-        const { gameStart, playerInput, npcMessage } = this.state;
+        const {
+            gameStart,
+            message,
+            playerAvatar,
+            playerName,
+            playerInput,
+            playerInventory,
+        } = this.state;
 
         return (
             <div class={style.gameContainer}>
@@ -88,80 +75,30 @@ class Game extends Component {
                             gridSetup={Home}
                             playerInput={playerInput}
                             clearPlayerInput={this.clearPlayerInput}
-                            updateNpcMessage={this.updateNpcMessage}
-                            playerInventory={this.state.playerInventory}
-                            avatar={this.state.playerAvatar}
+                            updateMessage={this.updateMessage}
+                            playerInventory={playerInventory}
+                            avatar={playerAvatar}
+                            name={playerName}
                         />
                     ) : (
                         <MainMenu
                             startGame={this.updateGameStart}
                             changeName={this.updatePlayerName}
-                            name={this.state.playerName}
+                            name={playerName}
                             changeAvatar={this.updatePlayerAvatar}
-                            avatar={this.state.playerAvatar}
+                            avatar={playerAvatar}
                         />
                     )}
                 </div>
-                <div class={style.controllerDisplay}>
-                    {gameStart ? (
-                        <>
-                            <div
-                                class={`${style.keysContainer} ${style.arrowKeysContainer}`}
-                            >
-                                <button
-                                    id='upArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.upArrow}`}
-                                >
-                                    Up
-                                </button>
-                                <button
-                                    id='leftArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.leftArrow}`}
-                                >
-                                    Left
-                                </button>
-                                <button
-                                    id='downArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.downArrow}`}
-                                >
-                                    Down
-                                </button>
-                                <button
-                                    id='rightArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.rightArrow}`}
-                                >
-                                    Right
-                                </button>
-                            </div>
-                            <div class={style.messageContainer}>
-                                <p class={style.npcChatContainer}>
-                                    {npcMessage}
-                                </p>
-                                <label for='playerInput' hidden>
-                                    {this.state.playerName}'s Answer:
-                                </label>
-                                <input
-                                    id='playerInput'
-                                    class={style.playerInput}
-                                    onChange={this.updatePlayerInput}
-                                    value={playerInput}
-                                    placeholder='Enter answer here'
-                                    disabled={npcMessage === ''}
-                                />
-                            </div>
-                            <div
-                                class={`${style.keysContainer} ${style.spaceKeyContainer}`}
-                            >
-                                <button
-                                    id='spaceKey'
-                                    class={`${style.virtualKey} ${style.spaceKey}`}
-                                >
-                                    Space
-                                </button>
-                            </div>
-                        </>
-                    ) : null}
-                </div>
+                {gameStart ? (
+                    <div class={style.controllerDisplay}>
+                        <GamePanel
+                            message={message}
+                            playerInput={playerInput}
+                            updatePlayerInput={this.updatePlayerInput}
+                        />
+                    </div>
+                ) : null}
             </div>
         );
     }

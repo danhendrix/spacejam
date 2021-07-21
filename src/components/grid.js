@@ -83,12 +83,12 @@ class Grid extends Component {
         );
 
         if (!inventory.length) {
-            this.props.updateNpcMessage(
+            this.props.updateMessage(
                 'You must first bring me back 3 report cards before you are allowed to pass!'
             );
             return false;
         } else if (inventory[0].quantity < required) {
-            this.props.updateNpcMessage(
+            this.props.updateMessage(
                 `It looks like you're almost there! Only ${
                     required - inventory[0].quantity
                 } more report card${
@@ -135,11 +135,11 @@ class Grid extends Component {
                             return;
                         }
                         if (playerAnswer === '') {
-                            this.props.updateNpcMessage(question);
+                            this.props.updateMessage(question);
                             gridSpace.npc.cancel();
                             return false;
                         } else if (playerAnswer != answer) {
-                            this.props.updateNpcMessage('Try again!');
+                            this.props.updateMessage('Try again!');
                             gridSpace.npc.cancel();
                             return false;
                         }
@@ -151,7 +151,7 @@ class Grid extends Component {
 
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            this.props.updateNpcMessage(message);
+            this.props.updateMessage(message);
             gridSpace.npc.successfulAction();
             return true;
         }
