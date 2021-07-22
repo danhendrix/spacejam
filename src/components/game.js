@@ -31,11 +31,9 @@ class Game extends Component {
     };
 
     updatePlayerAvatar = (e) => {
-        if (e.type === 'click' || e.key === ' ' || e.key === 'Enter') {
-            this.setState({
-                playerAvatar: e.target.src,
-            });
-        }
+        this.setState({
+            playerAvatar: e.currentTarget.children[0].src,
+        });
     };
 
     updateGameStart = (prevState) => {

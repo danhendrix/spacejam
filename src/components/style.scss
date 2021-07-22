@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    font-family: 'Comic Neue', cursive;
+}
+
 .gameContainer {
     // background-color: purple;
     display: grid;
@@ -81,12 +87,14 @@
 .nameLabel {
     display: flex;
     flex-direction: column;
+    font-weight: bold;
     text-align: center;
     width: 90%;
 }
 
 .nameInput {
     font-size: 16px;
+    letter-spacing: 1.125px;
     margin-top: 10px;
     padding: 10px;
     text-align: center;
@@ -98,17 +106,20 @@
 }
 
 .avatarLabel {
+    // border-bottom: 1px solid black;
+    font-weight: bold;
     text-align: center;
 }
 
 .avatarImageContainer {
     display: grid;
-    gap: 5px;
+    column-gap: 5px;
+    row-gap: 20px;
     grid-template-columns: repeat(3, 15vw);
     grid-template-rows: repeat(2, 15vw);
     justify-content: center;
     justify-items: center;
-    margin-top: 10px;
+    margin-top: 20px;
 
     @media only screen and (orientation: landscape) {
         grid-template-columns: repeat(3, 15vh);
@@ -116,11 +127,29 @@
     }
 }
 
+.avatarButton {
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-height: 60px;
+    max-width: 60px;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+        transform: translateY(-15px);
+    }
+}
+
 .avatarImage {
-    border: 1px solid white;
+    border: 1px solid black;
     height: auto;
     max-width: 60px;
     width: 100%;
+
+    &.selected {
+        outline: 2px solid black;
+    }
 }
 
 .startContainer {
