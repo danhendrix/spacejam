@@ -14,13 +14,15 @@ class Game extends Component {
             answerInput: '',
             message: '',
             player: null,
+            currentGrid: Home,
+            gridName: 'Home',
         };
     }
 
     updateGameStart = (player) => {
         this.setState({
             gameStart: true,
-            player
+            player,
         });
     };
 
@@ -38,12 +40,21 @@ class Game extends Component {
         });
     };
 
+    updateGrid = async (grid, name) => {
+        await this.setState({
+            currentGrid: grid,
+            gridName: name,
+        });
+    }
+
     render() {
         const {
             gameStart,
             message,
             player,
             answerInput,
+            currentGrid,
+            gridName,
         } = this.state;
 
         return (
@@ -51,11 +62,13 @@ class Game extends Component {
                 {gameStart ? (
                     <div class={style.mainDisplay}>
                         <Grid
-                            gridSetup={Home}
+                            gridSetup={currentGrid}
+                            gridName={gridName}
                             answerInput={answerInput}
                             clearAnswerInput={this.clearAnswerInput}
                             updateMessage={this.updateMessage}
                             player={player}
+                            updateGrid={this.updateGrid}
                         />
                     </div>
                 ) : (

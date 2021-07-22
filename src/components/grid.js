@@ -13,6 +13,15 @@ class Grid extends Component {
             rowPosition: 0,
             columnPosition: 0,
         };
+
+        this.gridName = this.props.gridName;
+    }
+
+    componentDidUpdate(props) {
+        if (props.gridName !== this.gridName) {
+            this.gridName = props.gridName;
+            this.buildGrid(this.props.gridSetup);
+        }
     }
 
     buildGrid(gridSetup) {
@@ -78,16 +87,14 @@ class Grid extends Component {
     }
 
     checkPlayerInventory(itemToCheck, required) {
-        const inventory = this.props.playerInventory.filter(
-            (item) => item.name === itemToCheck
-        );
+        const inventory = this.props.player.inventory[itemToCheck];
 
-        if (!inventory.length) {
+        if (inventory === 0) {
             this.props.updateMessage(
                 'You must first bring me back 3 report cards before you are allowed to pass!'
             );
             return false;
-        } else if (inventory[0].quantity < required) {
+        } else if (inventory < required) {
             this.props.updateMessage(
                 `It looks like you're almost there! Only ${
                     required - inventory[0].quantity
@@ -101,7 +108,7 @@ class Grid extends Component {
         return true;
     }
 
-    interactWithNpc(row, column) {
+    interact(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
@@ -154,6 +161,8 @@ class Grid extends Component {
             this.props.updateMessage(message);
             gridSpace.npc.successfulAction();
             return true;
+        } else if (gridSpace.link) {
+            this.props.updateGrid(gridSpace.link, gridSpace.linkName);
         }
     }
 
@@ -216,7 +225,7 @@ class Grid extends Component {
             case 13:
             case 'spaceKey': {
                 // space
-                this.interactWithNpc(rowPosition, columnPosition);
+                this.interact(rowPosition, columnPosition);
             }
         }
 

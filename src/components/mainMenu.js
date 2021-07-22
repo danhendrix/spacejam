@@ -1,3 +1,4 @@
+import { h } from 'preact';
 import style from './style.scss';
 import wizard1 from '../assets/avatars/wizard1.png';
 import wizard2 from '../assets/avatars/wizard2.png';
