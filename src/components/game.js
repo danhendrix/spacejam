@@ -40,7 +40,6 @@ class Game extends Component {
         this.setState({
             gameStart: !prevState.gameStart,
         });
-        console.log(this.state.playerName);
     };
 
     updateAnswerInput = (e) => {

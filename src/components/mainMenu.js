@@ -18,7 +18,7 @@ function MainMenu({ changeName, changeAvatar, name, avatar, updateGameStart }) {
                         class={style.nameInput}
                         type='text'
                         value={name}
-                        onChange={changeName}
+                        onInput={changeName}
                     />
                 </label>
                 <div class={style.avatarSelection}>
