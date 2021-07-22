@@ -224,6 +224,7 @@ class Grid extends Component {
     }
 
     render() {
+        const { avatar } = this.props.player;
         return (
             <div class={style.grid}>
                 {this.state.gridLayout.map((row, rowI) => (
@@ -237,7 +238,7 @@ class Grid extends Component {
                                 }
                                 type={item.type}
                                 npc={item.npc}
-                                avatar={this.props.avatar}
+                                avatar={avatar}
                             />
                         ))}
                     </div>

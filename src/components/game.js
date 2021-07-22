@@ -10,35 +10,17 @@ class Game extends Component {
         super(props);
         this.state = {
             gameStart: false,
-            playerName: '',
-            playerAvatar: null,
             theme: 'dark',
             answerInput: '',
             message: '',
-            playerInventory: [
-                {
-                    name: 'report card',
-                    quantity: 1,
-                },
-            ],
+            player: null,
         };
     }
 
-    updatePlayerName = (e) => {
+    updateGameStart = (player) => {
         this.setState({
-            playerName: e.target.value,
-        });
-    };
-
-    updatePlayerAvatar = (e) => {
-        this.setState({
-            playerAvatar: e.currentTarget.children[0].src,
-        });
-    };
-
-    updateGameStart = (prevState) => {
-        this.setState({
-            gameStart: !prevState.gameStart,
+            gameStart: true,
+            player
         });
     };
 
@@ -60,10 +42,8 @@ class Game extends Component {
         const {
             gameStart,
             message,
-            playerAvatar,
-            playerName,
+            player,
             answerInput,
-            playerInventory,
         } = this.state;
 
         return (
@@ -75,18 +55,12 @@ class Game extends Component {
                             answerInput={answerInput}
                             clearAnswerInput={this.clearAnswerInput}
                             updateMessage={this.updateMessage}
-                            playerInventory={playerInventory}
-                            avatar={playerAvatar}
-                            name={playerName}
+                            player={player}
                         />
                     </div>
                 ) : (
                     <MainMenu
                         updateGameStart={this.updateGameStart}
-                        changeName={this.updatePlayerName}
-                        name={playerName}
-                        changeAvatar={this.updatePlayerAvatar}
-                        avatar={playerAvatar}
                     />
                 )}
                 {gameStart ? (
