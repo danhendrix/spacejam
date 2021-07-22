@@ -106,7 +106,6 @@ body {
 }
 
 .avatarLabel {
-    // border-bottom: 1px solid black;
     font-weight: bold;
     text-align: center;
 }
@@ -182,14 +181,10 @@ body {
     .row {
         display: flex;
         justify-content: center;
-        width: max-content;
 
         .square {
             background-position: center;
             background-size: contain;
-            // display: flex;
-            // align-items: center;
-            // justify-content: space-around;
             position: relative;
             height: 10vw;
             width: 10vw;
@@ -253,10 +248,6 @@ body {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-
-                @media only screen and (min-width: 1000px) {
-                    width: 100%;
-                }
             }
 
             .npc {
@@ -265,14 +256,14 @@ body {
 
             &.occupied {
                 & > .activeImg {
-                    left: 0;
+                    left: -5px;
                     transform: translateY(-50%);
                 }
             }
 
             .activeImg {
                 & + .npc {
-                    right: -10px;
+                    left: 45%;
                     transform: translateY(-50%);
                 }
             }
