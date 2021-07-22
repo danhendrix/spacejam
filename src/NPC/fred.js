@@ -2,39 +2,43 @@ import NPC, { RequirementTypes } from './npc';
 
 const fredActions = [
     {
-        requirements: [],
-        afterAction: {
-            fn() {},
-            message: "Hello, I'm Fred!",
-        },
-    },
-    {
         requirements: [
             {
-                type: RequirementTypes.question,
-                question: 'What is 2 + 2?',
-                answer: 4,
-                // tries: 1,
+                type: RequirementTypes.inventory,
+                item: 'report card',
+                numberNeeded: 3,
             },
         ],
         afterAction: {
             fn() {
                 this.setSquareAccesible(1, 0);
             },
-            message: 'Great job I will let you through!!',
+            message: 'My word, you have them all! Please continue through.',
         },
     },
     // {
-    //     requirements: [],
+    //     requirements: [
+    //         {
+    //             type: RequirementTypes.question,
+    //             question: 'What is 2 + 2?',
+    //             answer: 4,
+    //             // tries: 1,
+    //         },
+    //     ],
     //     afterAction: {
     //         fn() {
     //             this.setSquareAccesible(1, 0);
     //         },
-    //         message: "Fine, I will let you through.",
+    //         message: 'Great job I will let you through!!',
     //     },
     // },
 ];
 
-const Fred = new NPC('Fred', 'fred', '../assets/wizard.png', fredActions);
+const Fred = new NPC(
+    'Fred',
+    'fred',
+    '../assets/npc/frederick.png',
+    fredActions
+);
 
 export default Fred;

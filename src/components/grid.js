@@ -77,6 +77,30 @@ class Grid extends Component {
         });
     }
 
+    checkPlayerInventory(itemToCheck, required) {
+        const inventory = this.props.playerInventory.filter(
+            (item) => item.name === itemToCheck
+        );
+
+        if (!inventory.length) {
+            this.props.updateMessage(
+                'You must first bring me back 3 report cards before you are allowed to pass!'
+            );
+            return false;
+        } else if (inventory[0].quantity < required) {
+            this.props.updateMessage(
+                `It looks like you're almost there! Only ${
+                    required - inventory[0].quantity
+                } more report card${
+                    inventory[0].quantity !== 1 ? '' : 's'
+                } to go!`
+            );
+            return false;
+        }
+
+        return true;
+    }
+
     interactWithNpc(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
 
@@ -85,10 +109,18 @@ class Grid extends Component {
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
-                    const { type, question, answer } = require;
+                    const {
+                        type,
+                        item,
+                        numberNeeded,
+                        question,
+                        answer,
+                        cleared,
+                    } = require;
 
                     if (type === RequirementTypes.inventory) {
-                        console.log('looking up the player');
+                        if (!this.checkPlayerInventory(item, numberNeeded))
+                            return false;
                         // if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
                         //     return {
                         //         success: false,
@@ -96,25 +128,30 @@ class Grid extends Component {
                         //     };
                         // }
                     } else if (type === RequirementTypes.question) {
-                        const playerAnswer = this.props.playerInput;
-                        this.props.clearPlayerInput();
-
+                        const playerAnswer = this.props.answerInput;
+                        this.props.clearAnswerInput();
+                        if (cleared) {
+                            console.log('already answered');
+                            return;
+                        }
                         if (playerAnswer === '') {
-                            this.props.updateNpcMessage(question);
+                            this.props.updateMessage(question);
                             gridSpace.npc.cancel();
                             return false;
                         } else if (playerAnswer != answer) {
-                            this.props.updateNpcMessage('Try again!');
+                            this.props.updateMessage('Try again!');
                             gridSpace.npc.cancel();
                             return false;
                         }
+
+                        require.updateCleared();
                     }
                 }
             }
 
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            this.props.updateNpcMessage(message);
+            this.props.updateMessage(message);
             gridSpace.npc.successfulAction();
             return true;
         }
@@ -200,6 +237,7 @@ class Grid extends Component {
                                 }
                                 type={item.type}
                                 npc={item.npc}
+                                avatar={this.props.avatar}
                             />
                         ))}
                     </div>

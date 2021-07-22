@@ -2,131 +2,102 @@ import { Component } from 'preact';
 import Grid from './grid';
 import Home from '../Grids/home';
 import style from './style.scss';
+import MainMenu from './mainMenu';
+import GamePanel from './gamePanel';
 
 class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gameStart: true,
+            gameStart: false,
             playerName: '',
             playerAvatar: null,
             theme: 'dark',
-            playerInput: '',
-            npcMessage: '',
+            answerInput: '',
+            message: '',
+            playerInventory: [
+                {
+                    name: 'report card',
+                    quantity: 1,
+                },
+            ],
         };
-
-        // this.enteredText = '';
-        // this.updateNpcMessage = this.updateNpcMessage.bind(this);
     }
 
-    // componentDidMount() {
-    //     document.addEventListener('keyup', this.handleKeyPress.bind(this));
-    // }
-
-    // handleKeyPress(e) {
-    //     e.stopPropagation();
-    //     if (e.keyCode === 13) {
-    //         // enter
-    //         this.updatePlayerInput(this.enteredText);
-    //         this.enteredText = '';
-    //     }
-    // }
-
-    updatePlayerInput = (e) => {
-        this.setState({ playerInput: e.target.value });
-    };
-
-    clearPlayerInput = () => {
-        this.setState({ playerInput: '' });
-    };
-
-    updateNpcMessage = (newMessage) => {
+    updatePlayerName = (e) => {
         this.setState({
-            npcMessage: newMessage,
+            playerName: e.target.value,
         });
     };
 
-    // playerInputChanged = (e) => {
-    //     e.stopPropagation();
-    //     this.enteredText = e.target.value;
-    // };
+    updatePlayerAvatar = (e) => {
+        this.setState({
+            playerAvatar: e.currentTarget.children[0].src,
+        });
+    };
+
+    updateGameStart = (prevState) => {
+        this.setState({
+            gameStart: !prevState.gameStart,
+        });
+    };
+
+    updateAnswerInput = (e) => {
+        this.setState({ answerInput: e.target.value });
+    };
+
+    clearAnswerInput = () => {
+        this.setState({ answerInput: '' });
+    };
+
+    updateMessage = (newMessage) => {
+        this.setState({
+            message: newMessage,
+        });
+    };
 
     render() {
-        const { gameStart, playerInput, npcMessage } = this.state;
+        const {
+            gameStart,
+            message,
+            playerAvatar,
+            playerName,
+            answerInput,
+            playerInventory,
+        } = this.state;
 
         return (
             <div class={style.gameContainer}>
-                <div class={style.themeToggle}>Theme toggle</div>
-                <div class={style.mainDisplay}>
-                    {gameStart ? (
+                {gameStart ? (
+                    <div class={style.mainDisplay}>
                         <Grid
                             gridSetup={Home}
-                            playerInput={playerInput}
-                            clearPlayerInput={this.clearPlayerInput}
-                            updateNpcMessage={this.updateNpcMessage}
+                            answerInput={answerInput}
+                            clearAnswerInput={this.clearAnswerInput}
+                            updateMessage={this.updateMessage}
+                            playerInventory={playerInventory}
+                            avatar={playerAvatar}
+                            name={playerName}
                         />
-                    ) : null}
-                </div>
-                <div class={style.controllerDisplay}>
-                    {gameStart ? (
-                        <>
-                            <div
-                                class={`${style.keysContainer} ${style.arrowKeysContainer}`}
-                            >
-                                <button
-                                    id='upArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.upArrow}`}
-                                >
-                                    Up
-                                </button>
-                                <button
-                                    id='leftArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.leftArrow}`}
-                                >
-                                    Left
-                                </button>
-                                <button
-                                    id='downArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.downArrow}`}
-                                >
-                                    Down
-                                </button>
-                                <button
-                                    id='rightArrow'
-                                    class={`${style.virtualKey} ${style.directionKey} ${style.rightArrow}`}
-                                >
-                                    Right
-                                </button>
-                            </div>
-                            <div class={style.messageContainer}>
-                                <p class={style.npcChatContainer}>
-                                    {npcMessage}
-                                </p>
-                                <label for='playerInput' hidden>
-                                    {this.state.playerName}'s Answer:
-                                </label>
-                                <input
-                                    id='playerInput'
-                                    class={style.playerInput}
-                                    onChange={this.updatePlayerInput}
-                                    value={playerInput}
-                                    placeholder='Enter answer here'
-                                    disabled={npcMessage === ''}
-                                />
-                            </div>
-                            <div
-                                class={`${style.keysContainer} ${style.spaceKeyContainer}`}
-                            >
-                                <button
-                                    id='spaceKey'
-                                    class={`${style.virtualKey} ${style.spaceKey}`}
-                                >
-                                    Space
-                                </button>
-                            </div>
-                        </>
-                    ) : null}
-                </div>
+                    </div>
+                ) : (
+                    <MainMenu
+                        updateGameStart={this.updateGameStart}
+                        changeName={this.updatePlayerName}
+                        name={playerName}
+                        changeAvatar={this.updatePlayerAvatar}
+                        avatar={playerAvatar}
+                    />
+                )}
+                {gameStart ? (
+                    <div class={style.gamePanel}>
+                        <GamePanel
+                            message={message}
+                            answerInput={answerInput}
+                            updateAnswerInput={this.updateAnswerInput}
+                        />
+                    </div>
+                ) : null}
             </div>
         );
     }
