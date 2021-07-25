@@ -1,4 +1,20 @@
 import Fred from '../NPC/fred';
+import Enemy from '../NPC/enemy';
+
+const createRandomGrid = () => {
+    const grid = [];
+    for (let i = 0; i < 10; i++) {
+        grid.push([]);
+        for (let z = 0; z < 10; z++) {
+            grid[i].push({
+                type: Math.round(Math.random()) === 0 ? 'grass' : 'path',
+                npc: Math.round(Math.random()) === 0 ? Fred : null,
+                isAccessible: true,
+            });
+        }
+    }
+    return grid;
+};
 
 const Home = [
     [
@@ -9,7 +25,7 @@ const Home = [
         },
         {
             type: 'grass',
-            npc: null,
+            npc: Enemy,
             isAccessible: true,
         },
         {
@@ -124,7 +140,7 @@ const Home = [
         {
             type: 'path',
             npc: null,
-            isAccessible: false,
+            isAccessible: true,
         },
         {
             type: 'path',
@@ -288,29 +304,31 @@ const Home = [
             isAccessible: true,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
+            link: createRandomGrid(),
+            linkName: 'rando',
         },
     ],
     [

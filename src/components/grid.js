@@ -1,18 +1,47 @@
 import { Component } from 'preact';
 import Square from './square';
 import style from './style.scss';
+import Home from '../Grids/home';
 import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentGrid: Home,
+            gridName: 'Home',
             gridLayout: [],
             rows: 0,
             columns: 0,
             rowPosition: 0,
             columnPosition: 0,
         };
+    }
+
+    componentWillMount() {
+        document.removeEventListener('keyup', this.handleKeyPress.bind(this));
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.removeEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
+
+        this.buildGrid(this.state.currentGrid);
+    }
+
+    componentDidMount() {
+        document.addEventListener('keyup', this.handleKeyPress.bind(this));
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.addEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
     }
 
     buildGrid(gridSetup) {
@@ -38,33 +67,41 @@ class Grid extends Component {
         });
     }
 
-    componentWillMount() {
-        document.removeEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.removeEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
+    updateGrid = (grid, name) => {
+        this.setState(
+            {
+                currentGrid: grid,
+                gridName: name,
+            },
+            () => {
+                this.buildGrid(this.state.currentGrid);
+            }
+        );
+    };
 
-        this.buildGrid(this.props.gridSetup);
+    // Calculate the position of the player when entering a new area
+    // based on where they were in the previous area
+    calculateNewAreaPosition() {
+        const { rowPosition, columnPosition } = this.state;
+        let newAreaRow = rowPosition;
+        let newAreaColumn = columnPosition;
+
+        if (rowPosition === 0) {
+            newAreaRow = 9;
+        } else if (rowPosition === 9) {
+            newAreaRow = 0;
+        }
+
+        if (columnPosition === 0) {
+            newAreaColumn = 9;
+        } else if (columnPosition === 9) {
+            newAreaColumn = 0;
+        }
+
+        return [newAreaRow, newAreaColumn];
     }
 
-    componentDidMount() {
-        document.addEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.addEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
-    }
-
-    checkSquareType(newRow, newColumn) {
+    checkSquareAccessible(newRow, newColumn) {
         const newSpace = this.state.gridLayout[newRow][newColumn];
 
         if (!newSpace.isAccessible) {
@@ -77,7 +114,48 @@ class Grid extends Component {
         });
     }
 
-    interactWithNpc(row, column) {
+    checkRemainingEnemies() {
+        const npcSquares = [];
+
+        this.state.gridLayout.forEach((row) => {
+            row.forEach((square) => {
+                if (square.npc) {
+                    npcSquares.push(square);
+                }
+            });
+        });
+
+        const remainingEnemies = npcSquares.filter((square) => {
+            if (!square.npc.actions[0].requirements) return;
+
+            return square.npc.actions[0].requirements[0].cleared === false;
+        });
+
+        return remainingEnemies.length;
+    }
+
+    checkPlayerInventory(itemToCheck, amountRequired) {
+        const name = this.props.player.getName();
+        const inventory = this.props.player.getInventory(itemToCheck);
+
+        if (!inventory) {
+            this.props.updateMessage(
+                `Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!`
+            );
+            return false;
+        } else if (inventory < amountRequired) {
+            this.props.updateMessage(
+                `Oh, you're quite on your way, ${name}! You only need ${
+                    amountRequired - inventory
+                } more report card${inventory !== 1 ? '' : 's'}!`
+            );
+            return false;
+        }
+
+        return true;
+    }
+
+    handleInteraction(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
@@ -85,28 +163,36 @@ class Grid extends Component {
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
-                    const { type, question } = require;
+                    const { type, item, amount, question, answer, cleared } =
+                        require;
 
                     if (type === RequirementTypes.inventory) {
-                        console.log('looking up the player');
-                        // if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
-                        //     return {
-                        //         success: false,
-                        //         message,
-                        //     };
-                        // }
+                        if (!this.checkPlayerInventory(item, amount))
+                            return false;
                     } else if (type === RequirementTypes.question) {
-                        const playerAnswer = this.props.playerInput;
-                        this.props.clearPlayerInput();
+                        const playerAnswer = this.props.answerInput;
+                        this.props.clearAnswerInput();
+
+                        if (cleared) {
+                            console.log('already answered');
+                            return;
+                        }
 
                         if (playerAnswer === '') {
-                            this.props.updateNpcMessage(question.question);
+                            this.props.updateMessage(question);
                             gridSpace.npc.cancel();
                             return false;
-                        } else if (playerAnswer != question.answer) {
-                            this.props.updateNpcMessage('Try again!');
+                        } else if (playerAnswer != answer) {
+                            this.props.updateMessage('Try again!');
                             gridSpace.npc.cancel();
                             return false;
+                        }
+
+                        require.updateCleared();
+                        if (this.checkRemainingEnemies()) {
+                            console.log('More enemies remain!');
+                        } else {
+                            console.log('You cleared the area!');
                         }
                     }
                 }
@@ -114,13 +200,15 @@ class Grid extends Component {
 
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            this.props.updateNpcMessage(message);
+            this.props.updateMessage(message);
             gridSpace.npc.successfulAction();
             return true;
+        } else if (gridSpace.link) {
+            this.updateGrid(gridSpace.link, gridSpace.linkName);
         }
     }
 
-    setSquareAccesible(column, row) {
+    setSquareAccessible(row, column) {
         const gridLayout = this.state.gridLayout;
         const square =
             gridLayout[this.state.rowPosition + row][
@@ -133,7 +221,8 @@ class Grid extends Component {
 
     handleKeyPress(e) {
         e.stopPropagation();
-        const { columns, rows, columnPosition, rowPosition } = this.state;
+        const { columns, rows, columnPosition, rowPosition, gridLayout } =
+            this.state;
         const eventValue = e.type === 'keyup' ? e.keyCode : e.target.id;
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
@@ -179,14 +268,22 @@ class Grid extends Component {
             case 13:
             case 'spaceKey': {
                 // space
-                this.interactWithNpc(rowPosition, columnPosition);
+                this.handleInteraction(rowPosition, columnPosition);
+
+                // If current position links to another grid,
+                // update positions for the new area
+                if (gridLayout[rowPosition][columnPosition].link) {
+                    [newRowPosition, newColumnPosition] =
+                        this.calculateNewAreaPosition();
+                }
             }
         }
 
-        this.checkSquareType(newRowPosition, newColumnPosition);
+        this.checkSquareAccessible(newRowPosition, newColumnPosition);
     }
 
     render() {
+        const { avatar } = this.props.player;
         return (
             <div class={style.grid}>
                 {this.state.gridLayout.map((row, rowI) => (
@@ -200,6 +297,7 @@ class Grid extends Component {
                                 }
                                 type={item.type}
                                 npc={item.npc}
+                                avatar={avatar}
                             />
                         ))}
                     </div>

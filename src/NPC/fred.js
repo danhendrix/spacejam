@@ -1,41 +1,28 @@
 import NPC, { RequirementTypes } from './npc';
-import Math from '../Questions/math';
 
 const fredActions = [
     {
-        requirements: [],
-        afterAction: {
-            fn() {},
-            message: "Hello, I'm Fred!",
-        },
-    },
-    {
         requirements: [
             {
-                type: RequirementTypes.question,
-                question: Math.pickQuestion(),
-                // answer: 4,
-                // tries: 1,
+                type: RequirementTypes.inventory,
+                item: 'report card',
+                amount: 3,
             },
         ],
         afterAction: {
             fn() {
-                this.setSquareAccesible(1, 0);
+                this.setSquareAccessible(0, 1);
             },
-            message: 'Great job I will let you through!!',
+            message: 'My word, you have them all! Please continue through.',
         },
     },
-    // {
-    //     requirements: [],
-    //     afterAction: {
-    //         fn() {
-    //             this.setSquareAccesible(1, 0);
-    //         },
-    //         message: "Fine, I will let you through.",
-    //     },
-    // },
 ];
 
-const Fred = new NPC('Fred', 'fred', '../assets/wizard.png', fredActions);
+const Fred = new NPC(
+    'Fred',
+    'fred',
+    '../assets/npc/frederick.png',
+    fredActions
+);
 
 export default Fred;
