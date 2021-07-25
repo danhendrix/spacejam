@@ -114,7 +114,27 @@ class Grid extends Component {
         });
     }
 
-    checkPlayerInventory(itemToCheck, required) {
+    checkRemainingEnemies() {
+        const npcSquares = [];
+
+        this.state.gridLayout.forEach((row) => {
+            row.forEach((square) => {
+                if (square.npc) {
+                    npcSquares.push(square);
+                }
+            });
+        });
+
+        const remainingEnemies = npcSquares.filter((square) => {
+            if (!square.npc.actions[0].requirements) return;
+
+            return square.npc.actions[0].requirements[0].cleared === false;
+        });
+
+        return remainingEnemies.length;
+    }
+
+    checkPlayerInventory(itemToCheck, amountRequired) {
         const name = this.props.player.getName();
         const inventory = this.props.player.getInventory(itemToCheck);
 
@@ -123,10 +143,10 @@ class Grid extends Component {
                 `Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!`
             );
             return false;
-        } else if (inventory < required) {
+        } else if (inventory < amountRequired) {
             this.props.updateMessage(
                 `Oh, you're quite on your way, ${name}! You only need ${
-                    required - inventory
+                    amountRequired - inventory
                 } more report card${inventory !== 1 ? '' : 's'}!`
             );
             return false;
@@ -143,31 +163,21 @@ class Grid extends Component {
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
-                    const {
-                        type,
-                        item,
-                        numberNeeded,
-                        question,
-                        answer,
-                        cleared,
-                    } = require;
+                    const { type, item, amount, question, answer, cleared } =
+                        require;
 
                     if (type === RequirementTypes.inventory) {
-                        if (!this.checkPlayerInventory(item, numberNeeded))
+                        if (!this.checkPlayerInventory(item, amount))
                             return false;
-                        // if (!Object.hasOwnProperty.call(player, type) || player[type] < amount) {
-                        //     return {
-                        //         success: false,
-                        //         message,
-                        //     };
-                        // }
                     } else if (type === RequirementTypes.question) {
                         const playerAnswer = this.props.answerInput;
                         this.props.clearAnswerInput();
+
                         if (cleared) {
                             console.log('already answered');
                             return;
                         }
+
                         if (playerAnswer === '') {
                             this.props.updateMessage(question);
                             gridSpace.npc.cancel();
@@ -179,6 +189,11 @@ class Grid extends Component {
                         }
 
                         require.updateCleared();
+                        if (this.checkRemainingEnemies()) {
+                            console.log('More enemies remain!');
+                        } else {
+                            console.log('You cleared the area!');
+                        }
                     }
                 }
             }

@@ -9,20 +9,14 @@ const enemyActions = [
                 answer: 4,
                 cleared: false,
                 updateCleared() {
-                    console.log(enemyActions);
-                    console.log(this);
-
                     if (!this.cleared) {
                         this.cleared = true;
                     }
                 },
-                // tries: 1,
             },
         ],
         afterAction: {
-            fn() {
-                this.setSquareAccesible(1, 0);
-            },
+            fn() {},
             message: 'Harumph! Fine, you may pass this time!',
         },
     },
