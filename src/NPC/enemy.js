@@ -8,7 +8,7 @@ const enemyActions = [
                 question: 'What is 2 + 2?',
                 answer: 4,
                 cleared: false,
-                updateCleared() {
+                updateClearedStatus() {
                     if (!this.cleared) {
                         this.cleared = true;
                     }

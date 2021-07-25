@@ -37,7 +37,6 @@ function GamePanel({ message, answerInput, updateAnswerInput }) {
                         class={style.answerInput}
                         onChange={updateAnswerInput}
                         value={answerInput}
-                        disabled={message === ''}
                     />
                 </label>
             </div>

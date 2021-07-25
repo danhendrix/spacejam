@@ -140,14 +140,14 @@ class Grid extends Component {
 
         if (!inventory) {
             this.props.updateMessage(
-                `Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!`
+                `"Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!"`
             );
             return false;
         } else if (inventory < amountRequired) {
             this.props.updateMessage(
-                `Oh, you're quite on your way, ${name}! You only need ${
+                `"Oh, you're quite on your way, ${name}! You only need ${
                     amountRequired - inventory
-                } more report card${inventory !== 1 ? '' : 's'}!`
+                } more report card${inventory !== 1 ? '' : 's'}!"`
             );
             return false;
         }
@@ -157,9 +157,12 @@ class Grid extends Component {
 
     handleInteraction(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
+        const { clearAnswerInput, updateMessage } = this.props;
+        clearAnswerInput();
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
             const currentAction = gridSpace.npc.interact();
+            const cancel = gridSpace.npc.cancel();
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
@@ -167,28 +170,31 @@ class Grid extends Component {
                         require;
 
                     if (type === RequirementTypes.inventory) {
-                        if (!this.checkPlayerInventory(item, amount))
+                        if (!this.checkPlayerInventory(item, amount)) {
+                            cancel;
                             return false;
+                        }
                     } else if (type === RequirementTypes.question) {
                         const playerAnswer = this.props.answerInput;
-                        this.props.clearAnswerInput();
 
                         if (cleared) {
-                            console.log('already answered');
-                            return;
+                            cancel;
+                            break;
                         }
 
                         if (playerAnswer === '') {
-                            this.props.updateMessage(question);
-                            gridSpace.npc.cancel();
+                            updateMessage(`"${question}"`);
+                            cancel;
                             return false;
                         } else if (playerAnswer != answer) {
-                            this.props.updateMessage('Try again!');
-                            gridSpace.npc.cancel();
+                            updateMessage(
+                                `"Heheheh dumn hooman! Try again! ${question}"`
+                            );
+                            cancel;
                             return false;
                         }
 
-                        require.updateCleared();
+                        require.updateClearedStatus();
                         if (this.checkRemainingEnemies()) {
                             console.log('More enemies remain!');
                         } else {
@@ -200,7 +206,7 @@ class Grid extends Component {
 
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            this.props.updateMessage(message);
+            updateMessage(`"${message}"`);
             gridSpace.npc.successfulAction();
             return true;
         } else if (gridSpace.link) {
@@ -235,6 +241,7 @@ class Grid extends Component {
                     if (rowPosition > 0) {
                         newRowPosition = rowPosition - 1;
                     }
+                    this.props.updateMessage('');
                 }
                 break;
             case 39:
@@ -244,6 +251,7 @@ class Grid extends Component {
                     if (columnPosition + 1 < columns) {
                         newColumnPosition = columnPosition + 1;
                     }
+                    this.props.updateMessage('');
                 }
                 break;
             case 40:
@@ -253,6 +261,7 @@ class Grid extends Component {
                     if (rowPosition + 1 < rows) {
                         newRowPosition = rowPosition + 1;
                     }
+                    this.props.updateMessage('');
                 }
                 break;
             case 37:
@@ -262,6 +271,7 @@ class Grid extends Component {
                     if (columnPosition > 0) {
                         newColumnPosition = columnPosition - 1;
                     }
+                    this.props.updateMessage('');
                 }
                 break;
             case 32:

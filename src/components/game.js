@@ -38,35 +38,18 @@ class Game extends Component {
         });
     };
 
-    // updateGrid = (grid, name) => {
-    //     this.setState({
-    //         currentGrid: grid,
-    //         gridName: name,
-    //     });
-    // };
-
     render() {
-        const {
-            gameStart,
-            message,
-            player,
-            answerInput,
-            // currentGrid,
-            // gridName,
-        } = this.state;
+        const { gameStart, message, player, answerInput } = this.state;
 
         return (
             <div class={style.gameContainer}>
                 {gameStart ? (
                     <div class={style.mainDisplay}>
                         <Grid
-                            // gridSetup={currentGrid}
-                            // gridName={gridName}
                             answerInput={answerInput}
                             clearAnswerInput={this.clearAnswerInput}
                             updateMessage={this.updateMessage}
                             player={player}
-                            // updateGrid={this.updateGrid}
                         />
                     </div>
                 ) : (
