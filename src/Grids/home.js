@@ -14,7 +14,7 @@ const createRandomGrid = () => {
         }
     }
     return grid;
-}
+};
 
 const Home = [
     [
@@ -328,7 +328,7 @@ const Home = [
             npc: null,
             isAccessible: true,
             link: createRandomGrid(),
-            linkName: 'rando'
+            linkName: 'rando',
         },
     ],
     [

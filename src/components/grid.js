@@ -1,27 +1,47 @@
 import { Component } from 'preact';
 import Square from './square';
 import style from './style.scss';
+import Home from '../Grids/home';
 import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentGrid: Home,
+            gridName: 'Home',
             gridLayout: [],
             rows: 0,
             columns: 0,
             rowPosition: 0,
             columnPosition: 0,
         };
-
-        this.gridName = this.props.gridName;
     }
 
-    componentDidUpdate(props) {
-        if (props.gridName !== this.gridName) {
-            this.gridName = props.gridName;
-            this.buildGrid(this.props.gridSetup);
-        }
+    componentWillMount() {
+        document.removeEventListener('keyup', this.handleKeyPress.bind(this));
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.removeEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
+
+        this.buildGrid(this.state.currentGrid);
+    }
+
+    componentDidMount() {
+        document.addEventListener('keyup', this.handleKeyPress.bind(this));
+        document
+            .querySelectorAll(`.${style.virtualKey}`)
+            .forEach((virtualKey) => {
+                virtualKey.addEventListener(
+                    'click',
+                    this.handleKeyPress.bind(this)
+                );
+            });
     }
 
     buildGrid(gridSetup) {
@@ -47,33 +67,41 @@ class Grid extends Component {
         });
     }
 
-    componentWillMount() {
-        document.removeEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.removeEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
+    updateGrid = (grid, name) => {
+        this.setState(
+            {
+                currentGrid: grid,
+                gridName: name,
+            },
+            () => {
+                this.buildGrid(this.state.currentGrid);
+            }
+        );
+    };
 
-        this.buildGrid(this.props.gridSetup);
+    // Calculate the position of the player when entering a new area
+    // based on where they were in the previous area
+    calculateNewAreaPosition() {
+        const { rowPosition, columnPosition } = this.state;
+        let newAreaRow = rowPosition;
+        let newAreaColumn = columnPosition;
+
+        if (rowPosition === 0) {
+            newAreaRow = 9;
+        } else if (rowPosition === 9) {
+            newAreaRow = 0;
+        }
+
+        if (columnPosition === 0) {
+            newAreaColumn = 9;
+        } else if (columnPosition === 9) {
+            newAreaColumn = 0;
+        }
+
+        return [newAreaRow, newAreaColumn];
     }
 
-    componentDidMount() {
-        document.addEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.addEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
-    }
-
-    checkSquareType(newRow, newColumn) {
+    checkSquareAccessible(newRow, newColumn) {
         const newSpace = this.state.gridLayout[newRow][newColumn];
 
         if (!newSpace.isAccessible) {
@@ -88,7 +116,7 @@ class Grid extends Component {
 
     checkPlayerInventory(itemToCheck, required) {
         const name = this.props.player.getName();
-        const inventory = this.props.player.getInventory[itemToCheck];
+        const inventory = this.props.player.getInventory(itemToCheck);
 
         if (!inventory) {
             this.props.updateMessage(
@@ -98,8 +126,8 @@ class Grid extends Component {
         } else if (inventory < required) {
             this.props.updateMessage(
                 `Oh, you're quite on your way, ${name}! You only need ${
-                    required - inventory[0].quantity
-                } more report card${inventory[0].quantity !== 1 ? '' : 's'}!`
+                    required - inventory
+                } more report card${inventory !== 1 ? '' : 's'}!`
             );
             return false;
         }
@@ -161,11 +189,11 @@ class Grid extends Component {
             gridSpace.npc.successfulAction();
             return true;
         } else if (gridSpace.link) {
-            this.props.updateGrid(gridSpace.link, gridSpace.linkName);
+            this.updateGrid(gridSpace.link, gridSpace.linkName);
         }
     }
 
-    setSquareAccesible(column, row) {
+    setSquareAccessible(column, row) {
         const gridLayout = this.state.gridLayout;
         const square =
             gridLayout[this.state.rowPosition + row][
@@ -178,7 +206,8 @@ class Grid extends Component {
 
     handleKeyPress(e) {
         e.stopPropagation();
-        const { columns, rows, columnPosition, rowPosition } = this.state;
+        const { columns, rows, columnPosition, rowPosition, gridLayout } =
+            this.state;
         const eventValue = e.type === 'keyup' ? e.keyCode : e.target.id;
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
@@ -225,10 +254,17 @@ class Grid extends Component {
             case 'spaceKey': {
                 // space
                 this.interact(rowPosition, columnPosition);
+
+                // If current position links to another grid,
+                // update positions for the new area
+                if (gridLayout[rowPosition][columnPosition].link) {
+                    [newRowPosition, newColumnPosition] =
+                        this.calculateNewAreaPosition();
+                }
             }
         }
 
-        this.checkSquareType(newRowPosition, newColumnPosition);
+        this.checkSquareAccessible(newRowPosition, newColumnPosition);
     }
 
     render() {

@@ -1,6 +1,6 @@
 import { Component } from 'preact';
 import Grid from './grid';
-import Home from '../Grids/home';
+// import Home from '../Grids/home';
 import style from './style.scss';
 import MainMenu from './mainMenu';
 import GamePanel from './gamePanel';
@@ -14,8 +14,6 @@ class Game extends Component {
             answerInput: '',
             message: '',
             player: null,
-            currentGrid: Home,
-            gridName: 'Home',
         };
     }
 
@@ -40,12 +38,12 @@ class Game extends Component {
         });
     };
 
-    updateGrid = async (grid, name) => {
-        await this.setState({
-            currentGrid: grid,
-            gridName: name,
-        });
-    }
+    // updateGrid = (grid, name) => {
+    //     this.setState({
+    //         currentGrid: grid,
+    //         gridName: name,
+    //     });
+    // };
 
     render() {
         const {
@@ -53,8 +51,8 @@ class Game extends Component {
             message,
             player,
             answerInput,
-            currentGrid,
-            gridName,
+            // currentGrid,
+            // gridName,
         } = this.state;
 
         return (
@@ -62,19 +60,17 @@ class Game extends Component {
                 {gameStart ? (
                     <div class={style.mainDisplay}>
                         <Grid
-                            gridSetup={currentGrid}
-                            gridName={gridName}
+                            // gridSetup={currentGrid}
+                            // gridName={gridName}
                             answerInput={answerInput}
                             clearAnswerInput={this.clearAnswerInput}
                             updateMessage={this.updateMessage}
                             player={player}
-                            updateGrid={this.updateGrid}
+                            // updateGrid={this.updateGrid}
                         />
                     </div>
                 ) : (
-                    <MainMenu
-                        updateGameStart={this.updateGameStart}
-                    />
+                    <MainMenu updateGameStart={this.updateGameStart} />
                 )}
                 {gameStart ? (
                     <div class={style.gamePanel}>
