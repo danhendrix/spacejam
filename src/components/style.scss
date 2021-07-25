@@ -138,6 +138,11 @@ body {
         outline: none;
         transform: translateY(-15px);
     }
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(11.125px);
+    }
 }
 
 .avatarImage {
@@ -159,6 +164,10 @@ body {
     border-radius: 25px / 50px;
     max-width: 150px;
     grid-area: start;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     @media only screen and (orientation: landscape) {
         margin: auto;
@@ -341,6 +350,11 @@ body {
             }
         }
 
+        .virtualKey {
+            background-color: gray;
+            border-radius: 10px;
+        }
+
         .upArrow {
             grid-area: up;
         }
@@ -359,8 +373,12 @@ body {
     }
 
     .spaceKeyContainer {
+        display: flex;
+        align-items: center;
         .spaceKey {
-            height: 100%;
+            background-color: gray;
+            border-radius: 10px;
+            height: 50%;
             width: 100%;
         }
     }

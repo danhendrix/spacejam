@@ -16,11 +16,6 @@ const AvatarOptions = [
         alt: 'purple wizard',
     },
     {
-        name: 'wizard2',
-        src: wizard2,
-        alt: 'red wizard',
-    },
-    {
         name: 'fighter1',
         src: fighter1,
         alt: 'green fighter',
@@ -29,6 +24,11 @@ const AvatarOptions = [
         name: 'knight1',
         src: knight1,
         alt: 'teal knight',
+    },
+    {
+        name: 'wizard2',
+        src: wizard2,
+        alt: 'red wizard',
     },
     {
         name: 'fighter2',
@@ -86,7 +86,7 @@ function MainMenu({ updateGameStart }) {
                             >
                                 <img
                                     class={`${style.avatarImage} ${
-                                        avatar === name ? style.selected : ''
+                                        avatar === src ? style.selected : ''
                                     }`}
                                     src={src}
                                     alt={alt}
