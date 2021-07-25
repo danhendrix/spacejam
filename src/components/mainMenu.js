@@ -7,7 +7,7 @@ import knight1 from '../assets/avatars/knight1.png';
 import fighter2 from '../assets/avatars/fighter2.png';
 import knight2 from '../assets/avatars/knight2.png';
 import { useState } from 'preact/hooks';
-import { User } from '../../user';
+import { User } from '../User/user';
 
 const AvatarOptions = [
     {
@@ -33,18 +33,18 @@ const AvatarOptions = [
     {
         name: 'fighter2',
         src: fighter2,
-        alt: 'orange fighter'
+        alt: 'orange fighter',
     },
     {
         name: 'knight2',
         src: knight2,
         alt: 'gold knight',
-    }
-]
+    },
+];
 
 function MainMenu({ updateGameStart }) {
-    const [name, setName] = useState("");
-    const [avatar, setAvatar] = useState("");
+    const [name, setName] = useState('');
+    const [avatar, setAvatar] = useState('');
 
     const startGame = () => {
         const user = new User(name, avatar);
@@ -53,11 +53,11 @@ function MainMenu({ updateGameStart }) {
 
     const updateName = (e) => {
         setName(e.target.value);
-    }
+    };
 
     const updateAvatar = (e) => {
-        setAvatar(e.currentTarget.children[0].src,);
-    }
+        setAvatar(e.currentTarget.children[0].src);
+    };
 
     return (
         <div class={style.menuContainer}>
@@ -85,7 +85,9 @@ function MainMenu({ updateGameStart }) {
                                 onClick={updateAvatar}
                             >
                                 <img
-                                    class={`${style.avatarImage} ${avatar === name ? style.selected : ''}`}
+                                    class={`${style.avatarImage} ${
+                                        avatar === name ? style.selected : ''
+                                    }`}
                                     src={src}
                                     alt={alt}
                                 />
