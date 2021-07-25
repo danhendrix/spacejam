@@ -87,20 +87,19 @@ class Grid extends Component {
     }
 
     checkPlayerInventory(itemToCheck, required) {
-        const inventory = this.props.player.inventory[itemToCheck];
+        const name = this.props.player.getName();
+        const inventory = this.props.player.getInventory[itemToCheck];
 
-        if (inventory === 0) {
+        if (!inventory) {
             this.props.updateMessage(
-                'You must first bring me back 3 report cards before you are allowed to pass!'
+                `Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!`
             );
             return false;
         } else if (inventory < required) {
             this.props.updateMessage(
-                `It looks like you're almost there! Only ${
+                `Oh, you're quite on your way, ${name}! You only need ${
                     required - inventory[0].quantity
-                } more report card${
-                    inventory[0].quantity !== 1 ? '' : 's'
-                } to go!`
+                } more report card${inventory[0].quantity !== 1 ? '' : 's'}!`
             );
             return false;
         }
