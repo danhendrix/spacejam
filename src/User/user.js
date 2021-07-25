@@ -1,4 +1,3 @@
-
 export const InventoryTypes = {
     reportCard: 'Report cards',
 };
@@ -16,5 +15,13 @@ export class User {
         } else {
             this.inventory[type] = amount;
         }
+    }
+
+    getInventory(type) {
+        return this.inventory[type];
+    }
+
+    getName() {
+        return this.name;
     }
 }
