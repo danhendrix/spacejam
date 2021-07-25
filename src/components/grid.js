@@ -135,7 +135,7 @@ class Grid extends Component {
         return true;
     }
 
-    interact(row, column) {
+    handleInteraction(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
@@ -193,7 +193,7 @@ class Grid extends Component {
         }
     }
 
-    setSquareAccessible(column, row) {
+    setSquareAccessible(row, column) {
         const gridLayout = this.state.gridLayout;
         const square =
             gridLayout[this.state.rowPosition + row][
@@ -253,7 +253,7 @@ class Grid extends Component {
             case 13:
             case 'spaceKey': {
                 // space
-                this.interact(rowPosition, columnPosition);
+                this.handleInteraction(rowPosition, columnPosition);
 
                 // If current position links to another grid,
                 // update positions for the new area

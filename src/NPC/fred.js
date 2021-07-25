@@ -11,7 +11,7 @@ const fredActions = [
         ],
         afterAction: {
             fn() {
-                this.setSquareAccessible(1, 0);
+                this.setSquareAccessible(0, 1);
             },
             message: 'My word, you have them all! Please continue through.',
         },
