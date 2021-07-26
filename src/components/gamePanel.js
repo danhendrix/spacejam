@@ -34,7 +34,7 @@ function GamePanel({}) {
                     id='enterKey'
                     class={`${style.virtualKey} ${style.enterKey}`}
                 >
-                    Space
+                    Enter
                 </button>
             </div>
         </>
