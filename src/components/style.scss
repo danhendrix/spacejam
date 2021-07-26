@@ -61,10 +61,15 @@ body {
     }
 
     .modalButton {
+        background-color: gray;
         border-radius: 25px;
         font-size: 1.125rem;
         margin: 0 10px;
         padding: 10px 15px;
+
+        &:focus {
+            outline: 2px solid white;
+        }
 
         &:hover {
             cursor: pointer;

@@ -1,9 +1,16 @@
-import { useEffect } from 'preact/hooks';
+import { useEffect, useRef } from 'preact/hooks';
 import style from './style.scss';
 
 function Message(props) {
+    const closeRef = useRef();
+    const inputRef = useRef();
+
     useEffect(() => {
-        document.querySelector('#playerAnswer').focus();
+        if (!inputRef.current) {
+            closeRef.current.focus();
+        } else {
+            inputRef.current.focus();
+        }
     }, []);
 
     const closeModal = () => {
@@ -22,6 +29,7 @@ function Message(props) {
                         class={style.answerInput}
                         onInput={props.updateAnswerInput}
                         value={props.answerInput}
+                        ref={inputRef}
                     />
                 </label>
             </div>
@@ -33,6 +41,7 @@ function Message(props) {
                     id='closeButton'
                     class={style.modalButton}
                     onClick={closeModal}
+                    ref={closeRef}
                 >
                     Close
                 </button>
