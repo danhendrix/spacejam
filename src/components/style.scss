@@ -336,19 +336,35 @@ body {
             &.empty {
                 background-color: rgb(27, 29, 30);
             }
-            &.path {
-                background-color: rgb(146, 99, 77);
-                background-image: url('../assets/backgrounds/path.jpg');
-            }
 
             &.grass {
                 background-color: rgb(0, 128, 0);
                 background-image: url('../assets/backgrounds/grass.jpg');
             }
 
-            &.mountain {
-                background-color: rgb(141, 141, 141);
-                background-image: url('../assets/backgrounds/mountain.jpg');
+            &.path {
+                background-color: rgb(146, 99, 77);
+                background-image: url('../assets/backgrounds/path.jpg');
+            }
+
+            &.pillars {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/pillars.jpg');
+            }
+
+            &.shopSign {
+                background-color: rgb(190, 134, 108);
+                background-image: url('../assets/backgrounds/shopSign.jpg');
+            }
+
+            &.tree {
+                background-color: rgb(0, 80, 0);
+                background-image: url('../assets/backgrounds/tree.jpg');
+            }
+
+            &.dungeonEntrance {
+                background-color: rgb(87, 43, 22);
+                background-image: url('../assets/backgrounds/dungeonEntrance.jpg');
             }
 
             &.dungeonFloorBasic {
@@ -376,14 +392,19 @@ body {
                 background-image: url('../assets/backgrounds/dungeon/dungeonWall.jpg');
             }
 
-            &.forestBasic {
-                background-color: rgb(0, 128, 0);
-                background-image: url('../assets/backgrounds/forest/forestBasic.jpg');
+            &.lairFloorBasic {
+                background-color: rgb(185, 185, 185);
+                background-image: url('../assets/backgrounds/lair/lairFloorBasic.png');
             }
 
-            &.forestTree {
-                background-color: rgb(0, 80, 0);
-                background-image: url('../assets/backgrounds/forest/forestTree.jpg');
+            &.lairWall {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/lair/lairWall.jpg');
+            }
+
+            &.lairWindow {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/lair/lairWindow.jpg');
             }
 
             &.shopFloorBasic {

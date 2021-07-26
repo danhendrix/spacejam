@@ -34,21 +34,21 @@ const Home = [
             pathTo: null,
         },
         {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: 'forest',
+        },
+        {
             type: 'path',
             npc: null,
             isAccessible: true,
             pathTo: 'forest',
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -96,13 +96,13 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'path',
+            type: 'grass',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -164,7 +164,7 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -300,13 +300,13 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'path',
+            type: 'pillars',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'mountain',
+            type: 'pillars',
             npc: null,
             isAccessible: false,
             pathTo: null,
@@ -376,27 +376,27 @@ const Home = [
     ],
     [
         {
-            type: 'mountain',
+            type: 'shopSign',
             npc: null,
             isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'mountain',
+            type: 'grass',
             npc: null,
-            isAccessible: false,
+            isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'mountain',
+            type: 'grass',
             npc: null,
-            isAccessible: false,
+            isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'mountain',
+            type: 'grass',
             npc: null,
-            isAccessible: false,
+            isAccessible: true,
             pathTo: null,
         },
         {
@@ -424,13 +424,13 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'mountain',
+            type: 'pillars',
             npc: null,
             isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'mountain',
+            type: 'pillars',
             npc: null,
             isAccessible: false,
             pathTo: null,
@@ -586,7 +586,7 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'path',
+            type: 'dungeonEntrance',
             npc: null,
             isAccessible: true,
             pathTo: 'dungeon',
