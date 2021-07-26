@@ -20,7 +20,7 @@ function Message(props) {
                     <input
                         id='playerAnswer'
                         class={style.answerInput}
-                        onChange={props.updateAnswerInput}
+                        onInput={props.updateAnswerInput}
                         value={props.answerInput}
                     />
                 </label>

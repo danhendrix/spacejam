@@ -47,8 +47,8 @@ class Game extends Component {
                     <Message
                         message={message}
                         updateAnswerInput={this.updateAnswerInput}
-                        name={player.name}
                         answerInput={answerInput}
+                        name={player.name}
                         clearMessage={this.updateMessage}
                         clearInput={this.clearAnswerInput}
                     />

@@ -159,8 +159,7 @@ class Grid extends Component {
 
     handleInteraction(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
-        const { clearAnswerInput, updateMessage } = this.props;
-        clearAnswerInput();
+        const { updateMessage } = this.props;
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
             const currentAction = gridSpace.npc.interact();
