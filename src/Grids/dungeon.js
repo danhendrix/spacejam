@@ -1,25 +1,25 @@
 const Dungeon = [
     [
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonWall',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonWall',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonWall',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonWall',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -31,23 +31,37 @@ const Dungeon = [
             pathTo: 'home',
         },
         {
-            type: 'dungeonFloorPatch',
+            type: 'dungeonWall',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonWall',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonWall',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
+        {
+            type: 'dungeonWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'dungeonWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    [
         {
             type: 'dungeonFloorHole',
             npc: null,
@@ -60,8 +74,6 @@ const Dungeon = [
             isAccessible: true,
             pathTo: null,
         },
-    ],
-    [
         {
             type: 'dungeonFloorBasic',
             npc: null,
@@ -69,19 +81,7 @@ const Dungeon = [
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'dungeonFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonFloorPatch',
             npc: null,
             isAccessible: true,
             pathTo: null,
