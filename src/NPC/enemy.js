@@ -1,27 +1,42 @@
 import NPC, { RequirementTypes } from './npc';
+import Math from '../Questions/math';
 
-const enemyActions = [
-    {
-        requirements: [
-            {
-                type: RequirementTypes.question,
-                question: 'What is 2 + 2?',
-                answer: 4,
-                cleared: false,
-                updateClearedStatus() {
-                    if (!this.cleared) {
-                        this.cleared = true;
-                    }
+const enemyActions = () => {
+    const question = Math.pickQuestion();
+    return [
+        {
+            requirements: [
+                {
+                    type: RequirementTypes.question,
+                    question: question.question,
+                    answer: question.answer,
+                    cleared: false,
+                    updateClearedStatus() {
+                        if (!this.cleared) {
+                            this.cleared = true;
+                        }
+                    },
                 },
+            ],
+            afterAction: {
+                fn() {},
+                message: 'Harumph! Fine, you may pass this time!',
             },
-        ],
-        afterAction: {
-            fn() {},
-            message: 'Harumph! Fine, you may pass this time!',
         },
-    },
-];
+    ];
+};
 
-const Enemy = new NPC('Enemy', 'enemy', '../assets/wizard.png', enemyActions);
+const Enemy1 = new NPC(
+    'Enemy',
+    'enemy',
+    '../assets/wizard.png',
+    enemyActions()
+);
+const Enemy2 = new NPC(
+    'Enemy',
+    'enemy',
+    '../assets/wizard.png',
+    enemyActions()
+);
 
-export default Enemy;
+export { Enemy1, Enemy2 };
