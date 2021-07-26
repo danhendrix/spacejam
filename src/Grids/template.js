@@ -1,193 +1,22 @@
-import Fred from '../NPC/fred';
-import Enemy from '../NPC/enemy';
+export const adjustTemplate = (fromRow, fromColumn, pathTo) => {
+    const tempGrid = [];
 
-const Home = [
-    [
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: Enemy,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: 'forest',
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-    ],
-    [
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-    ],
-    [
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-    ],
+    Template.forEach((row, rowIndex) => {
+        const tempRow = [];
+
+        row.forEach((square, columnIndex) => {
+            if (rowIndex === fromRow && columnIndex === fromColumn) {
+                tempRow.push({ ...square, pathTo });
+            } else {
+                tempRow.push(square);
+            }
+        });
+        tempGrid.push(tempRow);
+    });
+    return tempGrid;
+};
+
+export const Template = [
     [
         {
             type: 'grass',
@@ -214,7 +43,7 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'path',
+            type: 'grass',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -276,193 +105,7 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
             type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'mountain',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-    ],
-    [
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: Fred,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: 'lair',
-        },
-    ],
-    [
-        {
-            type: 'mountain',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-        {
-            type: 'mountain',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-        {
-            type: 'mountain',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-        {
-            type: 'mountain',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'mountain',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-        {
-            type: 'mountain',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-    ],
-    [
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: 'shop',
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'path',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -524,7 +167,7 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'path',
+            type: 'grass',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -586,10 +229,382 @@ const Home = [
             pathTo: null,
         },
         {
-            type: 'path',
+            type: 'grass',
             npc: null,
             isAccessible: true,
-            pathTo: 'dungeon',
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    [
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    [
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    [
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    [
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    [
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    [
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
         },
         {
             type: 'grass',
@@ -623,5 +638,3 @@ const Home = [
         },
     ],
 ];
-
-export default Home;
