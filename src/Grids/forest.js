@@ -38,9 +38,9 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {

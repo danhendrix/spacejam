@@ -109,10 +109,10 @@ class Grid extends Component {
         return [newAreaRow, newAreaColumn];
     }
 
-    checkSquareAccessible(newRow, newColumn) {
+    checkSquareAccessible(e, newRow, newColumn) {
         const newSpace = this.state.gridLayout[newRow][newColumn];
 
-        if (!newSpace.isAccessible) {
+        if (!newSpace.isAccessible && e.keyCode !== 13) {
             return;
         }
 
@@ -279,10 +279,8 @@ class Grid extends Component {
                     }
                 }
                 break;
-            // Enter key
             case 13:
-            case 32:
-            case 'spaceKey': {
+            case 'enterKey': {
                 this.handleInteraction(rowPosition, columnPosition);
 
                 // If current position has a path to another grid,
@@ -294,7 +292,7 @@ class Grid extends Component {
             }
         }
 
-        this.checkSquareAccessible(newRowPosition, newColumnPosition);
+        this.checkSquareAccessible(e, newRowPosition, newColumnPosition);
     }
 
     render() {
