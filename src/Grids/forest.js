@@ -32,9 +32,9 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'forestTree',
+            type: 'forestBasic',
             npc: null,
-            isAccessible: false,
+            isAccessible: true,
             pathTo: null,
         },
         {
@@ -530,9 +530,9 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -542,9 +542,9 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -569,33 +569,33 @@ const Forest = [
     // ROW INDEX 9
     [
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -605,27 +605,27 @@ const Forest = [
             pathTo: 'home',
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'forestBasic',
+            type: 'forestTree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],

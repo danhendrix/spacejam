@@ -333,6 +333,9 @@ body {
  ** ==========-==========-==========-==========-==========
  */
 
+            &.empty {
+                background-color: rgb(27, 29, 30);
+            }
             &.path {
                 background-color: rgb(146, 99, 77);
                 background-image: url('../assets/backgrounds/path.jpg');
@@ -346,16 +349,6 @@ body {
             &.mountain {
                 background-color: rgb(141, 141, 141);
                 background-image: url('../assets/backgrounds/mountain.jpg');
-            }
-
-            &.forestBasic {
-                background-color: rgb(0, 128, 0);
-                background-image: url('../assets/backgrounds/forest/forestBasic.jpg');
-            }
-
-            &.forestTree {
-                background-color: rgb(0, 80, 0);
-                background-image: url('../assets/backgrounds/forest/forestTree.jpg');
             }
 
             &.dungeonFloorBasic {
@@ -381,6 +374,31 @@ body {
             &.dungeonWall {
                 background-color: rgb(128, 84, 63);
                 background-image: url('../assets/backgrounds/dungeon/dungeonWall.jpg');
+            }
+
+            &.forestBasic {
+                background-color: rgb(0, 128, 0);
+                background-image: url('../assets/backgrounds/forest/forestBasic.jpg');
+            }
+
+            &.forestTree {
+                background-color: rgb(0, 80, 0);
+                background-image: url('../assets/backgrounds/forest/forestTree.jpg');
+            }
+
+            &.shopFloorBasic {
+                background-color: rgb(255, 216, 158);
+                background-image: url('../assets/backgrounds/shop/shopFloorBasic.png');
+            }
+
+            &.shopFloorBookshelf {
+                background-color: rgb(190, 162, 120);
+                background-image: url('../assets/backgrounds/shop/shopFloorBookshelf.png');
+            }
+
+            &.shopFloorEntry {
+                background-color: rgb(255, 216, 158);
+                background-image: url('../assets/backgrounds/shop/shopFloorEntry.png');
             }
 
             & > .activeImg,
