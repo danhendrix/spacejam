@@ -19,29 +19,31 @@ class Grid extends Component {
     }
 
     componentWillMount() {
-        document.removeEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.removeEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
+        document.removeEventListener('keydown', this.handleKeyPress.bind(this));
+        document.removeEventListener('click', this.handleKeyPress.bind(this));
+        // document;
+        // .querySelectorAll(`.${style.virtualKey}`)
+        // .forEach((virtualKey) => {
+        //     virtualKey.removeEventListener(
+        //         'click',
+        //         this.handleKeyPress.bind(this)
+        //     );
+        // });
 
         this.buildGrid(this.state.currentGrid);
     }
 
     componentDidMount() {
-        document.addEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.addEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
+        document.addEventListener('keydown', this.handleKeyPress.bind(this));
+        document.addEventListener('click', this.handleKeyPress.bind(this));
+        // document
+        //     .querySelectorAll(`.${style.virtualKey}`)
+        //     .forEach((virtualKey) => {
+        //         virtualKey.addEventListener(
+        //             'click',
+        //             this.handleKeyPress.bind(this)
+        //         );
+        //     });
     }
 
     buildGrid(gridSetup) {
@@ -227,9 +229,12 @@ class Grid extends Component {
 
     handleKeyPress(e) {
         e.stopPropagation();
+        if (e.target.id === 'closeButton') return;
+
         const { columns, rows, columnPosition, rowPosition, gridLayout } =
             this.state;
-        const eventValue = e.type === 'keyup' ? e.keyCode : e.target.id;
+        const { message } = this.props;
+        const eventValue = e.type === 'keydown' ? e.keyCode : e.target.id;
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
 
@@ -237,47 +242,40 @@ class Grid extends Component {
             case 38:
             case 'upArrow':
                 {
-                    // up
-                    if (rowPosition > 0) {
+                    // `message === ''` prevents moving when modal is open
+                    if (rowPosition > 0 && message === '') {
                         newRowPosition = rowPosition - 1;
                     }
-                    this.props.updateMessage('');
                 }
                 break;
             case 39:
             case 'rightArrow':
                 {
-                    // right
-                    if (columnPosition + 1 < columns) {
+                    if (columnPosition + 1 < columns && message === '') {
                         newColumnPosition = columnPosition + 1;
                     }
-                    this.props.updateMessage('');
                 }
                 break;
             case 40:
-            case 'downArrow':
                 {
                     // down
-                    if (rowPosition + 1 < rows) {
+                    if (rowPosition + 1 < rows && message === '') {
                         newRowPosition = rowPosition + 1;
                     }
-                    this.props.updateMessage('');
                 }
                 break;
             case 37:
-            case 'leftArrow':
                 {
                     // left
-                    if (columnPosition > 0) {
+                    if (columnPosition > 0 && message === '') {
                         newColumnPosition = columnPosition - 1;
                     }
-                    this.props.updateMessage('');
                 }
                 break;
-            case 32:
+            // Enter key
             case 13:
+            case 32:
             case 'spaceKey': {
-                // space
                 this.handleInteraction(rowPosition, columnPosition);
 
                 // If current position links to another grid,

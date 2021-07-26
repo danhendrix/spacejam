@@ -61,6 +61,7 @@ class Game extends Component {
                                 clearAnswerInput={this.clearAnswerInput}
                                 updateMessage={this.updateMessage}
                                 player={player}
+                                message={message}
                             />
                         </div>
                     ) : (

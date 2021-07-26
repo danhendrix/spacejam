@@ -1,6 +1,11 @@
+import { useEffect } from 'preact/hooks';
 import style from './style.scss';
 
 function Message(props) {
+    useEffect(() => {
+        document.querySelector('#playerAnswer').focus();
+    }, []);
+
     const closeModal = () => {
         props.clearMessage('');
         props.clearInput();
@@ -13,6 +18,7 @@ function Message(props) {
                 <label class={style.answerContainer}>
                     <div class={style.answerLabel}>{props.name}'s Answer</div>
                     <input
+                        id='playerAnswer'
                         class={style.answerInput}
                         onChange={props.updateAnswerInput}
                         value={props.answerInput}
@@ -20,10 +26,14 @@ function Message(props) {
                 </label>
             </div>
             <div>
-                <button id='submit-btn' class={style.modalButton}>
+                <button id='submitAnswer' class={style.modalButton}>
                     Submit
                 </button>
-                <button class={style.modalButton} onClick={closeModal}>
+                <button
+                    id='closeButton'
+                    class={style.modalButton}
+                    onClick={closeModal}
+                >
                     Close
                 </button>
             </div>
