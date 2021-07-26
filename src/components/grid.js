@@ -2,15 +2,18 @@ import { Component } from 'preact';
 import Square from './square';
 import style from './style.scss';
 import Home from '../Grids/home';
+import { Dungeon } from '../Grids/dungeon';
+import { Shop } from '../Grids/shop';
+import { Forest } from '../Grids/forest';
+import { Lair } from '../Grids/lair';
 import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentGrid: Home,
             gridName: 'Home',
-            gridLayout: [],
+            gridLayout: Home,
             rows: 0,
             columns: 0,
             rowPosition: 0,
@@ -19,29 +22,31 @@ class Grid extends Component {
     }
 
     componentWillMount() {
-        document.removeEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.removeEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
+        document.removeEventListener('keydown', this.handleKeyPress.bind(this));
+        document.removeEventListener('click', this.handleKeyPress.bind(this));
+        // document;
+        // .querySelectorAll(`.${style.virtualKey}`)
+        // .forEach((virtualKey) => {
+        //     virtualKey.removeEventListener(
+        //         'click',
+        //         this.handleKeyPress.bind(this)
+        //     );
+        // });
 
-        this.buildGrid(this.state.currentGrid);
+        this.buildGrid(this.state.gridLayout);
     }
 
     componentDidMount() {
-        document.addEventListener('keyup', this.handleKeyPress.bind(this));
-        document
-            .querySelectorAll(`.${style.virtualKey}`)
-            .forEach((virtualKey) => {
-                virtualKey.addEventListener(
-                    'click',
-                    this.handleKeyPress.bind(this)
-                );
-            });
+        document.addEventListener('keydown', this.handleKeyPress.bind(this));
+        document.addEventListener('click', this.handleKeyPress.bind(this));
+        // document
+        //     .querySelectorAll(`.${style.virtualKey}`)
+        //     .forEach((virtualKey) => {
+        //         virtualKey.addEventListener(
+        //             'click',
+        //             this.handleKeyPress.bind(this)
+        //         );
+        //     });
     }
 
     buildGrid(gridSetup) {
@@ -67,14 +72,33 @@ class Grid extends Component {
         });
     }
 
-    updateGrid = (grid, name) => {
+    updateGrid = (path) => {
+        let newGrid;
+
+        switch (path) {
+            case 'forest':
+                newGrid = Forest;
+                break;
+            case 'shop':
+                newGrid = Shop;
+                break;
+            case 'dungeon':
+                newGrid = Dungeon;
+                break;
+            case 'lair':
+                newGrid = Lair;
+                break;
+            default:
+                newGrid = Home;
+        }
+
         this.setState(
             {
-                currentGrid: grid,
-                gridName: name,
+                gridLayout: newGrid,
+                gridName: path,
             },
             () => {
-                this.buildGrid(this.state.currentGrid);
+                this.buildGrid(this.state.gridLayout);
             }
         );
     };
@@ -140,14 +164,14 @@ class Grid extends Component {
 
         if (!inventory) {
             this.props.updateMessage(
-                `Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!`
+                `"Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!"`
             );
             return false;
         } else if (inventory < amountRequired) {
             this.props.updateMessage(
-                `Oh, you're quite on your way, ${name}! You only need ${
+                `"Oh, you're quite on your way, ${name}! You only need ${
                     amountRequired - inventory
-                } more report card${inventory !== 1 ? '' : 's'}!`
+                } more report card${inventory !== 1 ? '' : 's'}!"`
             );
             return false;
         }
@@ -157,9 +181,11 @@ class Grid extends Component {
 
     handleInteraction(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
+        const { updateMessage } = this.props;
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
             const currentAction = gridSpace.npc.interact();
+            const cancel = gridSpace.npc.cancel();
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
@@ -167,28 +193,31 @@ class Grid extends Component {
                         require;
 
                     if (type === RequirementTypes.inventory) {
-                        if (!this.checkPlayerInventory(item, amount))
+                        if (!this.checkPlayerInventory(item, amount)) {
+                            cancel;
                             return false;
+                        }
                     } else if (type === RequirementTypes.question) {
                         const playerAnswer = this.props.answerInput;
-                        this.props.clearAnswerInput();
 
                         if (cleared) {
-                            console.log('already answered');
-                            return;
+                            cancel;
+                            break;
                         }
 
                         if (playerAnswer === '') {
-                            this.props.updateMessage(question);
-                            gridSpace.npc.cancel();
+                            updateMessage(`"${question}"`);
+                            cancel;
                             return false;
                         } else if (playerAnswer != answer) {
-                            this.props.updateMessage('Try again!');
-                            gridSpace.npc.cancel();
+                            updateMessage(
+                                `"Heheheh dumn hooman! Try again! ${question}"`
+                            );
+                            cancel;
                             return false;
                         }
 
-                        require.updateCleared();
+                        require.updateClearedStatus();
                         if (this.checkRemainingEnemies()) {
                             console.log('More enemies remain!');
                         } else {
@@ -200,11 +229,11 @@ class Grid extends Component {
 
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            this.props.updateMessage(message);
+            updateMessage(`"${message}"`);
             gridSpace.npc.successfulAction();
             return true;
-        } else if (gridSpace.link) {
-            this.updateGrid(gridSpace.link, gridSpace.linkName);
+        } else if (gridSpace.pathTo) {
+            this.updateGrid(gridSpace.pathTo);
         }
     }
 
@@ -221,9 +250,12 @@ class Grid extends Component {
 
     handleKeyPress(e) {
         e.stopPropagation();
+        if (e.target.id === 'closeButton') return;
+
         const { columns, rows, columnPosition, rowPosition, gridLayout } =
             this.state;
-        const eventValue = e.type === 'keyup' ? e.keyCode : e.target.id;
+        const { message } = this.props;
+        const eventValue = e.type === 'keydown' ? e.keyCode : e.target.id;
         let newRowPosition = rowPosition;
         let newColumnPosition = columnPosition;
 
@@ -231,8 +263,8 @@ class Grid extends Component {
             case 38:
             case 'upArrow':
                 {
-                    // up
-                    if (rowPosition > 0) {
+                    // `message === ''` prevents moving when modal is open
+                    if (rowPosition > 0 && message === '') {
                         newRowPosition = rowPosition - 1;
                     }
                 }
@@ -240,39 +272,36 @@ class Grid extends Component {
             case 39:
             case 'rightArrow':
                 {
-                    // right
-                    if (columnPosition + 1 < columns) {
+                    if (columnPosition + 1 < columns && message === '') {
                         newColumnPosition = columnPosition + 1;
                     }
                 }
                 break;
             case 40:
-            case 'downArrow':
                 {
                     // down
-                    if (rowPosition + 1 < rows) {
+                    if (rowPosition + 1 < rows && message === '') {
                         newRowPosition = rowPosition + 1;
                     }
                 }
                 break;
             case 37:
-            case 'leftArrow':
                 {
                     // left
-                    if (columnPosition > 0) {
+                    if (columnPosition > 0 && message === '') {
                         newColumnPosition = columnPosition - 1;
                     }
                 }
                 break;
-            case 32:
+            // Enter key
             case 13:
+            case 32:
             case 'spaceKey': {
-                // space
                 this.handleInteraction(rowPosition, columnPosition);
 
-                // If current position links to another grid,
+                // If current position has a path to another grid,
                 // update positions for the new area
-                if (gridLayout[rowPosition][columnPosition].link) {
+                if (gridLayout[rowPosition][columnPosition].pathTo) {
                     [newRowPosition, newColumnPosition] =
                         this.calculateNewAreaPosition();
                 }
