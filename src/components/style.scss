@@ -4,6 +4,82 @@ body {
     font-family: 'Comic Neue', cursive;
 }
 
+/** 
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+    MESSAGE MODAL STYLES
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+ */
+
+.messageModal {
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px 0;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 25px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+
+    .npcMessage {
+        background-color: rgba(82, 0, 0, 0.349);
+        border-radius: 15px;
+        font-size: 1.125rem;
+        height: 60%;
+        padding: 10px;
+        max-height: 250px;
+        max-width: 500px;
+        overflow-y: auto;
+        overflow-x: none;
+        width: 100%;
+    }
+
+    .answerContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .answerLabel {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .answerInput {
+        font-size: 2rem;
+        padding: 5px 0;
+        text-align: center;
+        width: 100px;
+    }
+
+    .modalButton {
+        border-radius: 25px;
+        font-size: 1.125rem;
+        margin: 0 10px;
+        padding: 10px 15px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/** 
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+    GAME CONTAINER STYLES
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+ */
+
 .gameContainer {
     // background-color: purple;
     display: grid;
@@ -34,6 +110,14 @@ body {
         top: 10px;
     }
 }
+
+/** 
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+    MENU STYLES
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+ */
 
 .menuContainer {
     display: grid;
@@ -182,6 +266,14 @@ body {
     }
 }
 
+/** 
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+    MAIN GAME DISPLAY STYLES
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+ */
+
 .mainDisplay {
     justify-self: center;
 }
@@ -279,6 +371,14 @@ body {
         }
     }
 }
+
+/** 
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+    USER INTERFACE STYLES
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+ */
 
 .gamePanel {
     background-color: blue;
@@ -428,48 +528,43 @@ body {
             }
         }
 
-        .answerLabel {
-            display: flex;
-            flex-direction: column;
+        // .answerLabel {
+        //     display: flex;
+        //     flex-direction: column;
 
-            @media only screen and (orientation: landscape) {
-                height: 30%;
-                width: 100%;
-            }
+        //     @media only screen and (orientation: landscape) {
+        //         height: 30%;
+        //         width: 100%;
+        //     }
 
-            @media only screen and (orientation: portrait) {
-                width: 45%;
-                height: 100%;
+        //     @media only screen and (orientation: portrait) {
+        //         width: 45%;
+        //         height: 100%;
 
-                @media only screen and (min-width: 700px) {
-                    width: 25%;
-                }
-            }
-        }
+        //         @media only screen and (min-width: 700px) {
+        //             width: 25%;
+        //         }
+        //     }
+        // }
 
-        .answerInput {
-            border: 1px solid rgba(0, 0, 0, 0.6);
-            font-size: 24px;
-            height: 100%;
-            text-align: center;
-            width: 100%;
+        // .answerInput {
+        //     border: 1px solid rgba(0, 0, 0, 0.6);
+        //     font-size: 24px;
+        //     height: 100%;
+        //     text-align: center;
+        //     width: 100%;
 
-            &:focus {
-                border-top: 2px solid rgb(0, 0, 0);
-                border-bottom: 2px solid rgb(0, 0, 0);
-                outline: none;
-            }
+        //     &:focus {
+        //         border-top: 2px solid rgb(0, 0, 0);
+        //         border-bottom: 2px solid rgb(0, 0, 0);
+        //         outline: none;
+        //     }
 
-            @media only screen and (orientation: portrait) {
-                @media only screen and (min-width: 700px) {
-                    font-size: 48px;
-                }
-            }
-        }
+        //     @media only screen and (orientation: portrait) {
+        //         @media only screen and (min-width: 700px) {
+        //             font-size: 48px;
+        //         }
+        //     }
+        // }
     }
-}
-
-input:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
 }
