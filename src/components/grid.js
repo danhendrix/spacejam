@@ -2,15 +2,18 @@ import { Component } from 'preact';
 import Square from './square';
 import style from './style.scss';
 import Home from '../Grids/home';
+import { Dungeon } from '../Grids/dungeon';
+import { Shop } from '../Grids/shop';
+import { Forest } from '../Grids/forest';
+import { Lair } from '../Grids/lair';
 import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentGrid: Home,
             gridName: 'Home',
-            gridLayout: [],
+            gridLayout: Home,
             rows: 0,
             columns: 0,
             rowPosition: 0,
@@ -30,7 +33,7 @@ class Grid extends Component {
         //     );
         // });
 
-        this.buildGrid(this.state.currentGrid);
+        this.buildGrid(this.state.gridLayout);
     }
 
     componentDidMount() {
@@ -69,14 +72,33 @@ class Grid extends Component {
         });
     }
 
-    updateGrid = (grid, name) => {
+    updateGrid = (path) => {
+        let newGrid;
+
+        switch (path) {
+            case 'forest':
+                newGrid = Forest;
+                break;
+            case 'shop':
+                newGrid = Shop;
+                break;
+            case 'dungeon':
+                newGrid = Dungeon;
+                break;
+            case 'lair':
+                newGrid = Lair;
+                break;
+            default:
+                newGrid = Home;
+        }
+
         this.setState(
             {
-                currentGrid: grid,
-                gridName: name,
+                gridLayout: newGrid,
+                gridName: path,
             },
             () => {
-                this.buildGrid(this.state.currentGrid);
+                this.buildGrid(this.state.gridLayout);
             }
         );
     };
@@ -210,8 +232,8 @@ class Grid extends Component {
             updateMessage(`"${message}"`);
             gridSpace.npc.successfulAction();
             return true;
-        } else if (gridSpace.link) {
-            this.updateGrid(gridSpace.link, gridSpace.linkName);
+        } else if (gridSpace.pathTo) {
+            this.updateGrid(gridSpace.pathTo);
         }
     }
 
@@ -277,9 +299,9 @@ class Grid extends Component {
             case 'spaceKey': {
                 this.handleInteraction(rowPosition, columnPosition);
 
-                // If current position links to another grid,
+                // If current position has a path to another grid,
                 // update positions for the new area
-                if (gridLayout[rowPosition][columnPosition].link) {
+                if (gridLayout[rowPosition][columnPosition].pathTo) {
                     [newRowPosition, newColumnPosition] =
                         this.calculateNewAreaPosition();
                 }
