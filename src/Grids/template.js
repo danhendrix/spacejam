@@ -1,4 +1,4 @@
-export const adjustTemplate = (fromRow, fromColumn, pathTo) => {
+export const cloneTemplate = (fromRow, fromColumn, pathTo) => {
     const tempGrid = [];
 
     Template.forEach((row, rowIndex) => {
@@ -17,6 +17,7 @@ export const adjustTemplate = (fromRow, fromColumn, pathTo) => {
 };
 
 export const Template = [
+    // ROW INDEX 0
     [
         {
             type: 'grass',
@@ -79,6 +80,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 1
     [
         {
             type: 'grass',
@@ -141,6 +143,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 2
     [
         {
             type: 'grass',
@@ -203,6 +206,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 3
     [
         {
             type: 'grass',
@@ -265,6 +269,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 4
     [
         {
             type: 'grass',
@@ -327,6 +332,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 5
     [
         {
             type: 'grass',
@@ -389,6 +395,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 6
     [
         {
             type: 'grass',
@@ -451,6 +458,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 7
     [
         {
             type: 'grass',
@@ -513,6 +521,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 8
     [
         {
             type: 'grass',
@@ -575,6 +584,7 @@ export const Template = [
             pathTo: null,
         },
     ],
+    // ROW INDEX 9
     [
         {
             type: 'grass',
@@ -607,7 +617,7 @@ export const Template = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'path',
             npc: null,
             isAccessible: true,
             pathTo: null,

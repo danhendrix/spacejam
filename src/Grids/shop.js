@@ -1,3 +1,634 @@
-import { adjustTemplate } from './template';
+const Shop = [
+    // ROW INDEX 0
+    [
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 1
+    [
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 2
+    [
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'empty',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 3
+    [
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBookshelf',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 4
+    [
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 5
+    [
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 6
+    [
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 7
+    [
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorEntry',
+            npc: null,
+            isAccessible: true,
+            pathTo: 'home',
+        },
+    ],
+    // ROW INDEX 8
+    [
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 9
+    [
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'shopFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+];
 
-export const Shop = adjustTemplate(7, 9, 'home');
+export default Shop;

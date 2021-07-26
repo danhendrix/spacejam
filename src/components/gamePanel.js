@@ -29,10 +29,10 @@ function GamePanel({}) {
                     Right
                 </button>
             </div>
-            <div class={`${style.keysContainer} ${style.spaceKeyContainer}`}>
+            <div class={`${style.keysContainer} ${style.enterKeyContainer}`}>
                 <button
-                    id='spaceKey'
-                    class={`${style.virtualKey} ${style.spaceKey}`}
+                    id='enterKey'
+                    class={`${style.virtualKey} ${style.enterKey}`}
                 >
                     Space
                 </button>

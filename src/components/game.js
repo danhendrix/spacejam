@@ -35,6 +35,7 @@ class Game extends Component {
     updateMessage = (newMessage) => {
         this.setState({
             message: newMessage,
+            answerInput: '',
         });
     };
 

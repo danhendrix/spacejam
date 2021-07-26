@@ -1,3 +1,634 @@
-import { adjustTemplate } from './template';
+const Lair = [
+    // ROW INDEX 0
+    [
+        {
+            type: 'lairWindow',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWindow',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWindow',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWall',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairWindow',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 1
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 2
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 3
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 4
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 5
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: 'home',
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 6
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 7
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 8
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+    // ROW INDEX 9
+    [
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'lairFloorBasic',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+    ],
+];
 
-export const Lair = adjustTemplate(5, 0, 'home');
+export default Lair;

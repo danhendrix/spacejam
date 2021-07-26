@@ -325,9 +325,16 @@ body {
                 }
             }
 
-            &.path {
-                background-color: rgb(204, 56, 56);
-                background-image: url('../assets/backgrounds/path.jpg');
+            /** 
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+    BACKGROUND IMAGES FOR GRID SQUARES
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+ */
+
+            &.empty {
+                background-color: rgb(27, 29, 30);
             }
 
             &.grass {
@@ -335,9 +342,84 @@ body {
                 background-image: url('../assets/backgrounds/grass.jpg');
             }
 
-            &.mountain {
-                background-color: rgb(141, 141, 141);
-                background-image: url('../assets/backgrounds/mountain.jpg');
+            &.path {
+                background-color: rgb(146, 99, 77);
+                background-image: url('../assets/backgrounds/path.jpg');
+            }
+
+            &.pillars {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/pillars.jpg');
+            }
+
+            &.shopSign {
+                background-color: rgb(190, 134, 108);
+                background-image: url('../assets/backgrounds/shopSign.jpg');
+            }
+
+            &.tree {
+                background-color: rgb(0, 80, 0);
+                background-image: url('../assets/backgrounds/tree.jpg');
+            }
+
+            &.dungeonEntrance {
+                background-color: rgb(87, 43, 22);
+                background-image: url('../assets/backgrounds/dungeonEntrance.jpg');
+            }
+
+            &.dungeonFloorBasic {
+                background-color: rgb(87, 43, 22);
+                background-image: url('../assets/backgrounds/dungeon/dungeonFloorBasic.png');
+            }
+
+            &.dungeonFloorHole {
+                background-color: rgb(19, 9, 5);
+                background-image: url('../assets/backgrounds/dungeon/dungeonFloorHole.png');
+            }
+
+            &.dungeonFloorPatch {
+                background-color: rgb(87, 43, 22);
+                background-image: url('../assets/backgrounds/dungeon/dungeonFloorPatch.jpg');
+            }
+
+            &.dungeonTreasure {
+                background-color: rgb(151, 122, 67);
+                background-image: url('../assets/backgrounds/dungeon/dungeonTreasure.jpg');
+            }
+
+            &.dungeonWall {
+                background-color: rgb(128, 84, 63);
+                background-image: url('../assets/backgrounds/dungeon/dungeonWall.jpg');
+            }
+
+            &.lairFloorBasic {
+                background-color: rgb(185, 185, 185);
+                background-image: url('../assets/backgrounds/lair/lairFloorBasic.png');
+            }
+
+            &.lairWall {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/lair/lairWall.jpg');
+            }
+
+            &.lairWindow {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/lair/lairWindow.jpg');
+            }
+
+            &.shopFloorBasic {
+                background-color: rgb(255, 216, 158);
+                background-image: url('../assets/backgrounds/shop/shopFloorBasic.png');
+            }
+
+            &.shopFloorBookshelf {
+                background-color: rgb(190, 162, 120);
+                background-image: url('../assets/backgrounds/shop/shopFloorBookshelf.png');
+            }
+
+            &.shopFloorEntry {
+                background-color: rgb(255, 216, 158);
+                background-image: url('../assets/backgrounds/shop/shopFloorEntry.png');
             }
 
             & > .activeImg,
