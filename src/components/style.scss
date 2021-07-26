@@ -325,8 +325,16 @@ body {
                 }
             }
 
+            /** 
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+    BACKGROUND IMAGES FOR GRID SQUARES
+ ** ==========-==========-==========-==========-==========
+ ** ==========-==========-==========-==========-==========
+ */
+
             &.path {
-                background-color: rgb(204, 56, 56);
+                background-color: rgb(146, 99, 77);
                 background-image: url('../assets/backgrounds/path.jpg');
             }
 
@@ -338,6 +346,26 @@ body {
             &.mountain {
                 background-color: rgb(141, 141, 141);
                 background-image: url('../assets/backgrounds/mountain.jpg');
+            }
+
+            &.dungeonFloorBasic {
+                background-color: rgb(87, 43, 22);
+                background-image: url('../assets/backgrounds/dungeon/dungeonFloorBasic.png');
+            }
+
+            &.dungeonFloorPatch {
+                background-color: rgb(87, 43, 22);
+                background-image: url('../assets/backgrounds/dungeon/dungeonFloorPatch.png');
+            }
+
+            &.dungeonFloorHole {
+                background-color: rgb(19, 9, 5);
+                background-image: url('../assets/backgrounds/dungeon/dungeonFloorHole.png');
+            }
+
+            &.dungeonTreasure {
+                background-color: rgb(151, 122, 67);
+                background-image: url('../assets/backgrounds/dungeon/dungeonTreasure.png');
             }
 
             & > .activeImg,

@@ -2,10 +2,10 @@ import { Component } from 'preact';
 import Square from './square';
 import style from './style.scss';
 import Home from '../Grids/home';
-import { Dungeon } from '../Grids/dungeon';
-import { Shop } from '../Grids/shop';
-import { Forest } from '../Grids/forest';
-import { Lair } from '../Grids/lair';
+import Dungeon from '../Grids/dungeon';
+import Shop from '../Grids/shop';
+import Forest from '../Grids/forest';
+import Lair from '../Grids/lair';
 import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
