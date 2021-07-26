@@ -24,14 +24,6 @@ class Grid extends Component {
     componentWillMount() {
         document.removeEventListener('keydown', this.handleKeyPress.bind(this));
         document.removeEventListener('click', this.handleKeyPress.bind(this));
-        // document;
-        // .querySelectorAll(`.${style.virtualKey}`)
-        // .forEach((virtualKey) => {
-        //     virtualKey.removeEventListener(
-        //         'click',
-        //         this.handleKeyPress.bind(this)
-        //     );
-        // });
 
         this.buildGrid(this.state.gridLayout);
     }
@@ -39,14 +31,6 @@ class Grid extends Component {
     componentDidMount() {
         document.addEventListener('keydown', this.handleKeyPress.bind(this));
         document.addEventListener('click', this.handleKeyPress.bind(this));
-        // document
-        //     .querySelectorAll(`.${style.virtualKey}`)
-        //     .forEach((virtualKey) => {
-        //         virtualKey.addEventListener(
-        //             'click',
-        //             this.handleKeyPress.bind(this)
-        //         );
-        //     });
     }
 
     buildGrid(gridSetup) {
@@ -278,6 +262,7 @@ class Grid extends Component {
                 }
                 break;
             case 40:
+            case 'downArrow':
                 {
                     // down
                     if (rowPosition + 1 < rows && message === '') {
@@ -286,6 +271,7 @@ class Grid extends Component {
                 }
                 break;
             case 37:
+            case 'leftArrow':
                 {
                     // left
                     if (columnPosition > 0 && message === '') {
