@@ -13,7 +13,10 @@ class Game extends Component {
             theme: 'dark',
             player: null,
             answerInput: '',
-            message: '',
+            message: {
+                text: '',
+                type: null,
+            },
         };
     }
 
@@ -32,9 +35,12 @@ class Game extends Component {
         this.setState({ answerInput: '' });
     };
 
-    updateMessage = (newMessage) => {
+    updateMessage = (newMessage, newType) => {
         this.setState({
-            message: newMessage,
+            message: {
+                text: newMessage,
+                type: newType,
+            },
             answerInput: '',
         });
     };
@@ -44,7 +50,7 @@ class Game extends Component {
 
         return (
             <>
-                {message !== '' ? (
+                {message.type !== null ? (
                     <Message
                         message={message}
                         updateAnswerInput={this.updateAnswerInput}
@@ -71,7 +77,6 @@ class Game extends Component {
                     {gameStart ? (
                         <div class={style.gamePanel}>
                             <GamePanel
-                                message={message}
                                 answerInput={answerInput}
                                 updateAnswerInput={this.updateAnswerInput}
                             />
