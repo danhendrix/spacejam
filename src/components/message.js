@@ -23,8 +23,8 @@ function Message(props) {
     return (
         <div class={style.messageModal} onKeyDown={closeModal}>
             <div class={style.npcMessage}>{props.message.text}</div>
-            {props.message.type === 'question' ? (
-                <div class={style.userAnswer}>
+            <div class={style.inputContainer}>
+                {props.message.type === 'question' ? (
                     <label class={style.answerContainer}>
                         <div class={style.answerLabel}>
                             {props.name}'s Answer
@@ -37,25 +37,24 @@ function Message(props) {
                             ref={inputRef}
                         />
                     </label>
-                </div>
-            ) : null}
-
-            <div>
-                {props.message.type === 'question' ? (
-                    <button id='submitAnswer' class={style.modalButton}>
-                        Submit
-                    </button>
                 ) : null}
+                <div class={style.modalButtonContainer}>
+                    {props.message.type === 'question' ? (
+                        <button id='submitAnswer' class={style.modalButton}>
+                            Submit
+                        </button>
+                    ) : null}
 
-                <button
-                    id='closeButton'
-                    class={style.modalButton}
-                    onClick={closeModal}
-                    onKeyDown={closeModal}
-                    ref={closeRef}
-                >
-                    Close
-                </button>
+                    <button
+                        id='closeButton'
+                        class={style.modalButton}
+                        onClick={closeModal}
+                        onKeyDown={closeModal}
+                        ref={closeRef}
+                    >
+                        Close
+                    </button>
+                </div>
             </div>
         </div>
     );
