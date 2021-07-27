@@ -148,14 +148,16 @@ class Grid extends Component {
 
         if (!inventory) {
             this.props.updateMessage(
-                `"Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!"`
+                `"Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!"`,
+                'dialogue'
             );
             return false;
         } else if (inventory < amountRequired) {
             this.props.updateMessage(
                 `"Oh, you're quite on your way, ${name}! You only need ${
                     amountRequired - inventory
-                } more report card${inventory !== 1 ? '' : 's'}!"`
+                } more report card${inventory !== 1 ? '' : 's'}!"`,
+                'dialogue'
             );
             return false;
         }
@@ -190,12 +192,13 @@ class Grid extends Component {
                         }
 
                         if (playerAnswer === '') {
-                            updateMessage(`"${question}"`);
+                            updateMessage(`"${question}"`, 'question');
                             cancel;
                             return false;
                         } else if (playerAnswer != answer) {
                             updateMessage(
-                                `"Heheheh dumn hooman! Try again! ${question}"`
+                                `"Heheheh dumn hooman! Try again! ${question}"`,
+                                'question'
                             );
                             cancel;
                             return false;
@@ -213,7 +216,7 @@ class Grid extends Component {
 
             const { fn, message } = currentAction.afterAction;
             fn.call(this);
-            updateMessage(`"${message}"`);
+            updateMessage(`"${message}"`, 'dialogue');
             gridSpace.npc.successfulAction();
             return true;
         } else if (gridSpace.pathTo) {
@@ -248,7 +251,7 @@ class Grid extends Component {
             case 'upArrow':
                 {
                     // `message === ''` prevents moving when modal is open
-                    if (rowPosition > 0 && message === '') {
+                    if (rowPosition > 0 && !message.type) {
                         newRowPosition = rowPosition - 1;
                     }
                 }
@@ -256,7 +259,7 @@ class Grid extends Component {
             case 39:
             case 'rightArrow':
                 {
-                    if (columnPosition + 1 < columns && message === '') {
+                    if (columnPosition + 1 < columns && !message.type) {
                         newColumnPosition = columnPosition + 1;
                     }
                 }
@@ -265,7 +268,7 @@ class Grid extends Component {
             case 'downArrow':
                 {
                     // down
-                    if (rowPosition + 1 < rows && message === '') {
+                    if (rowPosition + 1 < rows && !message.type) {
                         newRowPosition = rowPosition + 1;
                     }
                 }
@@ -274,7 +277,7 @@ class Grid extends Component {
             case 'leftArrow':
                 {
                     // left
-                    if (columnPosition > 0 && message === '') {
+                    if (columnPosition > 0 && !message.type) {
                         newColumnPosition = columnPosition - 1;
                     }
                 }

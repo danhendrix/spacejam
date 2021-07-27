@@ -32,4 +32,4 @@ Possible: https://cheekyinkling.itch.io/shikashis-fantasy-icons-pack
 
 ## To Do
 
--   Edit the messages from NPC's and the message state in Game component to be an object with "text" and "type" properties? Doing this will allow the input and submit elements in the message component to be conditionally rendered; if an NPC isn't asking a question, the user shouldn't be able to input anything.
+-
