@@ -7,6 +7,9 @@ body {
 %buttonTemplate {
     background-color: rgb(50, 50, 50);
     border: 1px solid rgba(150, 150, 150, 0.75);
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     color: rgb(240, 240, 240);
     transition: border linear 200ms;
 
@@ -48,9 +51,9 @@ body {
     .npcMessage {
         background-color: rgb(30, 30, 30);
         border: 5px ridge white;
-        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-            0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+        box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
+            0px 3px 4px 0px rgba(0, 0, 0, 0.14),
+            0px 1px 8px 0px rgba(0, 0, 0, 0.12);
         color: white;
         border-radius: 15px;
         font-size: 1.125rem;
@@ -83,6 +86,7 @@ body {
         color: rgb(240, 240, 240);
         font-size: 1.5rem;
         font-weight: bold;
+        width: max-content;
     }
 
     .answerInput {
@@ -92,7 +96,7 @@ body {
         font-size: 2rem;
         padding: 5px 0;
         text-align: center;
-        width: 100px;
+        max-width: 100px;
 
         &:focus {
             background-color: rgb(40, 40, 40);
@@ -111,9 +115,6 @@ body {
     .modalButton {
         @extend %buttonTemplate;
         border-radius: 25px;
-        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
-            0px 8px 10px 1px rgba(0, 0, 0, 0.14),
-            0px 3px 14px 2px rgba(0, 0, 0, 0.12);
         font-size: 1.125rem;
         margin: 0 10px;
         padding: 15px 0;
@@ -463,19 +464,49 @@ body {
                 background-image: url('../assets/backgrounds/dungeon/dungeonWall.jpg');
             }
 
+            &.lairDesk {
+                background-color: rgb(185, 185, 185);
+                background-image: url('../assets/backgrounds/lair/lairDesk.png');
+            }
+
+            &.lairDoor {
+                background-color: rgb(185, 185, 185);
+                background-image: url('../assets/backgrounds/lair/lairDoor.jpg');
+            }
+
             &.lairFloorBasic {
                 background-color: rgb(185, 185, 185);
                 background-image: url('../assets/backgrounds/lair/lairFloorBasic.png');
             }
 
-            &.lairWall {
-                background-color: rgb(131, 131, 131);
-                background-image: url('../assets/backgrounds/lair/lairWall.jpg');
+            &.lairFloorGrass {
+                background-color: rgb(0, 128, 0);
+                background-image: url('../assets/backgrounds/lair/lairFloorGrass.png');
             }
 
-            &.lairWindow {
+            &.lairFloorPath {
+                background-color: rgb(0, 128, 0);
+                background-image: url('../assets/backgrounds/lair/lairFloorPath.jpg');
+            }
+
+            &.lairWallInside {
                 background-color: rgb(131, 131, 131);
-                background-image: url('../assets/backgrounds/lair/lairWindow.jpg');
+                background-image: url('../assets/backgrounds/lair/lairWallInside.jpg');
+            }
+
+            &.lairWallOutside {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/lair/lairWallOutside.jpg');
+            }
+
+            &.lairWindowInside {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/lair/lairWindowInside.jpg');
+            }
+
+            &.lairWindowOutside {
+                background-color: rgb(131, 131, 131);
+                background-image: url('../assets/backgrounds/lair/lairWindowOutside.jpg');
             }
 
             &.shopFloorBasic {
