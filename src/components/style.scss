@@ -4,6 +4,21 @@ body {
     font-family: 'Comic Neue', cursive;
 }
 
+%buttonTemplate {
+    background-color: rgb(50, 50, 50);
+    border: 1px solid rgba(150, 150, 150, 0.75);
+    color: rgb(240, 240, 240);
+
+    &:focus {
+        border: 1px solid rgb(240, 240, 240);
+        outline: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 /** 
  ** ==========-==========-==========-==========-==========
  ** ==========-==========-==========-==========-==========
@@ -87,7 +102,8 @@ body {
  */
 
 .gameContainer {
-    // background-color: purple;
+    background-color: rgb(30, 30, 30);
+    color: rgb(240, 240, 240);
     display: grid;
     align-items: center;
     height: 100vh;
@@ -178,16 +194,29 @@ body {
     display: flex;
     flex-direction: column;
     font-weight: bold;
+    height: max-content;
     text-align: center;
     width: 90%;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .nameInput {
+    background-color: rgb(40, 40, 40);
+    border: 1px solid rgba(150, 150, 150, 0.75);
+    color: rgb(240, 240, 240);
     font-size: 16px;
     letter-spacing: 1.125px;
     margin-top: 10px;
     padding: 10px;
     text-align: center;
+
+    &:focus {
+        border: 1px solid rgb(240, 240, 240);
+        outline: none;
+    }
 }
 
 .avatarSelection {
@@ -208,7 +237,7 @@ body {
     grid-template-rows: repeat(2, 15vw);
     justify-content: center;
     justify-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
 
     @media only screen and (orientation: landscape) {
         grid-template-columns: repeat(3, 15vh);
@@ -217,6 +246,7 @@ body {
 }
 
 .avatarButton {
+    background-color: rgb(30, 30, 30);
     border: none;
     margin: 0;
     padding: 0;
@@ -237,13 +267,13 @@ body {
 }
 
 .avatarImage {
-    border: 1px solid black;
+    border: 1px solid rgba(240, 240, 240, 0.75);
     height: auto;
     max-width: 60px;
     width: 100%;
 
     &.selected {
-        outline: 2px solid black;
+        outline: 2px solid rgb(240, 240, 240);
     }
 }
 
@@ -252,17 +282,15 @@ body {
 }
 
 .startButton {
-    border-radius: 25px / 50px;
-    max-width: 150px;
+    @extend %buttonTemplate;
+    border-radius: 50px / 50px;
+    font-size: 1.25rem;
     grid-area: start;
-
-    &:hover {
-        cursor: pointer;
-    }
+    max-width: 150px;
 
     @media only screen and (orientation: landscape) {
         margin: auto;
-        padding: 15px;
+        padding: 10px;
         width: 100%;
     }
 
@@ -341,7 +369,7 @@ body {
  */
 
             &.empty {
-                background-color: rgb(27, 29, 30);
+                background-color: rgb(30, 30, 30);
             }
 
             &.grass {
@@ -470,9 +498,9 @@ body {
  */
 
 .gamePanel {
-    background-color: blue;
     display: flex;
     justify-content: space-between;
+    padding: 10px;
 
     @media only screen and (orientation: landscape) {
         flex-direction: column;
@@ -485,17 +513,33 @@ body {
     }
 
     .keysContainer {
-        flex-basis: 20%;
-        padding: 5px;
+        display: flex;
+        justify-content: space-between;
 
-        @media only screen and (min-width: 1000px) {
-            padding: 10px;
+        @media only screen and (orientation: landscape) {
+            flex-basis: 50%;
+            flex-direction: column;
+            max-height: 300px;
+            row-gap: 5px;
         }
+
+        @media only screen and (orientation: portrait) {
+            column-gap: 5px;
+            flex-basis: 50%;
+            flex-direction: row;
+            max-width: 400px;
+        }
+    }
+
+    .virtualKey {
+        @extend %buttonTemplate;
+        border-radius: 15px;
     }
 
     .arrowKeysContainer {
         display: grid;
-        align-content: center;
+        flex-basis: 60%;
+        gap: 5px;
 
         @media only screen and (orientation: landscape) {
             grid-template-columns: 1fr 1fr;
@@ -506,7 +550,7 @@ body {
 
             @media only screen and (min-width: 1200px) {
                 grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: 30% 30%;
+                grid-template-rows: 50% 50%;
                 grid-template-areas:
                     '. up .'
                     'left down right';
@@ -514,21 +558,12 @@ body {
         }
 
         @media only screen and (orientation: portrait) {
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(4, 1fr);
+            align-content: center;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             grid-template-areas:
-                'up'
-                'left'
-                'down'
-                'right';
-
-            @media only screen and (min-width: 700px) {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
-                grid-template-areas:
-                    'up left'
-                    'down right';
-            }
+                'up left'
+                'down right';
 
             @media only screen and (min-width: 1000px) {
                 grid-template-columns: repeat(3, 1fr);
@@ -536,15 +571,6 @@ body {
                 grid-template-areas:
                     '. up .'
                     'left down right';
-            }
-        }
-
-        .virtualKey {
-            background-color: gray;
-            border-radius: 10px;
-
-            &:hover {
-                cursor: pointer;
             }
         }
 
@@ -567,16 +593,32 @@ body {
 
     .enterKeyContainer {
         display: flex;
-        align-items: center;
+        flex-basis: 35%;
+        justify-content: center;
+
+        @media only screen and (orientation: landscape) {
+            width: 100%;
+        }
+
+        @media only screen and (orientation: portrait) {
+            align-items: center;
+            height: 100%;
+
+            @media only screen and (min-width: 700px) {
+                width: 40%;
+            }
+        }
 
         .enterKey {
-            background-color: gray;
-            border-radius: 10px;
-            height: 50%;
             width: 100%;
 
-            &:hover {
-                cursor: pointer;
+            @media only screen and (orientation: landscape) {
+                max-height: 50px;
+            }
+
+            @media only screen and (orientation: portrait) {
+                height: 100%;
+                max-height: 175px;
             }
         }
     }
