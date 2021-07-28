@@ -283,7 +283,8 @@ class Grid extends Component {
                 }
                 break;
             case 13:
-            case 'enterKey': {
+            case 'enterKey':
+            case 'submitAnswer': {
                 this.handleInteraction(rowPosition, columnPosition);
 
                 // If current position has a path to another grid,
