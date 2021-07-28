@@ -568,7 +568,7 @@ body {
 
 .gamePanel {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 10px;
 
     @media only screen and (orientation: landscape) {
@@ -689,6 +689,19 @@ body {
                 height: 100%;
                 max-height: 175px;
             }
+        }
+    }
+
+    .inventoryContainer {
+        background: blue;
+        @media only screen and (orientation: landscape) {
+            flex-basis: 40%;
+            max-height: 300px;
+        }
+
+        @media only screen and (orientation: portrait) {
+            flex-basis: 40%;
+            max-width: 400px;
         }
     }
 }

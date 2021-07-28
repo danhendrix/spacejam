@@ -75,12 +75,10 @@ class Game extends Component {
                         <MainMenu updateGameStart={this.updateGameStart} />
                     )}
                     {gameStart ? (
-                        <div class={style.gamePanel}>
-                            <GamePanel
-                                answerInput={answerInput}
-                                updateAnswerInput={this.updateAnswerInput}
-                            />
-                        </div>
+                        <GamePanel
+                            answerInput={answerInput}
+                            updateAnswerInput={this.updateAnswerInput}
+                        />
                     ) : null}
                 </div>
             </>

@@ -2,7 +2,7 @@ import style from './style.scss';
 
 function GamePanel({}) {
     return (
-        <>
+        <div class={style.gamePanel}>
             <div class={style.keysContainer}>
                 <div class={style.arrowKeysContainer}>
                     <button
@@ -39,7 +39,10 @@ function GamePanel({}) {
                     </button>
                 </div>
             </div>
-        </>
+            <div class={style.inventoryContainer}>
+                <div>Inventory</div>
+            </div>
+        </div>
     );
 }
 
