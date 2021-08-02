@@ -1,6 +1,6 @@
 import Questions from './questions';
 
-const mathQuestions = [
+const mathQuestions = new Questions([
     {
         question: 'What is 1 + 1?',
         answer: 2,
@@ -21,8 +21,6 @@ const mathQuestions = [
         question: 'What is 1 + 5?',
         answer: 6,
     },
-];
+]);
 
-const Math = new Questions(mathQuestions);
-
-export default Math;
+export default mathQuestions;

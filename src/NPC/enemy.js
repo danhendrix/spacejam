@@ -1,8 +1,8 @@
 import NPC, { RequirementTypes } from './npc';
-import Math from '../Questions/math';
+import mathQuestions from '../Questions/math';
 
 const enemyActions = () => {
-    const question = Math.pickQuestion();
+    const question = mathQuestions.pickQuestion();
     return [
         {
             requirements: [
