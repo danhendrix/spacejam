@@ -171,7 +171,6 @@ class Grid extends Component {
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
             const currentAction = gridSpace.npc.interact();
-            const cancel = gridSpace.npc.cancel();
 
             if (currentAction.requirements.length) {
                 for (let require of currentAction.requirements) {
@@ -180,27 +179,26 @@ class Grid extends Component {
 
                     if (type === RequirementTypes.inventory) {
                         if (!this.checkPlayerInventory(item, amount)) {
-                            cancel;
+                            gridSpace.npc.cancel();
                             return false;
                         }
                     } else if (type === RequirementTypes.question) {
                         const playerAnswer = this.props.answerInput;
 
                         if (cleared) {
-                            cancel;
                             break;
                         }
 
                         if (playerAnswer === '') {
                             updateMessage(`"${question}"`, 'question');
-                            cancel;
+                            gridSpace.npc.cancel();
                             return false;
                         } else if (playerAnswer != answer) {
                             updateMessage(
                                 `"Heheheh dumn hooman! Try again! ${question}"`,
                                 'question'
                             );
-                            cancel;
+                            gridSpace.npc.cancel();
                             return false;
                         }
 
