@@ -1,7 +1,7 @@
 import { Component } from 'preact';
-import Grid from './grid';
-import Home from '../Grids/home';
 import style from './style.scss';
+import Message from './message';
+import Grid from './grid';
 import MainMenu from './mainMenu';
 import GamePanel from './gamePanel';
 
@@ -11,11 +11,12 @@ class Game extends Component {
         this.state = {
             gameStart: false,
             theme: 'dark',
-            answerInput: '',
-            message: '',
             player: null,
-            currentGrid: Home,
-            gridName: 'Home',
+            answerInput: '',
+            message: {
+                text: '',
+                type: null,
+            },
         };
     }
 
@@ -34,58 +35,53 @@ class Game extends Component {
         this.setState({ answerInput: '' });
     };
 
-    updateMessage = (newMessage) => {
+    updateMessage = (newMessage, newType) => {
         this.setState({
-            message: newMessage,
+            message: {
+                text: newMessage,
+                type: newType,
+            },
+            answerInput: '',
         });
     };
 
-    updateGrid = async (grid, name) => {
-        await this.setState({
-            currentGrid: grid,
-            gridName: name,
-        });
-    }
-
     render() {
-        const {
-            gameStart,
-            message,
-            player,
-            answerInput,
-            currentGrid,
-            gridName,
-        } = this.state;
+        const { gameStart, message, player, answerInput } = this.state;
 
         return (
-            <div class={style.gameContainer}>
-                {gameStart ? (
-                    <div class={style.mainDisplay}>
-                        <Grid
-                            gridSetup={currentGrid}
-                            gridName={gridName}
-                            answerInput={answerInput}
-                            clearAnswerInput={this.clearAnswerInput}
-                            updateMessage={this.updateMessage}
-                            player={player}
-                            updateGrid={this.updateGrid}
-                        />
-                    </div>
-                ) : (
-                    <MainMenu
-                        updateGameStart={this.updateGameStart}
+            <>
+                {message.type !== null ? (
+                    <Message
+                        message={message}
+                        updateAnswerInput={this.updateAnswerInput}
+                        answerInput={answerInput}
+                        name={player.name}
+                        clearMessage={this.updateMessage}
+                        clearInput={this.clearAnswerInput}
                     />
-                )}
-                {gameStart ? (
-                    <div class={style.gamePanel}>
+                ) : null}
+                <div class={style.gameContainer}>
+                    {gameStart ? (
+                        <div class={style.mainDisplay}>
+                            <Grid
+                                answerInput={answerInput}
+                                clearAnswerInput={this.clearAnswerInput}
+                                updateMessage={this.updateMessage}
+                                player={player}
+                                message={message}
+                            />
+                        </div>
+                    ) : (
+                        <MainMenu updateGameStart={this.updateGameStart} />
+                    )}
+                    {gameStart ? (
                         <GamePanel
-                            message={message}
                             answerInput={answerInput}
                             updateAnswerInput={this.updateAnswerInput}
                         />
-                    </div>
-                ) : null}
-            </div>
+                    ) : null}
+                </div>
+            </>
         );
     }
 }

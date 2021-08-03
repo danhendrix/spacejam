@@ -21,7 +21,15 @@ npm run test
 
 For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
 
-Image credits: https://stealthix.itch.io/rpg-nature-tileset
+## Image Credits
+
+Grass, path, and trees: https://stealthix.itch.io/rpg-nature-tileset
+Shop area: https://limezu.itch.io/moderninteriors
+Dungeon area and NPC's: https://0x72.itch.io/16x16-dungeon-tileset
+Lair area and pillars: https://cainos.itch.io/pixel-art-top-down-basic
 
 Possible: https://cheekyinkling.itch.io/shikashis-fantasy-icons-pack
-https://0x72.itch.io/16x16-dungeon-tileset
+
+## To Do
+
+-
