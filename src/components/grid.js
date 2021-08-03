@@ -56,7 +56,7 @@ class Grid extends Component {
         });
     }
 
-    updateGrid = (path) => {
+    updateGrid = async (path) => {
         let newGrid;
 
         switch (path) {
@@ -76,7 +76,7 @@ class Grid extends Component {
                 newGrid = Home;
         }
 
-        this.setState(
+        return await this.setState(
             {
                 gridLayout: newGrid,
                 gridName: path,
@@ -233,7 +233,7 @@ class Grid extends Component {
         this.setState({ gridLayout });
     }
 
-    handleKeyPress(e) {
+    async handleKeyPress(e) {
         e.stopPropagation();
         if (e.target.id === 'closeButton') return;
 
@@ -294,7 +294,26 @@ class Grid extends Component {
             }
         }
 
-        this.checkSquareAccessible(e, newRowPosition, newColumnPosition);
+        if (!(await this.checkForNewGrid(newColumnPosition, newRowPosition))) {
+            this.checkSquareAccessible(e, newRowPosition, newColumnPosition);
+        }
+    }
+
+    async checkForNewGrid(newColumnPosition, newRowPosition) {
+        if (
+            newColumnPosition === this.state.columnPosition
+            && newRowPosition === this.state.rowPosition
+            && this.state.gridLayout[this.state.rowPosition][this.state.columnPosition].pathTo
+        ) {
+            [newRowPosition, newColumnPosition] = this.calculateNewAreaPosition();
+            await this.updateGrid(this.state.gridLayout[this.state.rowPosition][this.state.columnPosition].pathTo);
+            this.setState({
+                rowPosition: newRowPosition,
+                columnPosition: newColumnPosition,
+            })
+            return true;
+        }
+        return false;
     }
 
     render() {
