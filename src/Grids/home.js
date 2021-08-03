@@ -376,7 +376,7 @@ const Home = [
     ],
     [
         {
-            type: 'shopSign',
+            type: 'librarySign',
             npc: null,
             isAccessible: false,
             pathTo: null,
@@ -441,7 +441,7 @@ const Home = [
             type: 'path',
             npc: null,
             isAccessible: true,
-            pathTo: 'shop',
+            pathTo: 'library',
         },
         {
             type: 'path',
