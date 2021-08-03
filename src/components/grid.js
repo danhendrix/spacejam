@@ -6,7 +6,6 @@ import Dungeon from '../Grids/dungeon';
 import Library from '../Grids/library';
 import Forest from '../Grids/forest';
 import Lair from '../Grids/lair';
-import { RequirementTypes } from '../NPC/npc';
 
 class Grid extends Component {
     constructor(props) {
@@ -142,81 +141,15 @@ class Grid extends Component {
         return remainingEnemies.length;
     }
 
-    checkPlayerInventory(itemToCheck, amountRequired) {
-        const name = this.props.player.getName();
-        const inventory = this.props.player.getInventory(itemToCheck);
-
-        if (!inventory) {
-            this.props.updateMessage(
-                `"Greetings, ${name}! You must first bring me back 3 report cards before you are allowed to pass!"`,
-                'dialogue'
-            );
-            return false;
-        } else if (inventory < amountRequired) {
-            this.props.updateMessage(
-                `"Oh, you're quite on your way, ${name}! You only need ${
-                    amountRequired - inventory
-                } more report card${inventory !== 1 ? '' : 's'}!"`,
-                'dialogue'
-            );
-            return false;
-        }
-
-        return true;
-    }
-
     handleInteraction(row, column) {
         const gridSpace = this.state.gridLayout[row][column];
         const { updateMessage } = this.props;
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
-            const currentAction = gridSpace.npc.interact();
+            const { fn, message, messageType } = gridSpace.npc.interact(this.props.player, this.props.answerInput);
 
-            if (currentAction.requirements.length) {
-                for (let require of currentAction.requirements) {
-                    const { type, item, amount, question, answer, cleared } =
-                        require;
-
-                    if (type === RequirementTypes.inventory) {
-                        if (!this.checkPlayerInventory(item, amount)) {
-                            gridSpace.npc.cancel();
-                            return false;
-                        }
-                    } else if (type === RequirementTypes.question) {
-                        const playerAnswer = this.props.answerInput;
-
-                        if (cleared) {
-                            break;
-                        }
-
-                        if (playerAnswer === '') {
-                            updateMessage(`"${question}"`, 'question');
-                            gridSpace.npc.cancel();
-                            return false;
-                        } else if (playerAnswer != answer) {
-                            updateMessage(
-                                `"Heheheh dumn hooman! Try again! ${question}"`,
-                                'question'
-                            );
-                            gridSpace.npc.cancel();
-                            return false;
-                        }
-
-                        require.updateClearedStatus();
-                        if (this.checkRemainingEnemies()) {
-                            console.log('More enemies remain!');
-                        } else {
-                            console.log('You cleared the area!');
-                        }
-                    }
-                }
-            }
-
-            const { fn, message } = currentAction.afterAction;
-            fn.call(this);
-            updateMessage(`"${message}"`, 'dialogue');
-            gridSpace.npc.successfulAction();
-            return true;
+            if (fn) fn.call(this);
+            if (message) updateMessage(message, messageType);
         } else if (gridSpace.pathTo) {
             this.updateGrid(gridSpace.pathTo);
         }

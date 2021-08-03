@@ -17,6 +17,27 @@ export class User {
         }
     }
 
+    checkInventory = (itemToCheck, amountRequired) => {
+        const inventory = this.getInventory(itemToCheck);
+
+        if (!inventory) {
+            return {
+                success: false,
+                message: 'You don\'t have anything yet!',
+            };
+        } else if (inventory < amountRequired) {
+            return {
+                success: false,
+                message: `"Oh, you're quite on your way, ${this.name}! You only need ${
+                    amountRequired - inventory} more report card${inventory !== 1 ? '' : 's'}!"`,
+                };
+        }
+
+        return {
+            success: true,
+        };
+    }
+
     getInventory(type) {
         return this.inventory[type];
     }
