@@ -78,6 +78,7 @@ class Game extends Component {
                         <GamePanel
                             answerInput={answerInput}
                             updateAnswerInput={this.updateAnswerInput}
+                            player={player}
                         />
                     ) : null}
                 </div>

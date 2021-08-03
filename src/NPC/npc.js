@@ -21,8 +21,6 @@ class NPC {
     }
 
     interact(player, answerInput) {
-        console.log('here with player: ', player)
-        console.log('and answer? ', answerInput)
         if (!this.actions.length) {
             return {
                 success: false,
@@ -45,50 +43,59 @@ class NPC {
             messageType: "",
         };
 
-        console.log('current action: ', currentAction)
+        const { type, question, answer, item, amount, message } = currentAction;
 
-        if (currentAction.requirements.length) {
-            for (let require of currentAction.requirements) {
-                const { type, item, amount, question, answer } = require;
-
-                if (type === RequirementTypes.inventory) {
-                    const inventoryReponse = player.checkInventory(item, amount);
-                    if (!inventoryReponse.success) {
-                        response.success = false;
-                        response.message = inventoryReponse.message;
-                        response.messageType = 'dialog';
-                    }
-                } else if (type === RequirementTypes.question) {
-                    // if (cleared) {
-                    //     break;
-                    // }
-
-                    if (answerInput === '' || answerInput === null) {
-                        response.success = false;
-                        response.message = question;
-                        response.messageType = 'question';
-                    } else if (answerInput != answer) {
-                        response.success = false;
-                        response.message = `"Heheheh dumn hooman! Try again! ${question}"`;
-                        response.messageType = 'question';
-                    }
-
-                    // require.updateClearedStatus();
-                    // if (this.checkRemainingEnemies()) {
-                    //     console.log('More enemies remain!');
-                    // } else {
-                    //     console.log('You cleared the area!');
-                    // }
-                }
+        if (type === RequirementTypes.inventory) {
+            const inventoryReponse = player.checkInventory(item, amount);
+            if (!inventoryReponse.success) {
+                response.success = false;
+                response.message = message;
+                response.messageType = 'dialog';
             }
+        } else if (type === RequirementTypes.question) {
+            // if (cleared) {
+            //     break;
+            // }
+
+            if (answerInput === '' || answerInput === null) {
+                response.success = false;
+                response.message = question;
+                response.messageType = 'question';
+            } else if (answerInput != answer) {
+                response.success = false;
+                response.message = `"Heheheh dumn hooman! Try again! ${question}"`;
+                response.messageType = 'question';
+            }
+
+            // require.updateClearedStatus();
+            // if (this.checkRemainingEnemies()) {
+            //     console.log('More enemies remain!');
+            // } else {
+            //     console.log('You cleared the area!');
+            // }
         }
 
         if (response.success) {
-            const afterAction = currentAction.afterAction;
-            response.fn = afterAction.fn;
-            response.message = afterAction.message;
-            response.messageType = 'dialog';
             this.successfulAction();
+            const afterAction = currentAction.afterAction;
+            if (afterAction) {
+                if (afterAction.fn) {
+                    switch (afterAction.functionType) {
+                        case 'player':
+                            response.fn = afterAction.fn.bind(player);
+                            break;
+                        default:
+                            response.fn = afterAction.fn;
+                    }
+                }
+                // response.fn = afterAction.fn?.bind(player);
+                response.message = afterAction.message;
+                response.messageType = 'dialog';
+            } else {
+                const nextAction = this.actions[0];
+                response.message = nextAction.question;
+                response.messageType = 'question';
+            }
         } else {
             this.cancel();
         }

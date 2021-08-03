@@ -11,13 +11,13 @@ const Home = [
         },
         {
             type: 'grass',
-            npc: Enemy1,
+            npc: Enemy2,
             isAccessible: true,
             pathTo: null,
         },
         {
             type: 'grass',
-            npc: Enemy2,
+            npc: Enemy1,
             isAccessible: true,
             pathTo: null,
         },
@@ -370,7 +370,7 @@ const Home = [
         {
             type: 'path',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: 'lair',
         },
     ],
