@@ -10,7 +10,6 @@ class Game extends Component {
         super(props);
         this.state = {
             gameStart: false,
-            theme: 'dark',
             player: null,
             answerInput: '',
             message: {
