@@ -146,10 +146,14 @@ class Grid extends Component {
         const { updateMessage } = this.props;
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
-            const { fn, message, messageType } = gridSpace.npc.interact(this.props.player, this.props.answerInput);
+                const { fn, message, messageType } = gridSpace.npc.interact(this.props.player, this.props.answerInput);
 
-            if (fn) fn.call(this);
-            if (message) updateMessage(message, messageType);
+                if (fn) fn.call(this);
+                if (message) {
+                    updateMessage(message, messageType);
+                } else {
+                    this.props.clearAnswerInput();
+                }
         } else if (gridSpace.pathTo) {
             this.updateGrid(gridSpace.pathTo);
         }

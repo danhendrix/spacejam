@@ -1,6 +1,6 @@
 import style from './style.scss';
 
-function GamePanel({}) {
+function GamePanel({ player }) {
     return (
         <div class={style.gamePanel}>
             <div class={style.keysContainer}>
@@ -41,6 +41,11 @@ function GamePanel({}) {
             </div>
             <div class={style.inventoryContainer}>
                 <div>Inventory</div>
+                {Object.keys(player.inventory).map((inventoryKey, i) => (
+                    <div key={i} className={style.inventoryItem}>
+                        <span>{inventoryKey} - {player.inventory[inventoryKey]}</span>
+                    </div>
+                ))}
             </div>
         </div>
     );
