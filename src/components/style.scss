@@ -426,9 +426,9 @@ body {
                 background-image: url('../assets/backgrounds/pillars.jpg');
             }
 
-            &.shopSign {
+            &.librarySign {
                 background-color: rgb(190, 134, 108);
-                background-image: url('../assets/backgrounds/shopSign.jpg');
+                background-image: url('../assets/backgrounds/librarySign.jpg');
             }
 
             &.tree {
@@ -511,19 +511,24 @@ body {
                 background-image: url('../assets/backgrounds/lair/lairWindowOutside.jpg');
             }
 
-            &.shopFloorBasic {
+            &.libraryFloorBasic {
                 background-color: rgb(255, 216, 158);
-                background-image: url('../assets/backgrounds/shop/shopFloorBasic.png');
+                background-image: url('../assets/backgrounds/library/libraryFloorBasic.png');
             }
 
-            &.shopFloorBookshelf {
+            &.libraryFloorBookshelf {
                 background-color: rgb(190, 162, 120);
-                background-image: url('../assets/backgrounds/shop/shopFloorBookshelf.png');
+                background-image: url('../assets/backgrounds/library/libraryFloorBookshelf.png');
             }
 
-            &.shopFloorEntry {
-                background-color: rgb(255, 216, 158);
-                background-image: url('../assets/backgrounds/shop/shopFloorEntry.png');
+            &.libraryFloorEntry {
+                background-color: rgb(189, 160, 116);
+                background-image: url('../assets/backgrounds/library/libraryFloorEntry.png');
+            }
+
+            &.libraryFloorTable {
+                background-color: rgb(190, 162, 120);
+                background-image: url('../assets/backgrounds/library/libraryFloorTable.png');
             }
 
             & > .activeImg,
