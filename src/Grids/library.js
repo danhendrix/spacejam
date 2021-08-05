@@ -1,3 +1,6 @@
+import Thief from '../NPC/thief';
+import Librarian from '../NPC/librarian';
+
 const Library = [
     // ROW INDEX 0
     [
@@ -285,13 +288,13 @@ const Library = [
         },
         {
             type: 'libraryFloorBasic',
-            npc: null,
+            npc: Librarian,
             isAccessible: true,
             pathTo: null,
         },
         {
             type: 'libraryFloorBasic',
-            npc: null,
+            npc: Thief,
             isAccessible: true,
             pathTo: null,
         },
