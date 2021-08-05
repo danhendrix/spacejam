@@ -21,13 +21,13 @@ const Bystander1 = new NPC(
             type: RequirementTypes.inventory,
             item: 'axe',
             amount: 1,
-            message: `I know it's in here somewhere...`,
             afterAction: {
                 fn() {},
                 functionType: null,
                 message:
                     "Is... is that Mathbreaker?! It's been 84 years since I last saw it! It must believe you to be worthy... Hm? Oh, nothing. Please, keep it as thanks for allowing me to see it once more.",
             },
+            message: `I know it's in here somewhere...`,
         },
     ]
 );
@@ -47,7 +47,7 @@ const Bystander2 = new NPC(
                 },
                 functionType: 'player',
                 message:
-                    "...I'm stuck in these multiplying vines. You need to go the other way. You can have this torch, though. It gets pretty dark further in...",
+                    "...I'm stuck in these multiplying vines. You need to go the other way. You can have this Lantern of Adding Light, though. It gets pretty dark further in...",
             },
         },
     ]

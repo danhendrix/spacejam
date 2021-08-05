@@ -16,7 +16,7 @@ const Librarian = new NPC(
                 },
                 functionType: 'player',
                 message:
-                    'By the maths! I cannot thank you enough for retrieving these valuable books. Please, please take this report card!',
+                    'By the maths! I cannot thank you enough for retrieving these valuable books. Please, please take this report card! Oh, and could you protect those books until the Crime Subtracters arrest these thieves?',
             },
         },
     ]

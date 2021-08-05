@@ -1,3 +1,5 @@
+import { MathMage1, MathMage2 } from '../NPC/mathMage';
+
 const Dungeon = [
     [
         {
@@ -112,7 +114,7 @@ const Dungeon = [
         },
         {
             type: 'dungeonFloorBasic',
-            npc: null,
+            npc: MathMage1,
             isAccessible: true,
             pathTo: null,
         },
@@ -590,7 +592,7 @@ const Dungeon = [
         },
         {
             type: 'dungeonTreasure',
-            npc: null,
+            npc: MathMage2,
             isAccessible: true,
             pathTo: null,
         },

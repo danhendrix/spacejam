@@ -24,7 +24,7 @@ const Archi = new NPC('Archi', 'archi', '../assets/npc/archi.png', [
             },
             functionType: 'grid',
             message:
-                "Oh, your torch light will help me see what I tripped over! ...an axe?! Hm, well it could divide those vines to clear the path, but it's far too heavy... Wait! Maybe I could cast a spell to give you the strength to wield it! (10 divided by 2... 8 divided by...) Swing, swing! Yes, you did it!",
+                "Oh, your lantern will help me see what I tripped over! ...an axe?! Hm, well it could divide those vines to clear the path, but it's far too heavy... Wait! Maybe I could cast a spell to give you the strength to wield it! (10 divided by 2... 8 divided by...) Swing, swing! Yes, you divided those vines!",
         },
         message:
             'If only I had some light so I could see what I tripped over...',
