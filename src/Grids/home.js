@@ -1,5 +1,4 @@
 import Fred from '../NPC/fred';
-import { Enemy1, Enemy2 } from '../NPC/enemy';
 
 const Home = [
     [
@@ -11,13 +10,13 @@ const Home = [
         },
         {
             type: 'grass',
-            npc: Enemy2,
+            npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
             type: 'grass',
-            npc: Enemy1,
+            npc: null,
             isAccessible: true,
             pathTo: null,
         },

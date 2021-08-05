@@ -1,3 +1,6 @@
+import { Bystander1, Bystander2 } from '../NPC/bystander';
+import Archi from '../NPC/archi';
+
 const Forest = [
     // ROW INDEX 0
     [
@@ -72,7 +75,7 @@ const Forest = [
         },
         {
             type: 'grass',
-            npc: null,
+            npc: Archi,
             isAccessible: true,
             pathTo: null,
         },
@@ -136,7 +139,7 @@ const Forest = [
         {
             type: 'grass',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -198,7 +201,7 @@ const Forest = [
         },
         {
             type: 'grass',
-            npc: null,
+            npc: Bystander2,
             isAccessible: true,
             pathTo: null,
         },
@@ -405,7 +408,7 @@ const Forest = [
         },
         {
             type: 'grass',
-            npc: null,
+            npc: Bystander1,
             isAccessible: true,
             pathTo: null,
         },
@@ -469,7 +472,7 @@ const Forest = [
         {
             type: 'grass',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
