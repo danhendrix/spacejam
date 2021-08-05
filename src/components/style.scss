@@ -317,14 +317,17 @@ body {
 }
 
 .startContainer {
-    height: 25px;
+    display: flex;
+    grid-area: start;
+    max-width: 400px;
+    padding: 10px;
+    width: 100%;
 }
 
-.startButton {
+.menuButton {
     @extend %buttonTemplate;
     border-radius: 50px / 50px;
-    font-size: 1.25rem;
-    grid-area: start;
+    font-size: 0.9rem;
     max-width: 150px;
 
     @media only screen and (orientation: landscape) {
@@ -336,7 +339,26 @@ body {
     @media only screen and (orientation: portrait) {
         margin: auto;
         padding: 15px;
-        width: 50%;
+        width: 40%;
+    }
+
+    @media only screen and (min-width: 700px) {
+        font-size: 1.25rem;
+        padding: 15px;
+    }
+}
+
+.instructionsContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.125rem;
+    min-height: 100vh;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+
+    & > .instructions {
+        width: 100%;
     }
 }
 
