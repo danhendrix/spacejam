@@ -502,14 +502,39 @@ body {
                 background-image: url('../assets/backgrounds/dungeon/dungeonFloorPatch.jpg');
             }
 
+            &.dungeonStair {
+                background-color: rgb(87, 43, 22);
+                background-image: url('../assets/backgrounds/dungeon/dungeonStair.jpg');
+            }
+
             &.dungeonTreasure {
                 background-color: rgb(151, 122, 67);
                 background-image: url('../assets/backgrounds/dungeon/dungeonTreasure.jpg');
             }
 
-            &.dungeonWall {
+            &.dungeonWallInnerCross {
                 background-color: rgb(128, 84, 63);
-                background-image: url('../assets/backgrounds/dungeon/dungeonWall.jpg');
+                background-image: url('../assets/backgrounds/dungeon/dungeonWallInnerCross.jpg');
+            }
+
+            &.dungeonWallInnerHori {
+                background-color: rgb(128, 84, 63);
+                background-image: url('../assets/backgrounds/dungeon/dungeonWallInnerHori.jpg');
+            }
+
+            &.dungeonWallOuter {
+                background-color: rgb(128, 84, 63);
+                background-image: url('../assets/backgrounds/dungeon/dungeonWallOuter.jpg');
+            }
+
+            &.dungeonWallInnerVertEnd {
+                background-color: rgb(128, 84, 63);
+                background-image: url('../assets/backgrounds/dungeon/dungeonWallInnerVertEnd.jpg');
+            }
+
+            &.dungeonWallInnerVertMid {
+                background-color: rgb(128, 84, 63);
+                background-image: url('../assets/backgrounds/dungeon/dungeonWallInnerVertMid.jpg');
             }
 
             &.lairDesk {
