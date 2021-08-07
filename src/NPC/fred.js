@@ -6,13 +6,13 @@ const fredActions = [
             fn() {},
             functionType: null,
             message:
-                'Greetings, Mathventurer! I am Sir Frederick, Monitor of The Hall. In order to proceed through to the Hall of Higher Education, you must bring me 3 Report Cards to prove you are ready. Perhaps other locations in Acadamia will have opportunity to earn some.',
+                'Greetings, Mathventurer! I am Sir Frederick, Monitor of The Hall. In order to proceed through to the Hall of Higher Education, you must bring me 3 Report Cards to prove you are ready.',
         },
     },
     {
         type: RequirementTypes.inventory,
         item: 'report card',
-        amount: 2,
+        amount: 3,
         afterAction: {
             fn() {
                 this.setSquareAccessible(0, 1);

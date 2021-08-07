@@ -16,7 +16,7 @@ const Archi = new NPC('Archi', 'archi', '../assets/npc/archi.png', [
     },
     {
         type: RequirementTypes.inventory,
-        item: 'torch',
+        item: 'lantern',
         amount: 1,
         afterAction: {
             fn() {

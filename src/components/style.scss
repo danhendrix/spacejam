@@ -369,6 +369,7 @@ body {
     flex-direction: column;
     font-size: 1.25rem;
     height: 100vh;
+    margin: auto;
     overflow-x: none;
     overflow-y: auto;
     padding: 20px;
@@ -604,6 +605,34 @@ body {
                     transform: translateY(-50%);
                 }
             }
+        }
+    }
+}
+
+.gameOverContainer {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    .gameOverContents {
+        background-color: rgba(30, 30, 30, 0.75);
+        display: flex;
+        flex-direction: column;
+        font-size: 1.25rem;
+        height: 100vh;
+        margin: auto;
+        overflow-x: none;
+        overflow-y: auto;
+        padding: 20px;
+        max-width: 800px;
+        width: 100%;
+
+        & > .gameOverText {
+            line-height: 1.5;
+            width: 100%;
         }
     }
 }
