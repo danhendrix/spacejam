@@ -41,11 +41,19 @@ function GamePanel({ player }) {
             </div>
             <div class={style.inventoryContainer}>
                 <div>Inventory</div>
-                {Object.keys(player.inventory).map((inventoryKey, i) => (
-                    <div key={i} className={style.inventoryItem}>
-                        <span>{inventoryKey} - {player.inventory[inventoryKey]}</span>
-                    </div>
-                ))}
+                <div class={style.inventoryGrid}>
+                    {Object.keys(player.inventory).map((inventoryKey, i) => (
+                        <div key={i} className={style.inventoryItem}>
+                            <img
+                                key={i}
+                                src={`../assets/${inventoryKey}.png`}
+                                alt={inventoryKey}
+                                class={style.inventoryImage}
+                            />
+                            <span>{player.inventory[inventoryKey]}</span>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

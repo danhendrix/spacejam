@@ -43,10 +43,17 @@ body {
     left: 0;
     right: 0;
     top: 0;
-    padding: 25px;
+    padding: 20px;
     position: absolute;
     width: 100%;
     z-index: 2;
+
+    @media only screen and (orientation: landscape) {
+        @media only screen and (max-width: 700px) {
+            flex-direction: row;
+            gap: 0 20px;
+        }
+    }
 
     .npcMessage {
         background-color: rgb(30, 30, 30);
@@ -698,7 +705,16 @@ body {
     }
 
     .inventoryContainer {
-        background: blue;
+        border: 1px solid white;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 5px;
+
         @media only screen and (orientation: landscape) {
             flex-basis: 40%;
             max-height: 300px;
@@ -707,6 +723,47 @@ body {
         @media only screen and (orientation: portrait) {
             flex-basis: 40%;
             max-width: 400px;
+        }
+
+        @media only screen and (min-width: 700px) {
+            font-size: 20px;
+        }
+
+        & > .inventoryGrid {
+            display: grid;
+            grid-template-rows: auto;
+            justify-items: center;
+            margin-top: 10px;
+            width: 100%;
+
+            @media only screen and (orientation: landscape) {
+                grid-template-columns: 1fr 1fr;
+
+                @media only screen and (min-width: 700px) {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                @media only screen and (min-width: 1000px) {
+                    grid-template-columns: repeat(5, 1fr);
+                }
+            }
+
+            @media only screen and (orientation: portrait) {
+                grid-template-columns: repeat(3, 1fr);
+
+                @media only screen and (min-width: 700px) {
+                    grid-template-columns: repeat(5, 1fr);
+                }
+            }
+
+            & .inventoryImage {
+                height: auto;
+                width: 25px;
+
+                @media only screen and (min-width: 700px) {
+                    width: 35px;
+                }
+            }
         }
     }
 }

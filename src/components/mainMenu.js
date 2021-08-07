@@ -61,7 +61,6 @@ function MainMenu({ updateGameStart }) {
 
     return (
         <div class={style.menuContainer}>
-            <div class={style.themeToggle}>Theme toggle</div>
             <h1 class={style.gameTitle}>Onward to Mathventure!</h1>
             <div class={style.playerInfo}>
                 <label class={style.nameLabel}>
