@@ -146,14 +146,17 @@ class Grid extends Component {
         const { updateMessage } = this.props;
 
         if (gridSpace.npc && !gridSpace.npc.isInTheMiddleOfAction) {
-                const { fn, message, messageType } = gridSpace.npc.interact(this.props.player, this.props.answerInput);
+            const { fn, message, messageType } = gridSpace.npc.interact(
+                this.props.player,
+                this.props.answerInput
+            );
 
-                if (fn) fn.call(this);
-                if (message) {
-                    updateMessage(message, messageType);
-                } else {
-                    this.props.clearAnswerInput();
-                }
+            if (fn) fn.call(this);
+            if (message) {
+                updateMessage(message, messageType);
+            } else {
+                this.props.clearAnswerInput();
+            }
         } else if (gridSpace.pathTo) {
             this.updateGrid(gridSpace.pathTo);
         }
@@ -261,9 +264,15 @@ class Grid extends Component {
     }
 
     render() {
-        const { avatar } = this.props.player;
+        const { avatar, inventory } = this.props.player;
+        const { gridName } = this.state;
+
         return (
             <div class={style.grid}>
+                {!inventory.lantern &&
+                (gridName === 'forest' || gridName === 'dungeon') ? (
+                    <div class={style.darkened} />
+                ) : null}
                 {this.state.gridLayout.map((row, rowI) => (
                     <div key={rowI} class={style.row}>
                         {row.map((item, itemI) => (
