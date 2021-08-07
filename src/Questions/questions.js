@@ -1,15 +1,8 @@
+import { RequirementTypes } from '../NPC/npc';
 class Questions {
-    constructor(unusedQuestions, usedQuestions = []) {
+    constructor(unusedQuestions) {
         this.unusedQuestions = unusedQuestions;
-        this.usedQuestions = usedQuestions;
     }
-
-    changeStatus = (questionIndex) => {
-        const unusedCopy = this.unusedQuestions;
-        const pickedQuestion = unusedCopy.splice(unusedCopy[questionIndex], 1);
-        this.usedQuestions.push(pickedQuestion);
-        this.unusedQuestions = unusedCopy;
-    };
 
     pickQuestion = () => {
         const randomNumber = Math.floor(
@@ -17,9 +10,23 @@ class Questions {
         );
 
         const chosenQuestion = this.unusedQuestions[randomNumber];
-        this.changeStatus(randomNumber);
+        this.unusedQuestions.splice(randomNumber, 1);
         return chosenQuestion;
     };
+
+    generateQuestions = (num) => {
+        const items = [];
+        for (let i = 0; i < num; i++) {
+            const { question, answer } = this.pickQuestion(); 
+            items.push({
+                type: RequirementTypes.question,
+                question,
+                answer,
+            });
+        }
+        console.log('items? ', items)
+        return items;
+    }
 }
 
 export default Questions;
