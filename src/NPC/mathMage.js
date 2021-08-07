@@ -44,7 +44,7 @@ const MathMage2 = new NPC(
                 },
                 functionType: 'player',
                 message:
-                    'Yes yes gimme keys! Let I put in and twist... Chest open! What inside... Bleh, a report card! You have that. I take shiny.',
+                    'Yes yes gimme keys! Let I put in and twist... Chest open! What inside... Bleh, a Report Card! You have that. I take shiny.',
             },
             message:
                 'No, no, need many key! 5 + 5 many! Then we share treasure halfsies.',

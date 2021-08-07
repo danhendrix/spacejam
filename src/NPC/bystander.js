@@ -43,7 +43,7 @@ const Bystander2 = new NPC(
             answer: 5,
             afterAction: {
                 fn() {
-                    this.addToInventory('torch', 1);
+                    this.addToInventory('lantern', 1);
                 },
                 functionType: 'player',
                 message:

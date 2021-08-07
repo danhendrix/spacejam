@@ -6,7 +6,7 @@ const fredActions = [
             fn() {},
             functionType: null,
             message:
-                'Greetings, mathventurer! I am Sir Frederick, Monitor of The Hall. In order to proceed through to the Halls of Higher Education, you must bring me 3 report cards to prove you are ready. Perhaps other locations in Acadamia will have opportunity to earn some.',
+                'Greetings, Mathventurer! I am Sir Frederick, Monitor of The Hall. In order to proceed through to the Hall of Higher Education, you must bring me 3 Report Cards to prove you are ready. Perhaps other locations in Acadamia will have opportunity to earn some.',
         },
     },
     {
@@ -19,10 +19,10 @@ const fredActions = [
             },
             functionType: 'grid',
             message:
-                'My word, you have them all! Please continue through, and prove your abilities to... The Magetician.',
+                'My word, you have them all! Perhaps you truly are the one to save us... Please continue through, and prove your abilities to... The Magetician.',
         },
         message:
-            "It looks as though you still don't have enough report cards. Remember, you need 3 to continue onwards to the Hall of Higher Education.",
+            "It looks as though you still don't have enough Report Cards. Remember, you need 3 to continue onwards to the Hall of Higher Education.",
     },
 ];
 

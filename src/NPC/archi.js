@@ -11,7 +11,7 @@ const Archi = new NPC('Archi', 'archi', '../assets/npc/archi.png', [
             },
             functionType: 'player',
             message:
-                "Thank you for finding me! I couldn't tell which way to go in this darkness. Here, take this report card. I think you can put it to good use.",
+                "Thank you for finding me! I couldn't tell which way to go in this darkness. Here, take this Report Card. I think you can put it to good use.",
         },
     },
     {

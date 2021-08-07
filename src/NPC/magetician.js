@@ -36,7 +36,7 @@ const Magetician = new NPC(
                 fn() {},
                 functionType: null,
                 message:
-                    'I see you have all three report cards. Impressive. But be warned, all others who have tried to prove their knowledge against The Magetician have failed. If that does not multiply your fear, speak to me again only when you are truly ready to battle for Acadamia.',
+                    'I see you have all three Report Card. Impressive... But be warned, all others who have tried to prove their knowledge against The Magetician have failed. If that does not multiply your fear, speak to me again only when you are truly ready to battle for Acadamia.',
             },
         },
         {
