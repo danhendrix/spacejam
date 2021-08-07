@@ -96,7 +96,7 @@ function MainMenu({ updateGameStart }) {
                 </div>
             </div>
             {name !== '' && avatar ? (
-                <button class={style.startButton} onClick={startGame}>
+                <button class={style.menuButton} onClick={startGame}>
                     Start
                 </button>
             ) : null}
