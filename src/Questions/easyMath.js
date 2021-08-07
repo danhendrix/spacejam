@@ -83,7 +83,7 @@ const easyMath = new Questions([
     },
     {
         question: 'What is 5 x 4?',
-        answer: 29,
+        answer: 20,
     },
     {
         question: 'What is 6 x 4?',

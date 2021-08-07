@@ -250,8 +250,8 @@ const mediumMath = new Questions([
         answer: 32,
     },
     {
-        question: 'What is 28 – (8 + 7) – 6 – 5?',
-        answer: 2,
+        question: 'What is 28 – (8 + 7) – (6 – 5)?',
+        answer: 12,
     },
 ]);
 

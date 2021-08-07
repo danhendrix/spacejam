@@ -156,16 +156,16 @@ const hardMath = new Questions([
         answer: 164,
     },
     {
-        question: 'What is 8 × (6 + 33) × 6 + 1?',
-        answer: 1883,
+        question: 'What is 8 × (6 + 3) × 2 + 1?',
+        answer: 145,
     },
     {
         question: 'What is 33 + (38 + 37) – 40 + 8?',
         answer: 76,
     },
     {
-        question: 'What is (34 + 14 × 9 + 32) + 2',
-        answer: 214,
+        question: 'What is (34 + 4 × 9 – 32) + 2',
+        answer: 40,
     },
     {
         question: 'What is 7 × 1 + 4 + (3 × 2)',
@@ -178,16 +178,16 @@ const hardMath = new Questions([
         answer: 79,
     },
     {
-        question: 'What is 4 + 40 + (17 + 16 – 32) + 2?',
-        answer: 71,
+        question: 'What is 4 + 40 + (17 + 16 – 32) * 2?',
+        answer: 46,
     },
     {
         question: 'What is 29 – (1 + 12) + 32 + 18 × 1?',
         answer: 66,
     },
     {
-        question: 'What is 1 × 4 + 35 + 7 + (20 + 1)',
-        answer: 85,
+        question: 'What is 1 × 4 + 35 – 7 + (20 + 1)',
+        answer: 53,
     },
     {
         question: 'What is 10 × 5 – 3 + 31 × (9 – 9)',
