@@ -137,7 +137,7 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
             isAccessible: false,
             pathTo: null,

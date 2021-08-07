@@ -20,7 +20,8 @@ const Archi = new NPC('Archi', 'archi', '../assets/npc/archi.png', [
         amount: 1,
         afterAction: {
             fn() {
-                this.setSquareAccessible(1, 0);
+                this.setSquareAccessible(1, 0, 'isAccessible', true);
+                this.setSquareAccessible(1, 0, 'type', 'grass');
             },
             functionType: 'grid',
             message:

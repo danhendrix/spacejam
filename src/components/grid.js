@@ -162,13 +162,14 @@ class Grid extends Component {
         }
     }
 
-    setSquareAccessible(row, column) {
+    setSquareProperties(row, column, newProperty, newValue) {
         const gridLayout = this.state.gridLayout;
         const square =
             gridLayout[this.state.rowPosition + row][
                 this.state.columnPosition + column
             ];
-        square.isAccessible = true;
+
+        square[newProperty] = newValue;
 
         this.setState({ gridLayout });
     }

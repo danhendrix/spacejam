@@ -17,10 +17,10 @@ const Bystander1 = new NPC(
             ...mediumMath.generateQuestions(1)[0],
             afterAction: {
                 fn() {
-                    this.setSquareAccessible(0, -1);
+                    this.setSquareProperties(0, -1, 'isAccessible', true);
                 },
                 functionType: 'grid',
-                message: 'I think they went this way.',
+                message: 'I think I heard someone scream for help further in.',
             },
         },
         {
@@ -38,8 +38,6 @@ const Bystander1 = new NPC(
     ]
 );
 
-console.log('bystander1: ', Bystander1);
-
 const Bystander2 = new NPC(
     'Bystander',
     'bystander',
@@ -47,11 +45,12 @@ const Bystander2 = new NPC(
     [
         {
             type: RequirementTypes.dialog,
-            message: 'Test',
+            message:
+                'You there! You wanna fight?! No not with fists, a math fight! Just talk to me when you\re ready to answer my questions.',
         },
         ...easyMath.generateQuestions(1)[0],
         {
-            ...mediumMath.generateQuestions(1),
+            ...mediumMath.generateQuestions(1)[0],
             afterAction: {
                 fn() {
                     this.addToInventory('lantern', 1);

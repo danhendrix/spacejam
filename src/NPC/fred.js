@@ -15,7 +15,7 @@ const fredActions = [
         amount: 3,
         afterAction: {
             fn() {
-                this.setSquareAccessible(0, 1);
+                this.setSquareProperties(0, 1, 'isAccessible', true);
             },
             functionType: 'grid',
             message:
