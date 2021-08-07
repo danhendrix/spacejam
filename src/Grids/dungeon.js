@@ -305,7 +305,7 @@ const Dungeon = [
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonStair',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -449,7 +449,7 @@ const Dungeon = [
             pathTo: null,
         },
         {
-            type: 'dungeonFloorBasic',
+            type: 'dungeonStair',
             npc: null,
             isAccessible: true,
             pathTo: null,

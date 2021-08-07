@@ -587,9 +587,14 @@ body {
                 background-image: url('../assets/backgrounds/library/libraryFloorBasic.png');
             }
 
-            &.libraryFloorBookshelf {
+            &.libraryFloorBookshelfOuter {
                 background-color: rgb(190, 162, 120);
-                background-image: url('../assets/backgrounds/library/libraryFloorBookshelf.png');
+                background-image: url('../assets/backgrounds/library/libraryFloorBookshelfOuter.png');
+            }
+
+            &.libraryFloorBookshelfInner {
+                background-color: rgb(190, 162, 120);
+                background-image: url('../assets/backgrounds/library/libraryFloorBookshelfInner.png');
             }
 
             &.libraryFloorEntry {
