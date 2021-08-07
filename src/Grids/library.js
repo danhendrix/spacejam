@@ -123,7 +123,7 @@ const table4 = new NPC(
         ...easyMath.generateQuestions(2),
         {
             type: RequirementTypes.dialog,
-            message: 'Go to the table that is the lowest prime number and enter the code: 1005',
+            message: 'Go to the table that equals the lowest prime number minus 1 and enter the code: 1005',
         },
         {
             type: RequirementTypes.inventory,
