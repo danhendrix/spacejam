@@ -27,12 +27,12 @@ const table1 = new NPC('table1', null, null, [
         question: 'Write down the code to continue',
         answer: 1005,
     },
-    ...mediumMath.generateQuestions(2),
-    {
-        type: RequirementTypes.dialog,
+    ...mediumMath.generateQuestions(2, {
+        fn() {},
+        functionType: null,
         message:
             'Go to the table number that is equal to the square root of 25 and enter the code: 16',
-    },
+    }),
     {
         type: RequirementTypes.inventory,
         item: 'report card',

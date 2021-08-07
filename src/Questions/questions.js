@@ -14,18 +14,22 @@ class Questions {
         return chosenQuestion;
     };
 
-    generateQuestions = (num) => {
+    generateQuestions = (num, afterAction) => {
         const items = [];
         for (let i = 0; i < num; i++) {
-            const { question, answer } = this.pickQuestion(); 
+            const { question, answer } = this.pickQuestion();
             items.push({
                 type: RequirementTypes.question,
                 question,
                 answer,
             });
+
+            if (afterAction && i === num - 1) {
+                items[i].afterAction = afterAction;
+            }
         }
         return items;
-    }
+    };
 }
 
 export default Questions;
