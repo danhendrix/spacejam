@@ -8,6 +8,7 @@ import fighter2 from '../assets/avatars/fighter2.png';
 import knight2 from '../assets/avatars/knight2.png';
 import { useState } from 'preact/hooks';
 import { User } from '../User/user';
+import Instructions from './instructions';
 
 const AvatarOptions = [
     {
@@ -45,10 +46,15 @@ const AvatarOptions = [
 function MainMenu({ updateGameStart }) {
     const [name, setName] = useState('');
     const [avatar, setAvatar] = useState('');
+    const [showInstructions, setShowInstructions] = useState(false);
 
     const startGame = () => {
         const user = new User(name, avatar);
         updateGameStart(user);
+    };
+
+    const toggleInstructions = () => {
+        setShowInstructions(!showInstructions);
     };
 
     const updateName = (e) => {
@@ -61,45 +67,67 @@ function MainMenu({ updateGameStart }) {
 
     return (
         <div class={style.menuContainer}>
-            <h1 class={style.gameTitle}>Onward to Mathventure!</h1>
-            <div class={style.playerInfo}>
-                <label class={style.nameLabel}>
-                    Enter your name
-                    <input
-                        class={style.nameInput}
-                        type='text'
-                        value={name}
-                        onInput={updateName}
-                    />
-                </label>
-                <div class={style.avatarSelection}>
-                    <div id='avatar-label' class={style.avatarLabel}>
-                        Select your avatar
+            {!showInstructions ? (
+                <>
+                    <h1 class={style.gameTitle}>Onward to Mathventure!</h1>
+                    <div class={style.playerInfo}>
+                        <label class={style.nameLabel}>
+                            Enter your name
+                            <input
+                                class={style.nameInput}
+                                type='text'
+                                value={name}
+                                onInput={updateName}
+                            />
+                        </label>
+                        <div class={style.avatarSelection}>
+                            <div id='avatar-label' class={style.avatarLabel}>
+                                Select your avatar
+                            </div>
+                            <div class={style.avatarImageContainer}>
+                                {AvatarOptions.map(({ name, src, alt }) => (
+                                    <button
+                                        key={name}
+                                        class={style.avatarButton}
+                                        onClick={updateAvatar}
+                                    >
+                                        <img
+                                            class={`${style.avatarImage} ${
+                                                avatar === src
+                                                    ? style.selected
+                                                    : ''
+                                            }`}
+                                            src={src}
+                                            alt={alt}
+                                        />
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <div class={style.avatarImageContainer}>
-                        {AvatarOptions.map(({ name, src, alt }) => (
+                    {name !== '' && avatar ? (
+                        <div class={style.startContainer}>
                             <button
-                                key={name}
-                                class={style.avatarButton}
-                                onClick={updateAvatar}
+                                class={style.menuButton}
+                                onClick={toggleInstructions}
                             >
-                                <img
-                                    class={`${style.avatarImage} ${
-                                        avatar === src ? style.selected : ''
-                                    }`}
-                                    src={src}
-                                    alt={alt}
-                                />
+                                How to Play
                             </button>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            {name !== '' && avatar ? (
-                <button class={style.menuButton} onClick={startGame}>
-                    Start
-                </button>
-            ) : null}
+                            <button
+                                class={style.menuButton}
+                                onClick={startGame}
+                            >
+                                Start
+                            </button>
+                        </div>
+                    ) : null}
+                </>
+            ) : (
+                <Instructions
+                    name={name}
+                    toggleInstructions={toggleInstructions}
+                />
+            )}
         </div>
     );
 }
