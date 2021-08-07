@@ -1,4 +1,6 @@
 import NPC, { RequirementTypes } from './npc';
+import easyMath from '../Questions/easyMath';
+import mediumMath from '../Questions/mediumMath';
 
 const Bystander1 = new NPC(
     'Bystander',
@@ -6,9 +8,12 @@ const Bystander1 = new NPC(
     '../assets/npc/bystander.png',
     [
         {
-            type: RequirementTypes.question,
-            question: 'What is 2 + 3?',
-            answer: 5,
+            type: RequirementTypes.dialog,
+            message: 'Hello, traveler. I\'m not sure if I can trust you. Please answer a few questions for me if you\'d like to continue.',
+        },
+        ...easyMath.generateQuestions(5),
+        {
+            ...mediumMath.generateQuestions(1),
             afterAction: {
                 fn() {
                     this.setSquareAccessible(1, 0);
@@ -32,15 +37,20 @@ const Bystander1 = new NPC(
     ]
 );
 
+console.log('bystander1: ', Bystander1)
+
 const Bystander2 = new NPC(
     'Bystander',
     'bystander',
     '../assets/npc/bystander.png',
     [
         {
-            type: RequirementTypes.question,
-            question: 'What is 2 + 3?',
-            answer: 5,
+            type: RequirementTypes.dialog,
+            message: 'Test',
+        },
+        ...easyMath.generateQuestions(5),
+        {
+            ...mediumMath.generateQuestions(1),
             afterAction: {
                 fn() {
                     this.addToInventory('lantern', 1);
@@ -52,5 +62,7 @@ const Bystander2 = new NPC(
         },
     ]
 );
+
+
 
 export { Bystander1, Bystander2 };

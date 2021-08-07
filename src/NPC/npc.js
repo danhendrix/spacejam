@@ -1,9 +1,10 @@
-// import { generateIncorrect } from './dialog';
+import { generateIncorrect } from './dialog';
 
 
 export const RequirementTypes = {
     inventory: 'inventory',
     question: 'question',
+    dialog: 'dialog',
 };
 
 class NPC {
@@ -63,16 +64,15 @@ class NPC {
                 response.messageType = 'question';
             } else if (answerInput != answer) {
                 response.success = false;
-                response.message = `"Heheheh dumn hooman! Try again! ${question}"`;
+                response.message = `${generateIncorrect()} ${question}"`;
                 response.messageType = 'question';
             }
-
-            // require.updateClearedStatus();
-            // if (this.checkRemainingEnemies()) {
-            //     console.log('More enemies remain!');
-            // } else {
-            //     console.log('You cleared the area!');
-            // }
+        } else if (type === RequirementTypes.dialog) {
+            response.success = true;
+            response.message = message;
+            response.messageType = 'dialog';
+            this.successfulAction();
+            return response;
         }
 
         if (response.success) {
@@ -93,6 +93,7 @@ class NPC {
                 response.messageType = 'dialog';
             } else {
                 const nextAction = this.actions[0];
+                // need to handle a non-question here
                 response.message = nextAction.question;
                 response.messageType = 'question';
             }
