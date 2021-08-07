@@ -7,7 +7,7 @@ const Librarian = new NPC(
     [
         {
             type: RequirementTypes.dialog,
-            message: `These thieves are stole Acadamia's most valuable book! Please, return the book to me!`,
+            message: `These thieves stole Acadamia's most valuable book! Please, return the book to me!`,
         },
         {
             type: RequirementTypes.dialog,
