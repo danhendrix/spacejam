@@ -1,3 +1,5 @@
+import Magetician from '../NPC/magetician';
+
 const Lair = [
     // ROW INDEX 0
     [
@@ -33,7 +35,7 @@ const Lair = [
         },
         {
             type: 'lairWallInside',
-            npc: null,
+            npc: Magetician,
             isAccessible: true,
             pathTo: null,
         },

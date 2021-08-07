@@ -1,4 +1,7 @@
-const Shop = [
+import Thief from '../NPC/thief';
+import Librarian from '../NPC/librarian';
+
+const Library = [
     // ROW INDEX 0
     [
         {
@@ -191,61 +194,61 @@ const Shop = [
     // ROW INDEX 3
     [
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBookshelf',
+            type: 'libraryFloorBookshelf',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -254,61 +257,61 @@ const Shop = [
     // ROW INDEX 4
     [
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
+            npc: Librarian,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
+            npc: Thief,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -317,61 +320,61 @@ const Shop = [
     // ROW INDEX 5
     [
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -380,61 +383,61 @@ const Shop = [
     // ROW INDEX 6
     [
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -443,61 +446,61 @@ const Shop = [
     // ROW INDEX 7
     [
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorEntry',
+            type: 'libraryFloorEntry',
             npc: null,
             isAccessible: true,
             pathTo: 'home',
@@ -506,61 +509,61 @@ const Shop = [
     // ROW INDEX 8
     [
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorTable',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -569,61 +572,61 @@ const Shop = [
     // ROW INDEX 9
     [
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'shopFloorBasic',
+            type: 'libraryFloorBasic',
             npc: null,
             isAccessible: true,
             pathTo: null,
@@ -631,4 +634,4 @@ const Shop = [
     ],
 ];
 
-export default Shop;
+export default Library;

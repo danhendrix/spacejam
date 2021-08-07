@@ -3,7 +3,7 @@ import Square from './square';
 import style from './style.scss';
 import Home from '../Grids/home';
 import Dungeon from '../Grids/dungeon';
-import Shop from '../Grids/shop';
+import Library from '../Grids/library';
 import Forest from '../Grids/forest';
 import Lair from '../Grids/lair';
 
@@ -62,8 +62,8 @@ class Grid extends Component {
             case 'forest':
                 newGrid = Forest;
                 break;
-            case 'shop':
-                newGrid = Shop;
+            case 'library':
+                newGrid = Library;
                 break;
             case 'dungeon':
                 newGrid = Dungeon;
@@ -238,16 +238,23 @@ class Grid extends Component {
 
     async checkForNewGrid(newColumnPosition, newRowPosition) {
         if (
-            newColumnPosition === this.state.columnPosition
-            && newRowPosition === this.state.rowPosition
-            && this.state.gridLayout[this.state.rowPosition][this.state.columnPosition].pathTo
+            newColumnPosition === this.state.columnPosition &&
+            newRowPosition === this.state.rowPosition &&
+            this.state.gridLayout[this.state.rowPosition][
+                this.state.columnPosition
+            ].pathTo
         ) {
-            [newRowPosition, newColumnPosition] = this.calculateNewAreaPosition();
-            await this.updateGrid(this.state.gridLayout[this.state.rowPosition][this.state.columnPosition].pathTo);
+            [newRowPosition, newColumnPosition] =
+                this.calculateNewAreaPosition();
+            await this.updateGrid(
+                this.state.gridLayout[this.state.rowPosition][
+                    this.state.columnPosition
+                ].pathTo
+            );
             this.setState({
                 rowPosition: newRowPosition,
                 columnPosition: newColumnPosition,
-            })
+            });
             return true;
         }
         return false;

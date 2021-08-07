@@ -1,3 +1,6 @@
+import { Bystander1, Bystander2 } from '../NPC/bystander';
+import Archi from '../NPC/archi';
+
 const Forest = [
     // ROW INDEX 0
     [
@@ -65,9 +68,39 @@ const Forest = [
     // ROW INDEX 1
     [
         {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: Archi,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
             type: 'grass',
             npc: null,
             isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -89,48 +122,30 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],
     // ROW INDEX 2
     [
         {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
             type: 'grass',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -158,9 +173,9 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -170,30 +185,60 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],
     // ROW INDEX 3
     [
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: Bystander2,
             isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -203,60 +248,18 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],
     // ROW INDEX 4
     [
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -308,18 +311,24 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],
     // ROW INDEX 5
     [
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -329,59 +338,77 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],
     // ROW INDEX 6
     [
         {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
             type: 'grass',
             npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: Bystander1,
             isAccessible: true,
             pathTo: null,
         },
@@ -410,42 +437,18 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],
     // ROW INDEX 7
     [
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -455,9 +458,39 @@ const Forest = [
             pathTo: null,
         },
         {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
             type: 'grass',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'tree',
+            npc: null,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -467,48 +500,18 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
     ],
     // ROW INDEX 8
     [
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -548,21 +551,21 @@ const Forest = [
             pathTo: null,
         },
         {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
+            pathTo: null,
+        },
+        {
             type: 'tree',
             npc: null,
             isAccessible: false,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
-            pathTo: null,
-        },
-        {
-            type: 'grass',
-            npc: null,
-            isAccessible: true,
             pathTo: null,
         },
     ],
