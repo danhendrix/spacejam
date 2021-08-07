@@ -4,12 +4,14 @@ import Message from './message';
 import Grid from './grid';
 import MainMenu from './mainMenu';
 import GamePanel from './gamePanel';
+import GameOver from './gameOver';
 
 class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
             gameStart: false,
+            gameOver: false,
             player: null,
             answerInput: '',
             message: {
@@ -23,6 +25,29 @@ class Game extends Component {
         this.setState({
             gameStart: true,
             player,
+        });
+    };
+
+    endGame = () => {
+        this.setState({
+            gameOver: true,
+            message: {
+                text: '',
+                type: null,
+            },
+        });
+    };
+
+    resetGame = () => {
+        this.setState({
+            gameStart: false,
+            gameOver: false,
+            player: null,
+            answerInput: '',
+            message: {
+                text: '',
+                type: null,
+            },
         });
     };
 
@@ -45,7 +70,8 @@ class Game extends Component {
     };
 
     render() {
-        const { gameStart, message, player, answerInput } = this.state;
+        const { gameStart, gameOver, message, player, answerInput } =
+            this.state;
 
         return (
             <>
@@ -60,7 +86,9 @@ class Game extends Component {
                     />
                 ) : null}
                 <div class={style.gameContainer}>
-                    {gameStart ? (
+                    {gameOver ? (
+                        <GameOver resetGame={this.resetGame} />
+                    ) : gameStart ? (
                         <div class={style.mainDisplay}>
                             <Grid
                                 answerInput={answerInput}
@@ -68,12 +96,13 @@ class Game extends Component {
                                 updateMessage={this.updateMessage}
                                 player={player}
                                 message={message}
+                                endGame={this.endGame}
                             />
                         </div>
                     ) : (
                         <MainMenu updateGameStart={this.updateGameStart} />
                     )}
-                    {gameStart ? (
+                    {gameStart && !gameOver ? (
                         <GamePanel
                             answerInput={answerInput}
                             updateAnswerInput={this.updateAnswerInput}

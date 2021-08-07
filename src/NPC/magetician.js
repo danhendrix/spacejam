@@ -1,31 +1,6 @@
 import NPC, { RequirementTypes } from './npc';
 // import mathQuestions from '../Questions/math';
 
-// const enemyActions = () => {
-//     const question = mathQuestions.pickQuestion();
-//     return [
-//         {
-//             requirements: [
-//                 {
-//                     type: RequirementTypes.question,
-//                     question: question.question,
-//                     answer: question.answer,
-//                     cleared: false,
-//                     updateClearedStatus() {
-//                         if (!this.cleared) {
-//                             this.cleared = true;
-//                         }
-//                     },
-//                 },
-//             ],
-//             afterAction: {
-//                 fn() {},
-//                 message: 'Harumph! Fine, you may pass this time!',
-//             },
-//         },
-//     ];
-// };
-
 const Magetician = new NPC(
     'Magetician',
     'magetician',
@@ -54,10 +29,11 @@ const Magetician = new NPC(
             question: 'What is 6 - 8?',
             answer: -2,
             afterAction: {
-                fn() {},
-                functionType: null,
-                message:
-                    'I... I cannot believe this... You... defeated me?! I never thought Acadamia would see another champion with such knowledge... I am honorable, and I admit defeat before you. You, the True Magetician.',
+                fn() {
+                    this.props.endGame();
+                },
+                functionType: 'grid',
+                message: '',
             },
         },
     ]
