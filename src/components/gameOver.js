@@ -16,7 +16,7 @@ function GameOver({ name, resetGame }) {
                     Thanks to your incredible knowledge, the former Magetician
                     has been subtracted from Acadamia. But you have only shown a
                     fraction of your knowledge. To prove you are The True
-                    Magetician, another challenge awaits...
+                    Magetician, the challenge awaits you again.
                 </p>
                 <button class={style.menuButton} onClick={resetGame}>
                     Onwards... Once More!

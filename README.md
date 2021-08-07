@@ -30,6 +30,7 @@ By helping those in Acadamia, you will receive Report Cards. Collect 3 Report Ca
 -   Personalize the experience by entering your name and selecting an avatar
 -   Can be played on a computer with a keyboard, or on a tablet or mobile device with on screen keys
 -   Three different areas to test your maths knowledge, as well as a final boss to put that knowledge to an even greater test
+-   Over 150 math questions ranging from easy, medium, and hard difficulties, with questions randomly generated on each play through.
 
 ## Image Credits
 
