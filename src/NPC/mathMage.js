@@ -1,4 +1,5 @@
 import NPC, { RequirementTypes } from './npc';
+import hardMath from '../Questions/hardMath';
 
 const MathMage1 = new NPC(
     'MathMage',
@@ -6,9 +7,11 @@ const MathMage1 = new NPC(
     '../assets/npc/mathMage.png',
     [
         {
-            type: RequirementTypes.question,
-            question: 'What is 2 + 3?',
-            answer: 5,
+            type: RequirementTypes.dialog,
+            message: 'You need to prove you\'re worthy to be down here. Answer this question!',
+        },
+        {
+            ...hardMath.generateQuestions(1)[0],
             afterAction: {
                 fn() {
                     this.addToInventory('key', 1);
@@ -37,7 +40,7 @@ const MathMage2 = new NPC(
         {
             type: RequirementTypes.inventory,
             item: 'key',
-            amount: 10,
+            amount: 6,
             afterAction: {
                 fn() {
                     this.addToInventory('report card', 1);
@@ -47,7 +50,7 @@ const MathMage2 = new NPC(
                     'Yes yes gimme keys! Let I put in and twist... Chest open! What inside... Bleh, a Report Card! You have that. I take shiny.',
             },
             message:
-                'No, no, need many key! 5 + 5 many! Then we share treasure halfsies.',
+                'No, no, need many key! 12 / 2 many! Then we share treasure halfsies.',
         },
     ]
 );

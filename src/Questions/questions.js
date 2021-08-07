@@ -24,7 +24,6 @@ class Questions {
                 answer,
             });
         }
-        console.log('items? ', items)
         return items;
     }
 }
