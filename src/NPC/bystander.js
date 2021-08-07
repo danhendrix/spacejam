@@ -9,14 +9,15 @@ const Bystander1 = new NPC(
     [
         {
             type: RequirementTypes.dialog,
-            message: 'Hello, traveler. I\'m not sure if I can trust you. Please answer a few questions for me if you\'d like to continue.',
+            message:
+                "Hello, traveler. I'm not sure if I can trust you. Please answer a few questions for me if you'd like to continue.",
         },
         ...easyMath.generateQuestions(1),
         {
             ...mediumMath.generateQuestions(1)[0],
             afterAction: {
                 fn() {
-                    this.setSquareAccessible(1, 0);
+                    this.setSquareAccessible(0, -1);
                 },
                 functionType: 'grid',
                 message: 'I think they went this way.',
@@ -37,7 +38,7 @@ const Bystander1 = new NPC(
     ]
 );
 
-console.log('bystander1: ', Bystander1)
+console.log('bystander1: ', Bystander1);
 
 const Bystander2 = new NPC(
     'Bystander',
@@ -62,7 +63,5 @@ const Bystander2 = new NPC(
         },
     ]
 );
-
-
 
 export { Bystander1, Bystander2 };

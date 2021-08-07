@@ -269,9 +269,9 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -326,12 +326,6 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'tree',
-            npc: null,
-            isAccessible: false,
-            pathTo: null,
-        },
-        {
             type: 'grass',
             npc: null,
             isAccessible: true,
@@ -341,6 +335,12 @@ const Forest = [
             type: 'tree',
             npc: null,
             isAccessible: false,
+            pathTo: null,
+        },
+        {
+            type: 'grass',
+            npc: null,
+            isAccessible: true,
             pathTo: null,
         },
         {
@@ -395,13 +395,13 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
-            type: 'tree',
+            type: 'grass',
             npc: null,
             isAccessible: false,
             pathTo: null,
@@ -464,13 +464,13 @@ const Forest = [
             pathTo: null,
         },
         {
-            type: 'tree',
+            type: 'grass',
             npc: null,
-            isAccessible: false,
+            isAccessible: true,
             pathTo: null,
         },
         {
-            type: 'grass',
+            type: 'tree',
             npc: null,
             isAccessible: false,
             pathTo: null,
