@@ -11,9 +11,9 @@ const Bystander1 = new NPC(
             type: RequirementTypes.dialog,
             message: 'Hello, traveler. I\'m not sure if I can trust you. Please answer a few questions for me if you\'d like to continue.',
         },
-        ...easyMath.generateQuestions(5),
+        ...easyMath.generateQuestions(1),
         {
-            ...mediumMath.generateQuestions(1),
+            ...mediumMath.generateQuestions(1)[0],
             afterAction: {
                 fn() {
                     this.setSquareAccessible(1, 0);
@@ -48,7 +48,7 @@ const Bystander2 = new NPC(
             type: RequirementTypes.dialog,
             message: 'Test',
         },
-        ...easyMath.generateQuestions(5),
+        ...easyMath.generateQuestions(1)[0],
         {
             ...mediumMath.generateQuestions(1),
             afterAction: {
