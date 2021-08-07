@@ -2,16 +2,13 @@ import NPC, { RequirementTypes } from './npc';
 
 const Archi = new NPC('Archi', 'archi', '../assets/npc/archi.png', [
     {
-        type: RequirementTypes.question,
-        question: 'What is 2 + 3?',
-        answer: 5,
         afterAction: {
             fn() {
                 this.addToInventory('report card', 1);
             },
             functionType: 'player',
             message:
-                "Thank you for finding me! I couldn't tell which way to go in this darkness. Here, take this Report Card. I think you can put it to good use.",
+                'Thank you for finding me! I think I sprained my ankle tripping over something. Here, take this Report Card. I think you can put it to good use.',
         },
     },
     {
@@ -20,15 +17,15 @@ const Archi = new NPC('Archi', 'archi', '../assets/npc/archi.png', [
         amount: 1,
         afterAction: {
             fn() {
-                this.setSquareAccessible(1, 0, 'isAccessible', true);
-                this.setSquareAccessible(1, 0, 'type', 'grass');
+                this.setSquareProperties(1, 0, 'isAccessible', true);
+                this.setSquareProperties(1, 0, 'type', 'grass');
             },
             functionType: 'grid',
             message:
-                "Oh, your lantern will help me see what I tripped over! ...an axe?! Hm, well it could divide those vines to clear the path, but it's far too heavy... Wait! Maybe I could cast a spell to give you the strength to wield it! (10 divided by 2... 8 divided by...) Swing, swing! Yes, you divided those vines!",
+                "Oh, your lantern will help me see what I tripped over! ...an axe?! Hm, well it could divide that geometree to clear the path, but it's far too heavy... Wait! Maybe I could cast a spell to give you the strength to wield it! (10 divided by 2... 8 divided by...) Swing, swing! Yes, you divided the tree in half!",
         },
         message:
-            'If only I had some light so I could see what I tripped over...',
+            "I'll be fine now that others know where to find me. If only I had some light so I could see what I tripped over...",
     },
     {
         afterAction: {

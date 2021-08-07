@@ -1,4 +1,10 @@
-import { Bystander1, Bystander2 } from '../NPC/bystander';
+import {
+    Bystander1,
+    Bystander2,
+    Bystander3,
+    Bystander4,
+    Bystander5,
+} from '../NPC/bystander';
 import Archi from '../NPC/archi';
 
 const Forest = [
@@ -157,12 +163,12 @@ const Forest = [
         {
             type: 'grass',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
             type: 'grass',
-            npc: null,
+            npc: Bystander5,
             isAccessible: true,
             pathTo: null,
         },
@@ -201,7 +207,7 @@ const Forest = [
         },
         {
             type: 'grass',
-            npc: Bystander2,
+            npc: Bystander4,
             isAccessible: true,
             pathTo: null,
         },
@@ -244,7 +250,7 @@ const Forest = [
         {
             type: 'grass',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {
@@ -306,7 +312,7 @@ const Forest = [
         },
         {
             type: 'grass',
-            npc: null,
+            npc: Bystander3,
             isAccessible: true,
             pathTo: null,
         },
@@ -408,7 +414,7 @@ const Forest = [
         },
         {
             type: 'grass',
-            npc: Bystander1,
+            npc: Bystander2,
             isAccessible: true,
             pathTo: null,
         },
@@ -552,14 +558,14 @@ const Forest = [
         },
         {
             type: 'grass',
-            npc: null,
+            npc: Bystander1,
             isAccessible: true,
             pathTo: null,
         },
         {
             type: 'grass',
             npc: null,
-            isAccessible: true,
+            isAccessible: false,
             pathTo: null,
         },
         {

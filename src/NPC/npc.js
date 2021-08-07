@@ -1,6 +1,5 @@
 import { generateIncorrect } from './dialog';
 
-
 export const RequirementTypes = {
     inventory: 'inventory',
     question: 'question',
@@ -8,12 +7,7 @@ export const RequirementTypes = {
 };
 
 class NPC {
-    constructor(
-        name,
-        imgClass,
-        imgSrc,
-        actions = [],
-    ) {
+    constructor(name, imgClass, imgSrc, actions = []) {
         this.name = name;
         this.actions = actions;
         this.imgClass = imgClass;
@@ -40,8 +34,8 @@ class NPC {
         const response = {
             success: true,
             fn: null,
-            message: "",
-            messageType: "",
+            message: '',
+            messageType: '',
         };
 
         const { type, question, answer, item, amount, message } = currentAction;
@@ -54,10 +48,6 @@ class NPC {
                 response.messageType = 'dialog';
             }
         } else if (type === RequirementTypes.question) {
-            // if (cleared) {
-            //     break;
-            // }
-
             if (answerInput === '' || answerInput === null) {
                 response.success = false;
                 response.message = question;

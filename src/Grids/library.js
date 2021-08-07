@@ -5,198 +5,175 @@ import mediumMath from '../Questions/mediumMath';
 import easyMath from '../Questions/easyMath';
 import hardMath from '../Questions/hardMath';
 
-const bookcase = new NPC(
-    'bookcase',
-    null,
-    null,
-    [
-        {
-            type: RequirementTypes.question,
-            question: 'Write down the code to continue',
-            answer: 100,
-            afterAction: {
-                fn() {
-                    this.addToInventory('book', 1);
-                },
-                functionType: 'player',
-                message:
-                    'A hidden book slides out from behind the bookcase and reveals itself to you.',
+const bookcase = new NPC('bookcase', null, null, [
+    {
+        type: RequirementTypes.question,
+        question: 'Write down the code to continue',
+        answer: 100,
+        afterAction: {
+            fn() {
+                this.addToInventory('book', 1);
             },
+            functionType: 'player',
+            message:
+                'A hidden book slides out from behind the bookcase and reveals itself to you.',
         },
-    ],
-);
+    },
+]);
 
-const table1 = new NPC(
-    'table1',
-    null,
-    null,
-    [
-        {
-            type: RequirementTypes.question,
-            question: 'Write down the code to continue',
-            answer: 1005,
+const table1 = new NPC('table1', null, null, [
+    {
+        type: RequirementTypes.question,
+        question: 'Write down the code to continue',
+        answer: 1005,
+    },
+    ...mediumMath.generateQuestions(2),
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'Go to the table number that is equal to the square root of 25 and enter the code: 16',
+    },
+    {
+        type: RequirementTypes.inventory,
+        item: 'report card',
+        amount: 3,
+        afterAction: {
+            fn() {},
+            message: `I didn't think you could do it!`,
         },
-        ...mediumMath.generateQuestions(2),
-        {
-            type: RequirementTypes.dialog,
-            message: 'Go to the table equals the square root of 25 and enter the code: 16',
-        },
-        {
-            type: RequirementTypes.inventory,
-            item: 'report card',
-            amount: 3,
-            afterAction: {
-                fn() {},
-                message: `I didn't think you could do it!`,
-            },
-            message: 'Go to the table that is the lowest prime number and enter the code: 1005',
-        },
-    ]
-);
+        message:
+            'Go to the table number that is equal to the lowest prime number and enter the code: 1005',
+    },
+]);
 
-const table2 = new NPC(
-    'table3',
-    null,
-    null,
-    [
-        {
-            type: RequirementTypes.question,
-            question: 'Write down the code to continue',
-            answer: 99,
+const table2 = new NPC('table3', null, null, [
+    {
+        type: RequirementTypes.question,
+        question: 'Write down the code to continue',
+        answer: 99,
+    },
+    ...hardMath.generateQuestions(1),
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'The bookcases at the top of the room are numbered 1 to 10. Go to the bookcase number that is equal to the square root of 100 and enter the code: 100',
+    },
+    {
+        type: RequirementTypes.inventory,
+        item: 'report card',
+        amount: 3,
+        afterAction: {
+            fn() {},
+            message: `I didn't think you could do it!`,
         },
-        ...hardMath.generateQuestions(1),
-        {
-            type: RequirementTypes.dialog,
-            message: 'The bookcases at the top of the room are numbered 1 to 10. Go to the bookcase that equals the square root of 100 and enter the code: 100',
-        },
-        {
-            type: RequirementTypes.inventory,
-            item: 'report card',
-            amount: 3,
-            afterAction: {
-                fn() {},
-                message: `I didn't think you could do it!`,
-            },
-            message: 'Go to the table that is the lowest prime number and enter the code: 1005',
-        },
-    ]
-);
+        message:
+            'Go to the table number that is equal to the lowest prime number and enter the code: 1005',
+    },
+]);
 
-const table3 = new NPC(
-    'table3',
-    null,
-    null,
-    [
-        {
-            type: RequirementTypes.question,
-            question: 'Write down the code to continue',
-            answer: 301,
+const table3 = new NPC('table3', null, null, [
+    {
+        type: RequirementTypes.question,
+        question: 'Write down the code to continue',
+        answer: 301,
+    },
+    ...hardMath.generateQuestions(3),
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'Go to the only table that you have not completed and enter the code: 99',
+    },
+    {
+        type: RequirementTypes.inventory,
+        item: 'report card',
+        amount: 3,
+        afterAction: {
+            fn() {},
+            message: `I didn't think you could do it!`,
         },
-        ...hardMath.generateQuestions(3),
-        {
-            type: RequirementTypes.dialog,
-            message: 'Go to only table you have not completed and enter the code: 99',
-        },
-        {
-            type: RequirementTypes.inventory,
-            item: 'report card',
-            amount: 3,
-            afterAction: {
-                fn() {},
-                message: `I didn't think you could do it!`,
-            },
-            message: 'Go to the table that is the lowest prime number and enter the code: 1005',
-        },
-    ]
-);
+        message:
+            'Go to the table number that is equal to the lowest prime number and enter the code: 1005',
+    },
+]);
 
-const table4 = new NPC(
-    'table4',
-    null,
-    null,
-    [
-        {
-            type: RequirementTypes.question,
-            question: 'Write down the code to continue',
-            answer: 91,
+const table4 = new NPC('table4', null, null, [
+    {
+        type: RequirementTypes.question,
+        question: 'Write down the code to continue',
+        answer: 91,
+    },
+    ...easyMath.generateQuestions(2),
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'Go to the table number that is equal to the lowest prime number minus 1 and enter the code: 1005',
+    },
+    {
+        type: RequirementTypes.inventory,
+        item: 'report card',
+        amount: 3,
+        afterAction: {
+            fn() {},
+            message: `I didn't think you could do it!`,
         },
-        ...easyMath.generateQuestions(2),
-        {
-            type: RequirementTypes.dialog,
-            message: 'Go to the table that equals the lowest prime number minus 1 and enter the code: 1005',
-        },
-        {
-            type: RequirementTypes.inventory,
-            item: 'report card',
-            amount: 3,
-            afterAction: {
-                fn() {},
-                message: `I didn't think you could do it!`,
-            },
-            message: 'Go to the table that is the lowest prime number and enter the code: 1005',
-        },
-    ]
-);
+        message:
+            'Go to the table number that is equal to the lowest prime number and enter the code: 1005',
+    },
+]);
 
-const table5 = new NPC(
-    'table1',
-    null,
-    null,
-    [
-        {
-            type: RequirementTypes.question,
-            question: 'Write down the code to continue',
-            answer: 16,
+const table5 = new NPC('table1', null, null, [
+    {
+        type: RequirementTypes.question,
+        question: 'Write down the code to continue',
+        answer: 16,
+    },
+    ...mediumMath.generateQuestions(4),
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'Go to the table number that is equal to one third of one half of 18 and enter the code: 301',
+    },
+    {
+        type: RequirementTypes.inventory,
+        item: 'report card',
+        amount: 3,
+        afterAction: {
+            fn() {},
+            message: `I didn't think you could do it!`,
         },
-        ...mediumMath.generateQuestions(4),
-        {
-            type: RequirementTypes.dialog,
-            message: 'Go to the table that equals one third of one half of 18 and enter the code: 301',
-        },
-        {
-            type: RequirementTypes.inventory,
-            item: 'report card',
-            amount: 3,
-            afterAction: {
-                fn() {},
-                message: `I didn't think you could do it!`,
-            },
-            message: 'Go to the table that is the lowest prime number and enter the code: 1005',
-        },
-    ]
-);
+        message:
+            'Go to the table number that is equal to the lowest prime number and enter the code: 1005',
+    },
+]);
 
-const table6 = new NPC(
-    'table6',
-    null,
-    null,
-    [
-        {
-            type: RequirementTypes.dialog,
-            message: 'Your precious book is hidden somewhere in this room. It will take quite a smarty go find it.',
+const table6 = new NPC('table6', null, null, [
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'Your precious book is hidden somewhere in this room. It will take quite a smarty go find it.',
+    },
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'The tables are numbered from 1 to 6, and the book cases against the wall are numbered from 1 to 10, both starting from the left.',
+    },
+    {
+        type: RequirementTypes.dialog,
+        message:
+            'The book is hidden behind one of the shelves. But which one? Start by going to the desk whose number equals the square root of 16 and enter this code in the notebook sitting on the desk: 91',
+    },
+    {
+        type: RequirementTypes.inventory,
+        item: 'report card',
+        amount: 3,
+        afterAction: {
+            fn() {},
+            message: `I didn't think you could do it!`,
         },
-        {
-            type: RequirementTypes.dialog,
-            message: 'The desks are numbered from 1 to 6 going from the left to the right. The book cases at the far end of room against the wall are numbered 1 to 10.',
-        },
-        {
-            type: RequirementTypes.dialog,
-            message: 'The book is hidden behind one of the shelves. But which one? Start by going to the desk whose number equals the square root of 16 and enter this code in the notebook sitting on the desk: 91',
-        },
-        {
-            type: RequirementTypes.inventory,
-            item: 'report card',
-            amount: 3,
-            afterAction: {
-                fn() {},
-                message: `I didn't think you could do it!`,
-            },
-            message: 'Start by going to the desk whose number equals the square root of 16 and enter this code in the notebook sitting on the desk: 91',
-        },
-    ]
-);
-
-
+        message:
+            'Start by going to the table number that is equal to the square root of 16 and enter this code in the notebook: 91',
+    },
+]);
 
 const Library = [
     // ROW INDEX 0
