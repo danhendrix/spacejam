@@ -54,7 +54,7 @@ class NPC {
                 response.messageType = 'question';
             } else if (answerInput != answer) {
                 response.success = false;
-                response.message = `${generateIncorrect()} ${question}"`;
+                response.message = `${generateIncorrect()} ${question}`;
                 response.messageType = 'question';
             }
         } else if (type === RequirementTypes.dialog) {

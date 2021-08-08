@@ -155,7 +155,7 @@ const table6 = new NPC('table6', null, null, [
     {
         type: RequirementTypes.dialog,
         message:
-            'The tables are numbered from 1 to 6, and the book cases against the wall are numbered from 1 to 10, both starting from the left.',
+            'Starting from the left, the tables are numbered from 1 to 6, and the book cases against the far wall in the back are numbered from 1 to 10.',
     },
     {
         type: RequirementTypes.dialog,
