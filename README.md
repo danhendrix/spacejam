@@ -2,6 +2,8 @@
 
 A maths based game aimed at children in the 3rd grade, created for [The Odin Project's Game Jam](https://itch.io/jam/top-jam-1).
 
+[Play Onward to Mathventure](https://thatblindgeye.itch.io/onward-to-mathventure)!
+
 ### Built With
 
 -   HTML
