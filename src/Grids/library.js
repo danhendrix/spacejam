@@ -49,11 +49,11 @@ const table2 = new NPC('table3', null, null, [
         question: 'Write down the code to continue',
         answer: 99,
     },
-    ...hardMath.generateQuestions(1),
-    {
-        type: RequirementTypes.dialog,
+    ...hardMath.generateQuestions(1, {
+        fn() {},
+        functionType: null,
         message: 'The bookcases at the top of the room are numbered 1 to 10. Go to the bookcase number that is equal to the square root of 100 and enter the code: 100',
-    },
+    }),
     {
         type: RequirementTypes.inventory,
         item: 'report card',
@@ -72,11 +72,11 @@ const table3 = new NPC('table3', null, null, [
         question: 'Write down the code to continue',
         answer: 301,
     },
-    ...hardMath.generateQuestions(3),
-    {
-        type: RequirementTypes.dialog,
+    ...hardMath.generateQuestions(3, {
+        fn() {},
+        functionType: null,
         message: 'Go to the only table that you have not completed and enter the code: 99',
-    },
+    }),
     {
         type: RequirementTypes.inventory,
         item: 'report card',
@@ -95,11 +95,11 @@ const table4 = new NPC('table4', null, null, [
         question: 'Write down the code to continue',
         answer: 91,
     },
-    ...easyMath.generateQuestions(2),
-    {
-        type: RequirementTypes.dialog,
+    ...easyMath.generateQuestions(2, {
+        fn() {},
+        functionType: null,
         message: 'Go to the table number that is equal to the remainder of 4 divided by 3 and enter the code: 1005',
-    },
+    }),
     {
         type: RequirementTypes.inventory,
         item: 'report card',
@@ -118,11 +118,11 @@ const table5 = new NPC('table1', null, null, [
         question: 'Write down the code to continue',
         answer: 16,
     },
-    ...mediumMath.generateQuestions(4),
-    {
-        type: RequirementTypes.dialog,
+    ...mediumMath.generateQuestions(4, {
+        fn() {},
+        functionType: null,
         message: 'Go to the table number that is equal to one third of one half of 18 and enter the code: 301',
-    },
+    }),
     {
         type: RequirementTypes.inventory,
         item: 'report card',
