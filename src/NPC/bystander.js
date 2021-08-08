@@ -12,9 +12,11 @@ const Bystander1 = new NPC(
             message:
                 "I wouldn't go any further, it's far too dark. If you think you're brave enough then come back to solve my homework. I mean my riddles!",
         },
-        ...easyMath.generateQuestions(1)[0],
         {
-            ...mediumMath.generateQuestions(1)[0],
+            ...easyMath.generateSingleQuestion(),
+        },
+        {
+            ...mediumMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.setSquareProperties(0, 1, 'isAccessible', true);
@@ -43,9 +45,11 @@ const Bystander2 = new NPC(
             message:
                 "Oh, hello traveler. Sorry, you'll have to keep talking so that I can follow your voice to let you through.",
         },
-        ...easyMath.generateQuestions(1)[0],
         {
-            ...mediumMath.generateQuestions(1)[0],
+            ...easyMath.generateSingleQuestion(),
+        },
+        {
+            ...mediumMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.setSquareProperties(0, -1, 'isAccessible', true);
@@ -79,9 +83,11 @@ const Bystander3 = new NPC(
             message:
                 "Ah! W-who's there! Prove you're not a subtractosaurus by answering my questions!",
         },
-        ...easyMath.generateQuestions(1)[0],
         {
-            ...mediumMath.generateQuestions(1)[0],
+            ...easyMath.generateSingleQuestion(),
+        },
+        {
+            ...mediumMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.setSquareProperties(-1, 0, 'isAccessible', true);
@@ -111,9 +117,11 @@ const Bystander4 = new NPC(
             message:
                 "If you want me to chop this tree down then you gotta fight me! No, not with fists! A maths fight! Just talk to me when you're ready to answer my questions.",
         },
-        ...easyMath.generateQuestions(1)[0],
         {
-            ...mediumMath.generateQuestions(1)[0],
+            ...easyMath.generateSingleQuestion(),
+        },
+        {
+            ...mediumMath.generateSingleQuestion(),
             afterAction: {
                 fn() {},
                 functionType: null,
@@ -144,9 +152,11 @@ const Bystander5 = new NPC(
             message:
                 "There's a wailing ghost back there! Hurry, think about everything you ever learned! I heard answering math questions scares ghosts away!",
         },
-        ...easyMath.generateQuestions(1)[0],
         {
-            ...mediumMath.generateQuestions(1)[0],
+            ...easyMath.generateSingleQuestion(),
+        },
+        {
+            ...mediumMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.setSquareProperties(0, -1, 'isAccessible', true);

@@ -14,7 +14,7 @@ const treasure1 = new NPC(
         },
         ...mediumQuestions.generateQuestions(4),
         {
-            ...hardMath.generateQuestions(1)[0],
+            ...hardMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.addToInventory('key', 1);
@@ -38,7 +38,7 @@ const treasure2 = new NPC(
         },
         ...mediumQuestions.generateQuestions(4),
         {
-            ...hardMath.generateQuestions(1)[0],
+            ...hardMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.addToInventory('key', 1);
@@ -62,7 +62,7 @@ const treasure3 = new NPC(
         },
         ...mediumQuestions.generateQuestions(4),
         {
-            ...hardMath.generateQuestions(1)[0],
+            ...hardMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.addToInventory('key', 1);
@@ -86,7 +86,7 @@ const treasure4 = new NPC(
         },
         ...mediumQuestions.generateQuestions(4),
         {
-            ...hardMath.generateQuestions(1)[0],
+            ...hardMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.addToInventory('key', 1);
@@ -110,7 +110,7 @@ const treasure5 = new NPC(
         },
         ...mediumQuestions.generateQuestions(4),
         {
-            ...hardMath.generateQuestions(1)[0],
+            ...hardMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.addToInventory('key', 1);

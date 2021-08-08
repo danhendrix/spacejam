@@ -11,7 +11,7 @@ const MathMage1 = new NPC(
             message: 'You need to prove you\'re worthy to be down here. Answer this question!',
         },
         {
-            ...hardMath.generateQuestions(1)[0],
+            ...hardMath.generateSingleQuestion(),
             afterAction: {
                 fn() {
                     this.addToInventory('key', 1);

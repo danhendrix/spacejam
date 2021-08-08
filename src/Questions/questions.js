@@ -30,6 +30,16 @@ class Questions {
         }
         return items;
     };
+
+    generateSingleQuestion = (afterAction) => {
+        const { question, answer } = this.pickQuestion();
+        return {
+            type: RequirementTypes.question,
+            question,
+            answer,
+            afterAction,
+        };
+    }
 }
 
 export default Questions;
