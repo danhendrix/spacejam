@@ -686,6 +686,22 @@ body {
             line-height: 1.5;
             width: 100%;
         }
+
+        .creditsHeading {
+            text-align: center;
+        }
+
+        .creditsList {
+            list-style-type: none;
+        }
+
+        .creditsItem {
+            margin: 10px 0;
+        }
+
+        .creditsLink {
+            color: white;
+        }
     }
 }
 

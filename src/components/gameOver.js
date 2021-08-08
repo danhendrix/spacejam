@@ -18,6 +18,76 @@ function GameOver({ name, resetGame }) {
                     fraction of your knowledge. To prove you are The True
                     Magetician, the challenge awaits you again.
                 </p>
+                <h1 class={style.creditsHeading}>Credits</h1>
+                <ul class={style.creditsList}>
+                    <li class={style.creditsItem}>
+                        Created by: dh and Eric "thatblindgeye" Olkowski
+                    </li>
+                    <li class={style.creditsItem}>
+                        Menu and Game Background:{' '}
+                        <a
+                            class={style.creditsLink}
+                            href='https://www.freepik.com/vectors/vintage'
+                        >
+                            stockgiu
+                        </a>
+                    </li>
+                    <li class={style.creditsItem}>
+                        Grass, path, and tree assets:{' '}
+                        <a
+                            class={style.creditsLink}
+                            href='https://stealthix.itch.io/rpg-nature-tileset'
+                        >
+                            stealthix
+                        </a>
+                    </li>
+                    <li class={style.creditsItem}>
+                        Library assets:{' '}
+                        <a
+                            class={style.creditsLink}
+                            href='https://limezu.itch.io/moderninteriors'
+                        >
+                            limezu
+                        </a>
+                    </li>
+                    <li class={style.creditsItem}>
+                        Dungeon and NPC assets:{' '}
+                        <a
+                            class={style.creditsLink}
+                            href='https://0x72.itch.io/16x16-dungeon-tileset'
+                        >
+                            0x72
+                        </a>
+                    </li>
+                    <li class={style.creditsItem}>
+                        Lair and pillar assets:{' '}
+                        <a
+                            class={style.creditsLink}
+                            href='https://cainos.itch.io/pixel-art-top-down-basic'
+                        >
+                            cainos
+                        </a>
+                    </li>
+                    <li class={style.creditsItem}>
+                        Inventory Icons:{' '}
+                        <a
+                            class={style.creditsLink}
+                            href='https://cheekyinkling.itch.io/shikashis-fantasy-icons-pack'
+                        >
+                            cheekyinkling
+                        </a>
+                    </li>
+                    <li class={style.creditsItem}>
+                        And{' '}
+                        <a
+                            class={style.creditsLink}
+                            href='https://www.theodinproject.com'
+                        >
+                            The Odin Project
+                        </a>{' '}
+                        for running their game jam
+                    </li>
+                </ul>
                 <button class={style.menuButton} onClick={resetGame}>
                     Onwards... Once More!
                 </button>
