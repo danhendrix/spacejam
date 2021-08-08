@@ -48,11 +48,12 @@ class NPC {
                 response.messageType = 'dialog';
             }
         } else if (type === RequirementTypes.question) {
+            console.log(typeof answerInput);
             if (answerInput === '' || answerInput === null) {
                 response.success = false;
                 response.message = question;
                 response.messageType = 'question';
-            } else if (answerInput != answer) {
+            } else if (answerInput.replace(',', '') != answer) {
                 response.success = false;
                 response.message = `${generateIncorrect()} ${question}`;
                 response.messageType = 'question';
